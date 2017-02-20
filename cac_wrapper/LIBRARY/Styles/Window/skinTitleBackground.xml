@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/Window/skinTitleBackground" itemID="5494f8a4-000002bd" linkageExportForAS="true" linkageIdentifier="skinTitleBackground" linkageClassName="mx.skins.SkinElement" lastModified="1419109007">
+  <timeline>
+    <DOMTimeline name="skinTitleBackground">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#2D2D2D"/>
+                    </FillStyle>
+                    <FillStyle index="2">
+                      <SolidColor color="#858585" alpha="0"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="2" edges="!2000 0|2160 0!2160 0|2160 440!2160 440|2000 440"/>
+                    <Edge fillStyle1="1" edges="!2000 440|0 440!0 440|0 0!0 0|2000 0"/>
+                    <Edge fillStyle0="2" fillStyle1="1" edges="!2000 0|2000 440"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

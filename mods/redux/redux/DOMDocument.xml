@@ -1,0 +1,2592 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="750" frameRate="31" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" gridSnapTo="true" objectsSnapTo="false" viewAngle3D="70.7391536835427" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Mod Specific" color="#9933CC" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="Forwarders" color="#4FFF4F" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function dialogue() {
+	return _level1.dialogue.apply(_root._level1, arguments);
+}
+function limit() {
+	return _level1.limit.apply(_root._level1, arguments);
+}
+function distance() {
+	return _level1.distance.apply(_root._level1, arguments);
+}
+function min() {
+	return _level1.min.apply(_root._level1, arguments);
+}
+function max() {
+	return _level1.max.apply(_root._level1, arguments);
+}
+function sgn() {
+	return _level1.sgn.apply(_root._level1, arguments);
+}
+
+function kvEvent() {
+	return _level1.kvEvent.apply(_root._level1, arguments);
+}
+
+function Building() {
+	_level1.Building.apply(this,arguments);
+}
+function Unit() {
+	_level1.Unit.apply(this,arguments);
+}
+function UnitHAL() {
+	_level1.UnitHAL.apply(this,arguments);
+}
+function UnitNav() {
+	_level1.UnitNav.apply(this,arguments);
+}
+function UnitStats() {
+	_level1.UnitStats.apply(this,arguments);
+}
+function Indicator() {
+	_level1.Indicator.apply(this,arguments);
+}
+function LevelStats() {
+	_level1.LevelStats.apply(this,arguments);
+}
+function Level() {
+	_level1.Level.apply(this,arguments);
+}
+
+function Log(msg:String):Void {
+	_level0.Log.apply(this, arguments);
+}
+function log(msg:String):Void {
+	_level0.Log.apply(this, arguments);
+}
+]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Cheat Object" color="#4FFF4F" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[//cheat object
+function cheatObj(id:String, code:String, linked:Array) {
+	this.id = id;
+	this.code = code;
+	this.isEnabled = false;
+
+	if (linked !== undefined && linked !== null) {
+		this.linked = linked;
+		for (i in this.linked) {
+			if (this.linked[i].substr(0, 5) != "cheat") {
+				this.linked[i] = "cheat" + this.linked[i];
+			}
+		}
+	} else {
+		this.linked = null;
+	}
+}
+// fullscreen fatwallet 299792458 quickbuild awesome n00b newbie clearskies moneypenny 1337
+//cheatFullscreen cheatCashup cheatBuildspeed cheatFirepower cheatShields cheatShroud 
+function registerCheat(id:String, code:String, linked:Array) {
+	var invalidCodes = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "fullscreen", "fatwallet", "299792458", "quickbuild", "awesome", "n00b", "newbie", "clearskies", "moneypenny", "1337", "credits", "beeblebrox");
+	var invalidIds = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "cheatFullscreen", "cheatCashup", "cheatBuildspeed", "cheatFirepower", "cheatShields", "cheatShroud");//all following 9 may get removed from list
+	var aborted = false;
+
+	if (id.substr(0, 5) != "cheat") {
+		id = "cheat" + id;
+	}
+
+	if ((id == null) || (id == undefined)) {
+		aborted = true;
+	}
+
+	if ((code == null) || (code == undefined)) {
+		aborted = true;
+	}
+
+	for (i in invalidCodes) {
+		if (invalidCodes[i] == code) {
+			aborted = true;
+			break;
+		}
+	}
+
+	for (i in invalidIds) {
+		if (invalidIds[i] == id) {
+			aborted = true;
+			break;
+		}
+	}
+
+	for (i in _level1.panel.codes) {
+		if (_level1.panel.codes[i] == code) {
+			aborted = true;
+			break;
+		}
+	}
+
+	//this check may get removed
+	/*for (i in _level1.panel.customCheats) {
+		if (_level1.panel.customCheats[i].id == id) {
+			aborted = true;
+			break;
+		}
+	}*/
+
+	for (i in _level1.panel.customCheats) {
+		if (_level1.panel.customCheats[i].code == code) {
+			aborted = true;
+			break;
+		}
+	}
+
+	//this cheat can now be registered
+	if (!aborted) {
+		_level1.panel.customCheats.push(new cheatObj(id, code, linked));
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Disabled Function" color="#FF0000" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function DisabledFunction() {
+	_root.Log("This function was disabled by the CAC Redux Team for a good reason. More information on disabled functions can be found at <a href='http://example.com/'>PLACEHOLDER</a>.");
+	return undefined;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Weapon" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="WeaponHook" color="#9933CC" parentLayerIndex="4" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function WeaponHook(parent, shooter, type, x, y, tx, ty, target) {
+	// backtrack
+	this.posX -= this.dx;
+	this.posY -= this.dy;
+	
+	// if rocket type, check for collision
+	if (this.type == "rocket") {
+		this.collision();
+	}
+	
+	// revert backtrack
+	this.posX += this.dx;
+	this.posY += this.dy;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Arena" color="#4F80FF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="doSnowHook" color="#FF4FFF" parentLayerIndex="6" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function doSnowHook() {
+	_level0.Log("Snow!");
+	this.terrainMCx2.filters = this.terrainMC.filters;
+	this.terrainMCy2.filters = this.terrainMC.filters;
+	this.terrainMCx2y2.filters = this.terrainMC.filters;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="ArenaHook" color="#FF4F4F" parentLayerIndex="6" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function ArenaHook(parent) {
+	// Don't even need to hook layoutTiles, it's called just before this code runs.
+	this.tiles[this.cols + 1] = new Array();
+	for (var y = 0; y <= this.rows + 1; y++) {
+		this.tiles[this.cols + 1][y] = true;
+	}
+	
+	// Add more terrain MovieClips to allow for larger maps.
+	this.terrainMCx2 = this.MC.attachMovie("terrain", "terrainx2", -11);
+	this.terrainMCx2._x = 2880;
+	this.terrainMCx2._y = 0;
+	this.terrainMCx2._width = 2880;
+	this.terrainMCx2._height = 2880;
+	this.terrainMCy2 = this.MC.attachMovie("terrain", "terrainy2", -12);
+	this.terrainMCy2._x = 0;
+	this.terrainMCy2._y = 2880;
+	this.terrainMCy2._width = 2880;
+	this.terrainMCy2._height = 2880;
+	this.terrainMCx2y2 = this.MC.attachMovie("terrain", "terrainx2y2", -13);
+	this.terrainMCx2y2._x = 2880;
+	this.terrainMCx2y2._y = 2880;
+	this.terrainMCx2y2._width = 2880;
+	this.terrainMCx2y2._height = 2880;
+
+	//if (this.doSnow.isHooked()) {
+	//	_level0.Log("doSnow() already hooked, skipping...");
+	//} else {
+	var hookSnow:Object = _level0.addPostHook(this.doSnow, doSnowHook);
+	this.doSnow = hookSnow.override;
+	//}
+	var tempTodaysDate:Date = new Date();
+	if (_level1.panel.checkCheat("cheatSnow") || (tempTodaysDate.getMonth() == 11 && (tempTodaysDate.getDate() == 24 || tempTodaysDate.getDate() == 25))) {
+		// Ho ho ho!
+		this.doSnow();
+	}
+	delete tempTodaysDate;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Construction" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="ConstructionHook" color="#9933CC" parentLayerIndex="9" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript offsets="36,476">
+                                        <script><![CDATA[function ConstructionHook(parent) {
+/*
+	var hook5:Object = _level0.addPreHook(this.construct,
+		function(item) {
+			if (!item)
+				return;
+			_level0.Log("construct called for type: " + item.type + " inProgress: " + item.inProgress + " progress: " + item.progress + " disabled: " + item.disabled);
+		}
+	);
+	this.construct = hook5.override;
+	
+	var hook6:Object = _level0.addPostHook(this.doMouse,
+		function(x, y) {
+			_level0.Log("doMouse called x: " + x + " y: " + y);
+		}
+	);
+	this.doMouse = hook6.override;
+*/
+
+	this.construct = function(item) {
+		if (!item) {
+			return;
+		}
+		if (!item.inProgress) {
+			item.MC.progress._visible = true;
+			item.MC.progress.gotoAndStop(100);
+			return;
+		}
+		
+		// Force check for maximum built units.
+		item.checkMax(item.total);
+		// If item is now disabled as a result of hitting max units, then abort construction.
+		if (item.disabled) {
+			// Properly cancel the construction first.
+			this.cancel(item, false);
+			// Now abort.
+			return;
+		}
+
+		var speed = this.speed;
+		if (this.parent.powerLow) {
+			speed *= .5;
+		}
+		speed = Math.ceil(speed);
+
+		var diff = item.progress + speed - item.constructionTime;
+		if (diff > 0) {
+			speed -= diff;
+		}
+
+		var spend = Math.ceil((speed / item.constructionTime) * item.cost);
+		if (this.parent.cash < spend) {
+			this.sufficientFunds = false;
+			return;
+		}
+
+		this.parent.cash -= spend;
+		item.progress += speed;
+		item.progress = min(item.progress, item.constructionTime);
+		var perc = Math.ceil(100 * item.progress / item.constructionTime);
+		item.MC.progress._visible = true;
+		item.MC.progress.gotoAndStop(perc);
+		if (item.progress == item.constructionTime) {
+			item.inProgress = false;
+			if (item.isUnit) {
+				if (!item.superweapon) {
+					this.parent.units.push(new Unit(this.parent, item.type, null, null, .125 * random(8), this.parent.parent.team));
+					this.cancel(item);
+					this.parent.parent.sfx.play("INT_constructioncomplete_unit");
+				} else {
+					this.parent.parent.sfx.play("INT_constructioncomplete_building");
+				}
+			} else {
+				this.parent.parent.sfx.play("INT_constructioncomplete_building");
+			}
+		}
+	};
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="BuildingSite" color="#FF800A" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="BuildingSiteHook" color="#FF4FFF" parentLayerIndex="11" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function BuildingSiteHook(parent, type) {
+
+/*
+	//TODO: Investigate why exactly this causes further bugs whereas replacing the function completely works fine.
+	var breakGroundHook:Object = _level0.addPreHook(this.breakGround,
+		function() {
+			// HACK: Force recalculate if this is on a valid tile.
+			this.handle();
+		}
+	);
+	this.breakGround = breakGroundHook.override;
+*/
+
+	this.breakGround = function() {
+		// HACK: Force recalculate if this is on a valid tile.
+		this.handle();
+
+		if (!this.valid) {
+			this.parent.parent.parent.sfx.play("INT_invalid");
+			return;
+		}
+		this.parent.parent.outcomeFutures++;// a hack because breakground is called on Control which is called after setFutures - it will resolve itself fairly next frame
+
+		this.parent.parent.buildings.push(new Building(this.parent.parent, this.type, this.parent.parent.control.tilePos.x, this.parent.parent.control.tilePos.y, this.parent.parent.parent.team));
+		//this.parent.parent.cash -= this.stats.cost;
+		this.destroy(true);
+		this.parent.parent.parent.sfx.play("INT_breakground");
+		return true;
+	};
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="UnitNav" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="UnitNavHook" color="#9933CC" parentLayerIndex="13" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function UnitNavHook(parent) {
+	if (!parent.stats.home && !parent.tilePos.x && !parent.tilePos.y) {
+		var warn:String = "Warning: Could not spawn unit " + parent.type + " at {x: " + parent.tilePos.x + ", y: " + parent.tilePos.y + "}";
+		parent.tilePos = {x:1, y:1};
+		parent.tilePos = parent.parent.arena.closestAvailable(parent.tilePos);
+		parent.x = parent.tilePos.x;
+		parent.y = parent.tilePos.y;
+		warn += "\nAssigned next available tile position {x: " + parent.tilePos.x + ", y: " + parent.tilePos.y + "} to avoid crash!";
+		_level0.Log(warn);
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="LevelStats" color="#FF4FFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="outcomeHook" color="#4FFF4F" parentLayerIndex="15" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function outcomeHook() {
+	if (!this.active) {
+		return;
+	}
+
+	if (this.level == 23) {
+		// Fix lose condition: previously if you lost all buildings,
+		// you'd be unable to win (can't build anywhere) and
+		// unable to lose (AI won't attack your units).
+		if (!this.findBuilding("BB_good").friend && !this.findBuilding("BD_good")) {
+			this.lose();
+		}
+	}
+
+	if (this.level == 9) {
+		// Fix lose condition: previously if your engineer or
+		// dropship died, you wouldn't be able to win or lose.
+		if (!this.findBuilding("BG_evil").friend) {
+			if (!this.findUnit("UB_good") || !this.findUnit("UH_good")) {
+				this.lose();
+			}
+		}
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="LevelStatsHook" color="#9933CC" parentLayerIndex="15" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function LevelStatsHook(parent) {
+	//var isConflict:Boolean = false;
+	//var isSpecialLevel: Boolean = false;
+	//var isLastSpecialLevel: Boolean = false;
+	//var isBonusLevel: Boolean = false;
+	this.setup = function()
+		{
+		var temp, a, b, c, d;
+		this.isConflict=false;
+		this.isSpecialLevel=false;
+		this.isLastSpecialLevel=false;
+		this.isBonusLevel=false;
+		if (this.level == 1) // simple mining training
+			{
+			this.buildings.push(new Building(this, "BA_good", 2, 7));
+			this.units.push(temp = new Unit(this, "UD_good", null, null, .5));
+
+			this.indicators.push(new Indicator(this, temp, null, dialogue("int_level1_ind1"), "selected"));
+			this.indicators.push(new Indicator(this, temp, this.arena.tileHandles["_4_7"], dialogue("int_level1_ind2"), "voyage"));
+			this.indicators.push(new Indicator(this, temp, this.arena.tileHandles["_6_6"], dialogue("int_level1_ind3"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level1_ind4"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level1_ind5"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level1_ind6"), "message", 120));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level1_ind7"), "message"));
+
+			this.cash = 0;
+			this.training = true;
+			this.jukebox = 1;
+			}
+		if (this.level == 2) // simple seek and destroy
+			{
+			this.buildings.push(new Building(this, "BA_good", 1, 11));
+			this.buildings.push(new Building(this, "BB_good", 3, 11));
+			this.units.push(new Unit(this, "UD_good", 10, 5, .5));
+			this.units.push(temp = new Unit(this, "UA_good", 3, 9, .25));
+			this.units.push(a = new Unit(this, "UA_good", 4, 9, .5));
+			this.units.push(b = new Unit(this, "UA_good", 4, 9, .125));
+			this.units.push(c = new Unit(this, "UA_good", 3, 9, .375));
+
+			this.units.push(new Unit(this, "UA_evil", 15, 1, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 13, 15, .75, null, null, "roam", 20));
+			this.units.push(new Unit(this, "UA_evil", 15, 3, .75, null, null, "still"));
+
+			this.indicators.push(new Indicator(this, new Array(temp,a,b,c), null, dialogue("int_level2_ind1"), "selected"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level2_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level2_ind3"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level2_ind4"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level2_ind5"), "message"));
+
+			this.cash = 2000;
+			this.training = true;
+			this.jukebox = 2;
+			}
+		if (this.level == 3) // simple build and repair
+			{
+			this.buildings.push(new Building(this, "BA_good", 3, 13));
+			this.units.push(temp = new Unit(this, "UD_good", 8, 11, .5, null, .25));
+
+			this.units.push(new Unit(this, "UE_evil", 16, 15, .75, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 17, 16, .75, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 18, 17, .75, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UA_evil", 15, 15, .75, null, null, "roam", 10));
+
+			this.indicators.push(new Indicator(this, temp, null, dialogue("int_level3_ind1"), "selected"));
+			this.indicators.push(new Indicator(this, temp, this.arena.tileHandles["_4_14"], dialogue("int_level3_ind2"), "voyage"));
+			this.indicators.push(new Indicator(this, "BB_good", null, dialogue("int_level3_ind3"), "construction"));
+			this.indicators.push(new Indicator(this, "BC_good", null, dialogue("int_level3_ind4"), "construction"));
+			this.indicators.push(new Indicator(this, "UB_good", null, dialogue("int_level3_ind5"), "construction"));
+			this.indicators.push(new Indicator(this, "find:UB_good", null, dialogue("int_level3_ind6"), "selected"));
+			this.indicators.push(new Indicator(this, "find:UB_good", temp, dialogue("int_level3_ind7"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level3_ind8"), "message"));
+
+			this.cash = 4000;
+			this.training = true;
+			this.jukebox = 3;
+			}
+		if (this.level == 4) // evade and build (radar)
+			{
+			this.buildings.push(new Building(this, "BA_good", 2, 4));
+			this.buildings.push(new Building(this, "BB_good", 1, 4));
+			this.buildings.push(new Building(this, "BF_good", 4, 4));
+			this.buildings.push(new Building(this, "BD_good", 8, 5));
+			this.units.push(new Unit(this, "UD_good", 10, 4, .5));
+			this.units.push(temp = new Unit(this, "UE_good", 27, 12, .25));
+
+			this.units.push(a = new Unit(this, "UI_evil", 28, 12, .75));
+			this.units.push(new Unit(this, "UE_evil", 30, 12, .75, null, .75, "still"));
+			this.units.push(new Unit(this, "UA_evil", 27, 7, .5, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 23, 14, .25, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 23, 15, .25, null, null, "still", 600));
+			this.units.push(new Unit(this, "UA_evil", 23, 15, .25, null, null, "still", 600));
+			this.units.push(new Unit(this, "UA_evil", 23, 15, .25, null, null, "still", 1000));
+			this.units.push(new Unit(this, "UA_evil", 23, 15, .25, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UA_evil", 23, 15, .25, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UE_evil", 23, 6, .75, null, .75, "still"));
+			this.units.push(new Unit(this, "UE_evil", 24, 6, .75, null, .75, "still"));
+			this.units.push(new Unit(this, "UA_evil", 25, 1, .25, null, null, "still", 600));
+			this.units.push(new Unit(this, "UA_evil", 25, 1, .25, null, null, "still", 600));
+			this.units.push(new Unit(this, "UA_evil", 25, 1, .25, null, null, "still", 1000));
+			this.units.push(new Unit(this, "UA_evil", 25, 1, .25, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UA_evil", 25, 1, .25, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UE_evil", 30, 1, .25, null, null, "still", 2500));
+			this.units.push(new Unit(this, "UE_evil", 30, 2, .25, null, null, "still", 2600));
+
+			this.indicators.push(new Indicator(this, temp, null, dialogue("int_level4_ind1"), "selected"));
+			this.indicators.push(new Indicator(this, temp, a, dialogue("int_level4_ind2"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level4_ind3"), "message", 60));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level4_ind4"), "message", 200));
+
+			this.arena.shroud.reveal(6,1,4);
+			this.arena.shroud.reveal(3,8,4);
+			this.arena.shroud.reveal(3,12,4);
+			this.arena.shroud.reveal(10,8,3);
+			this.arena.shroud.reveal(15,10,3);
+			this.arena.shroud.reveal(20,8,3);
+			this.arena.shroud.reveal(25,10,3);
+			this.arena.shroud.reveal(28,14,2);
+
+			this.camera.focus = temp;
+			this.cash = 2000;
+			this.training = true;
+			this.jukebox = 4;
+			}
+		if (this.level == 5) // UF's attack in swarms
+			{
+			this.buildings.push(new Building(this, "BA_"+this.parent.team, 2, 4));
+			this.units.push(new Unit(this, "UD_good", null, null, .5, null));
+			this.units.push(new Unit(this, "UE_good", 4, 3, .5));
+			this.units.push(new Unit(this, "UA_good", 4, 5, .25));
+			this.units.push(new Unit(this, "UA_good", 4, 5, .5));
+			this.units.push(new Unit(this, "UA_good", 4, 5, .75));
+
+			this.units.push(new Unit(this, "UF_evil", 15, 5, .75, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UF_evil", 15, 4, .5, null, null, "still", 1000));
+			this.units.push(new Unit(this, "UF_evil", 19, 9, .75, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UA_evil", 18, 19, .75, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_evil", 18, 20, .75, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UF_evil", 19, 19, .75, null, null, "still"));
+
+			this.arena.shroud.reveal(5,10,4);
+			this.arena.shroud.reveal(19,19,4);
+
+			this.cash = 8000;
+			this.jukebox = 1;
+			}
+		if (this.level == 6) // jetpacks ahoy
+			{
+			this.buildings.push(a = new Building(this, "BA_good", 4, 15));
+			this.buildings.push(new Building(this, "BB_good", 1, 15));
+			this.buildings.push(new Building(this, "BG_good", 1, 13));
+			this.units.push(new Unit(this, "UD_good", null, null, .5, null));
+			this.units.push(new Unit(this, "UC_good", 6, 14, .5, null));
+			this.units.push(new Unit(this, "UC_good", 6, 15, .5, null));
+			this.units.push(new Unit(this, "UC_good", 6, 16, .5, null));
+			this.units.push(new Unit(this, "UC_good", 6, 15, .5, null));
+			this.units.push(new Unit(this, "UC_good", 6, 16, .5, null));
+
+			this.buildings.push(temp = new Building(this, "BC_evil", 15, 5));
+			this.buildings.push(new Building(this, "BD_evil", 11, 7));
+			this.buildings.push(new Building(this, "BD_evil", 14, 12));
+			this.buildings.push(new Building(this, "BB_evil", 15, 2));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 30, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 35, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 40, true));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level6_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level6_ind2"), "message", 80));
+
+			this.arena.shroud.reveal(16,5,4);
+
+			this.camera.focus = temp;
+			this.cash = 4000;
+			this.cashOppo = 20000;
+			this.jukebox = 2;
+			}
+		if (this.level == 7) // major tank wars
+			{
+			this.buildings.push(new Building(this, "BA_good", 5, 27));
+			this.units.push(new Unit(this, "UD_good", 13, 26, .5, null));
+			this.units.push(new Unit(this, "UF_good", 6, 24, .0625, null));
+			this.units.push(new Unit(this, "UF_good", 7, 24, .125, null));
+			this.units.push(new Unit(this, "UF_good", 7, 25, .1875, null));
+			this.units.push(new Unit(this, "UA_good", 4, 24));
+			this.units.push(new Unit(this, "UA_good", 4, 24));
+			this.units.push(new Unit(this, "UA_good", 7, 27));
+			this.units.push(new Unit(this, "UA_good", 7, 27));
+
+			this.buildings.push(new Building(this, "BD_evil", 15, 8));
+			this.buildings.push(new Building(this, "BD_evil", 18, 14));
+			this.buildings.push(new Building(this, "BE_evil", 19, 4));
+			this.buildings.push(new Building(this, "BB_evil", 21, 3));
+			this.buildings.push(new Building(this, "BC_evil", 19, 7));
+			this.buildings.push(new Building(this, "BB_evil", 21, 7));
+			this.units.push(new Unit(this, "UA_evil", 19, 6, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UA_evil", 19, 6, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UA_evil", 19, 6, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UA_evil", 19, 6, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UA_evil", 19, 6, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UE_evil", 5, 3, .5, null, null, "still", null, true));
+			this.units.push(new Unit(this, "UE_evil", 21, 24, .75, null, null, "still", null, true));
+			this.units.push(new Unit(this, "UF_evil", 17, 11, .625, null, null, "still", null, true));
+			this.units.push(new Unit(this, "UI_evil", 4, 7));
+			this.units.push(new Unit(this, "UI_evil", 11, 9));
+			this.units.push(new Unit(this, "UI_evil", 21, 17));
+
+			this.cash = 4000;
+			this.cashOppo = 20000;
+			this.jukebox = 3;
+			}
+		if (this.level == 8) // crashed ship
+			{
+			this.buildings.push(new Building(this, "BA_good", 2, 25, "evil", .25));
+			this.buildings.push(new Building(this, "BC_good", 13, 14, "evil", .25));
+			this.units.push(temp = new Unit(this, "UA_good", 13, 6, .5, null));
+			this.units.push(new Unit(this, "UA_good", 12, 5, .5, null));
+			this.units.push(new Unit(this, "UA_good", 14, 5, .5, null));
+			this.units.push(new Unit(this, "UB_good", 13, 4, .5, null));
+			this.units.push(new Unit(this, "UB_good", 13, 4, .5, null));
+			this.units.push(new Unit(this, "UH_good", 14, 29, .625));
+			this.units.push(new Unit(this, "UI_good", 10, 7, .5, null, null, null, "UE_good"));
+			this.units.push(new Unit(this, "UI_good", 8, 3, .5, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 8, 29, .25, null, null, null, "UC_good"));
+
+			this.buildings.push(new Building(this, "BD_evil", 4, 7));
+			this.buildings.push(new Building(this, "BD_evil", 6, 15));
+			this.buildings.push(new Building(this, "BD_evil", 8, 24));
+			this.buildings.push(new Building(this, "BB_evil", 4, 25, "evil"));
+			this.buildings.push(new Building(this, "BB_evil", 4, 23, "evil"));
+			this.units.push(new Unit(this, "UA_evil", 12, 15, null, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_evil", 12, 15, null, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UF_evil", 2, 17, .125, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 3, 15, .125, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 10, 26, 0, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 2, 11, .375, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 3, 25, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_evil", 3, 25, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UI_evil", 15, 15));
+			this.units.push(new Unit(this, "UI_evil", 14, 16));
+			this.units.push(new Unit(this, "UI_evil", 6, 27));
+			this.units.push(new Unit(this, "UI_evil", 1, 17));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level8_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level8_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level8_ind3"), "message", 80));
+
+			this.camera.focus = temp;
+			this.cash = 0;
+			this.jukebox = 4;
+			}
+		if (this.level == 9) // tech centre grab
+			{
+			this.buildings.push(new Building(this, "BG_good", 10, 26));
+			this.buildings.push(new Building(this, "BB_good", 11, 26));
+			this.units.push(a = new Unit(this, "UB_good", 9, 26, .5, null));
+			this.units.push(new Unit(this, "UH_good", 7, 26, .625, null));
+			this.units.push(new Unit(this, "UI_good", 3, 2, .5, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 4, 16, .5, null, null, null, "UC_good"));
+			this.units.push(new Unit(this, "UI_good", 12, 17, .5, null, null, null, "UC_good"));
+			this.units.push(new Unit(this, "UI_good", 14, 27, .5, null, null, null, "UC_good"));
+			this.units.push(new Unit(this, "UI_good", 14, 12, .5, null, null, null, "UC_good"));
+			this.units.push(new Unit(this, "UI_good", 7, 16, .5, null, null, null, "UC_good"));
+
+			this.buildings.push(temp = new Building(this, "BG_evil", 8, 4));
+			this.buildings.push(new Building(this, "BD_evil", 7, 3));
+			this.buildings.push(new Building(this, "BD_evil", 7, 5));
+			this.buildings.push(new Building(this, "BD_evil", 9, 3));
+			this.buildings.push(new Building(this, "BD_evil", 9, 5));
+			this.buildings.push(new Building(this, "BB_evil", 13, 5));
+			this.buildings.push(new Building(this, "BB_evil", 13, 2));
+			this.buildings.push(new Building(this, "BB_evil", 15, 5));
+			this.buildings.push(new Building(this, "BB_evil", 15, 2));
+			this.buildings.push(new Building(this, "BB_evil", 14, 3));
+			this.buildings.push(new Building(this, "BB_evil", 1, 2));
+			this.buildings.push(new Building(this, "BB_evil", 1, 5));
+
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level9_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, a, null, dialogue("int_level9_ind2"), "selected"));
+			this.indicators.push(new Indicator(this, a, this.units[1], dialogue("int_level9_ind3"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level9_ind4"), "message", 160));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level9_ind5"), "message"));
+
+			this.arena.shroud.reveal(8,6,3);
+
+			this.camera.focus = temp;
+			this.cash = 0;
+			this.jukebox = 1;
+			}
+		if (this.level == 10) // good conflict
+			{
+			this.isConflict=true;
+			
+			this.buildings.push(new Building(this, "BB_good", 25, 23));
+			this.buildings.push(new Building(this, "BD_good", 8, 23));
+			this.buildings.push(b = new Building(this, "BD_good", 26, 23));
+			this.buildings.push(c = new Building(this, "BA_good", 5, 20));
+			this.units.push(new Unit(this, "UF_good", 5, 22, .375));
+			this.units.push(new Unit(this, "UE_good", 6, 22, .625));
+			this.units.push(new Unit(this, "UC_good", 4, 20, .375));
+			this.units.push(new Unit(this, "UC_good", 7, 20, .625));
+			this.units.push(new Unit(this, "UD_good", 13, 26, .5));
+			this.units.push(new Unit(this, "UI_good", 27, 3, .5, null, null, null, "UB_good"));
+			this.units.push(new Unit(this, "UI_good", 21, 21, .5, null, null, null, "UD_good"));
+			this.units.push(new Unit(this, "UI_good", 10, 10, .5, null, null, null, "UF_good"));
+
+			this.buildings.push(a = new Building(this, "BA_evil", 25, 12));
+			this.buildings.push(new Building(this, "BD_evil", 30, 14));
+			this.buildings.push(new Building(this, "BD_evil", 21, 12));
+			this.buildings.push(new Building(this, "BD_evil", 22, 12));
+			this.buildings.push(new Building(this, "BD_evil", 24, 15));
+			this.buildings.push(new Building(this, "BD_evil", 25, 15));
+			this.buildings.push(new Building(this, "BD_evil", 5, 7));
+			this.buildings.push(new Building(this, "BB_evil", 6, 7));
+			this.buildings.push(new Building(this, "BD_evil", 7, 7));
+			this.buildings.push(new Building(this, "BD_evil", 23, 2));
+			this.buildings.push(new Building(this, "BC_evil", 25, 2));
+			this.buildings.push(new Building(this, "BG_evil", 28, 2));
+			this.buildings.push(new Building(this, "BH_evil", 29, 2));
+			this.buildings.push(new Building(this, "BE_evil", 25, 7));
+			this.buildings.push(new Building(this, "BF_evil", 28, 5));
+			this.buildings.push(new Building(this, "BB_evil", 23, 7));
+			this.buildings.push(new Building(this, "BB_evil", 23, 9));
+			this.buildings.push(new Building(this, "BB_evil", 28, 13));
+			this.buildings.push(new Building(this, "BB_evil", 28, 11));
+			this.buildings.push(new Building(this, "BB_evil", 29, 11));
+			this.buildings.push(new Building(this, "BB_evil", 28, 9));
+			this.buildings.push(new Building(this, "BB_evil", 29, 9));
+			this.buildings.push(new Building(this, "BB_evil", 28, 7));
+			this.buildings.push(new Building(this, "BB_evil", 29, 7));
+			this.units.push(new Unit(this, "UD_evil", 20, 6));
+			this.units.push(new Unit(this, "UD_evil", 4, 5));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UC_evil", 26, 8, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UC_evil", 26, 8, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UF_evil", 15, 15, null, null, null, "roam", 6, false)); // no longer respawns
+			this.units.push(new Unit(this, "UF_evil", 16, 16, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UE_evil", null, null, null, null, null, "still", 1000, false)); // no longer respawns
+			this.units.push(new Unit(this, "UE_evil", null, null, null, null, null, "still", 2000, true));
+			this.units.push(new Unit(this, "UA_evil", 25, 29, null, null, null, "roam", 2, true));
+			this.units.push(new Unit(this, "UA_evil", 6, 2, null, null, null, "roam", 2, true));
+			this.units.push(new Unit(this, "UA_evil", 26, 8, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, "seek", null, true));
+			this.units.push(new Unit(this, "UI_evil", 28, 26, .5));
+			this.units.push(new Unit(this, "UI_evil", 3, 5, .5));
+
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, c, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind3"), "message", 80));
+
+			this.arena.shroud.reveal(25,11,2);
+			this.arena.shroud.reveal(2,20,4);
+			this.arena.shroud.reveal(2,26,4);
+			this.arena.shroud.reveal(7,26,4);
+
+			this.camera.focus = c;
+			this.cash = 10000;
+			this.cashOppo = 20000;
+			this.jukebox = 4;
+			}
+		if (this.level == 11) // sneaky evil
+			{
+			this.buildings.push(new Building(this, "BA_good", -10, -10));
+			this.buildings.push(b = new Building(this, "BX_good", 4, 8));
+			this.units.push(a = new Unit(this, "UA_evil", 11, 5, .5));
+			this.units.push(new Unit(this, "UB_good", 3, 7, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UA_good", 3, 5, null, null, null, "roam", 4, true));
+			this.units.push(new Unit(this, "UA_good", 3, 5, null, null, null, "roam", 4, true));
+			this.units.push(new Unit(this, "UI_good", 4, 9, .5));
+
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level11_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, a, null, dialogue("int_level11_ind2"), "selected"));
+			this.indicators.push(new Indicator(this, a, this.arena.tileHandles["_9_7"], dialogue("int_level11_ind3"), "voyage"));
+			this.indicators.push(new Indicator(this, a, this.arena.tileHandles["_7_7"], dialogue("int_level11_ind4"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level11_ind5"), "message", 180));
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_6_8"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level11_ind6"), "message"));
+
+			this.arena.shroud.reveal(5,6,3);
+			this.arena.shroud.reveal(12,2,2);
+			this.arena.shroud.reveal(9,7,2);
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.cashOppo = 999999900;
+			this.training = true;
+			this.jukebox = 4;
+			}
+		if (this.level == 12) // destroy mining astros
+			{
+			this.units.push(temp = new Unit(this, "UD_good", 4, 4, .25, null, .3));
+			temp.stats.maxCargo = 999999900; //temp.stats.repair = true; // Josh: removed repair stat. why was it even there? we may never know.
+			this.units.push(new Unit(this, "UA_good", 3, 4, .75, null, null, "guard", temp));
+			this.units.push(new Unit(this, "UA_good", 5, 4, .75, null, null, "guard", temp));
+			this.units.push(new Unit(this, "UA_good", 4, 3, .75, null, null, "roam", 8));
+			this.units.push(new Unit(this, "UA_good", 4, 5, .75, null, null, "roam", 8));
+			this.units.push(b = new Unit(this, "UA_evil", 9, 12, .8125));
+			this.units.push(a = new Unit(this, "UA_evil", 10, 12, .875));
+			this.units.push(c = new Unit(this, "UA_evil", 11, 12, 0.9375));
+			this.units.push(new Unit(this, "UI_evil", 1, 4, .5, null, null, null, "UA_evil"));
+
+			this.indicators.push(new Indicator(this, temp, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level12_ind1"), "message", 120));
+			this.indicators.push(new Indicator(this, new Array(a,b,c), null, dialogue("int_level12_ind2"), "selected"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level12_ind3"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level12_ind4"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level12_ind5"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level12_ind6"), "message"));
+
+			this.arena.shroud.reveal(5,2,3);
+			this.arena.shroud.reveal(5,4,3);
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.cashOppo = 999999900;
+			this.training = true;
+			this.jukebox = 1;
+			}
+		if (this.level == 13) // mining training
+			{
+			this.buildings.push(new Building(this, "BA_evil", 9, 4));
+			this.units.push(temp = new Unit(this, "UD_evil", null, null, .75));
+			this.units.push(new Unit(this, "UA_evil", 8, 5, .625));
+			this.units.push(new Unit(this, "UA_evil", 8, 4, .5));
+			this.units.push(new Unit(this, "UA_good", 2, 6, .25, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 4, 10, .75, null, null, "roam", 2)); // Josh: position moved, was at 4, 11
+			this.units.push(new Unit(this, "UI_evil", 6, 10, .5, null, null, null, "UA_evil"));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level13_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, "BB_evil", null, dialogue("int_level13_ind2"), "construction"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level13_ind3"), "message", 60));
+			this.indicators.push(new Indicator(this, temp, null, dialogue("int_level13_ind4"), "selected"));
+			this.indicators.push(new Indicator(this, temp, this.arena.tileHandles["_7_5"], dialogue("int_level13_ind5"), "voyage"));
+			this.indicators.push(new Indicator(this, temp, this.arena.tileHandles["_5_6"], dialogue("int_level13_ind6"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level13_ind7"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level13_ind8"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level13_ind9"), "message"));
+
+			this.cash = 800;
+			this.training = true;
+			this.jukebox = 2;
+			}
+		if (this.level == 14) // recon and repair
+			{
+			this.buildings.push(a = new Building(this, "BA_evil", 7, 5));
+			this.buildings.push(new Building(this, "BB_evil", 9, 5));
+			this.buildings.push(new Building(this, "BB_good", 2, 23));
+			this.buildings.push(temp = new Building(this, "BC_good", 6, 23));
+			this.units.push(new Unit(this, "UD_evil", 3, 2));
+			this.units.push(b = new Unit(this, "UE_evil", 5, 23, .3125));
+			//b.stats.negotiator = true; // a failed attempt to fix being able to attack when you're supposed to retreat
+			this.units.push(new Unit(this, "UA_good", 9, 25, .75, null, null, "still", 20));
+			this.units.push(new Unit(this, "UA_good", 9, 25, .75, null, null, "still", 40));
+			this.units.push(new Unit(this, "UA_good", 9, 25, .75, null, null, "still", 60));
+			this.units.push(new Unit(this, "UA_good", 9, 25, .75, null, null, "still", 80));
+			this.units.push(new Unit(this, "UA_good", 9, 25, .75, null, null, "still", 100));
+			this.units.push(new Unit(this, "UA_good", 10, 25, .75, null, null, "still", 1000));
+			this.units.push(new Unit(this, "UA_good", 10, 25, .75, null, null, "still", 1000));
+			this.units.push(new Unit(this, "UA_good", 10, 25, .75, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UA_good", 10, 25, .75, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UA_good", 10, 25, .75, null, null, "still", 1000, true));
+			this.units.push(new Unit(this, "UE_good", 1, 9, .25, null, null, "still", 2000));
+			this.units.push(new Unit(this, "UE_good", 2, 25, .25, null, null, "still", 3000));
+			this.units.push(new Unit(this, "UE_good", 10, 24, .75, null, null, "still", 4000));
+			this.units.push(new Unit(this, "UI_good", 1, 8, .5, null, null, null, "UE_evil"));
+
+			this.indicators.push(new Indicator(this, b, null, dialogue("int_level14_ind1"), "selected"));
+			this.indicators.push(new Indicator(this, b, this.arena.tileHandles["_8_6"], dialogue("int_level14_ind2"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level14_ind3"), "message", 60));
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_6_5"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, "BC_evil", null, dialogue("int_level14_ind4"), "construction"));
+			this.indicators.push(new Indicator(this, "UA_evil", null, dialogue("int_level14_ind5"), "construction"));
+			this.indicators.push(new Indicator(this, "BD_evil", null, dialogue("int_level14_ind6"), "construction"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level14_ind7"), "message"));
+
+			this.arena.shroud.reveal(6,6,4);
+			this.arena.shroud.reveal(8,12,4);
+			this.arena.shroud.reveal(7,19,3);
+
+			this.camera.focus = temp;
+			this.cash = 3000;
+			this.cashOppo = 5000;
+			this.training = true;
+			this.jukebox = 3;
+			}
+		if (this.level == 15) // repair against tanks
+			{
+			this.buildings.push(a = new Building(this, "BC_evil", 27, 5));
+			this.buildings.push(new Building(this, "BB_evil", 29, 5));
+			this.buildings.push(new Building(this, "BD_good", 7, 2));
+			this.buildings.push(new Building(this, "BD_good", 7, 8));
+			this.buildings.push(new Building(this, "BB_good", -10, -10));
+
+			this.units.push(b = new Unit(this, "UE_evil", 26, 5, .3125, null, .2));
+
+			this.units.push(new Unit(this, "UA_good", 15, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 20, 3, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 23, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 13, 4, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 13, 4, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 14, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 14, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 10, 6, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_good", 19, 6, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_good", 3, 5, .75, null, null, "roam", 4));
+
+			this.units.push(new Unit(this, "UI_good", 2, 2, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_good", 2, 3, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_good", 2, 4, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_good", 2, 7, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_good", 2, 8, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_good", 2, 9, .5, null, null, null, "UE_evil"));
+
+			this.indicators.push(new Indicator(this, "UB_evil", null, dialogue("int_level15_ind1"), "construction"));
+			this.indicators.push(new Indicator(this, "find:UB_evil", null, dialogue("int_level15_ind2"), "selected"));
+			this.indicators.push(new Indicator(this, "find:UB_evil", b, dialogue("int_level15_ind3"), "voyage"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level15_ind4"), "message"));
+
+			this.arena.shroud.reveal(28,5,4);
+			this.arena.shroud.reveal(28,6,4);
+			this.arena.shroud.reveal(3,5,4);
+			this.arena.shroud.reveal(4,5,4);
+			this.arena.shroud.reveal(3,6,4);
+			this.arena.shroud.reveal(4,6,4);
+
+			this.camera.focus = a;
+			this.cash = 3100;
+			this.cashOppo = 0;
+			this.training = true;
+			this.jukebox = 4;
+			}
+		if (this.level == 16) // jet packs attacking, counter attack
+			{
+			this.buildings.push(a = new Building(this, "BA_evil", 20, 5));
+			this.buildings.push(b = new Building(this, "BF_evil", 18, 5));
+			this.buildings.push(new Building(this, "BB_evil", 18, 2));
+			this.buildings.push(new Building(this, "BB_evil", 19, 2));
+			this.buildings.push(new Building(this, "BD_evil", 8, 9));
+			this.buildings.push(new Building(this, "BD_evil", 15, 19));
+			this.buildings.push(new Building(this, "BD_good", 4, 16));
+			this.buildings.push(new Building(this, "BD_good", 5, 16));
+			this.buildings.push(new Building(this, "BD_good", 6, 19));
+			this.buildings.push(new Building(this, "BD_good", 7, 19));
+			this.buildings.push(new Building(this, "BB_good", 2, 21));
+			this.buildings.push(new Building(this, "BB_good", 3, 21));
+			this.buildings.push(new Building(this, "BB_good", 1, 19));
+			this.buildings.push(new Building(this, "BB_good", 2, 19));
+			this.buildings.push(new Building(this, "BC_good", 3, 19));
+			this.buildings.push(new Building(this, "BG_good", 6, 17));
+
+			this.units.push(new Unit(this, "UD_evil", 20, 9, .5));
+			this.units.push(new Unit(this, "UC_good", null, null, null, null, null, "still", 300, true));
+			this.units.push(new Unit(this, "UC_good", null, null, null, null, null, "still", 500, true));
+			this.units.push(new Unit(this, "UC_good", null, null, null, null, null, "still", 3000, true));
+			this.units.push(new Unit(this, "UC_good", 5, 19, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UC_good", 5, 19, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UF_good", 5, 19, null, null, null, "roam", 8));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level16_ind1"), "message", 120));
+
+			this.camera.focus = this.arena.tileHandles["_20_4"];
+			this.cash = 4000;
+			this.cashOppo = 250000;
+			this.jukebox = 2;
+			}
+		if (this.level == 17) // damaged and down to a few tanks, a flow of engineers attack
+			{
+			this.buildings.push(temp = new Building(this, "BA_evil", 28, 12, null, .25));
+			this.friendlyTarget = temp;
+			this.buildings.push(temp = new Building(this, "BA_good", -10, -10));
+			temp.stats.isThreat = false;
+			this.buildings.push(new Building(this, "BC_good", 6, 10));
+			this.buildings.push(new Building(this, "BB_good", 2, 14));
+			this.buildings.push(new Building(this, "BD_good", 6, 7));
+			this.buildings.push(new Building(this, "BD_good", 6, 13));
+
+			this.units.push(new Unit(this, "UF_evil", 27, 10, .75));
+			this.units.push(new Unit(this, "UE_evil", 27, 11, .75));
+			this.units.push(new Unit(this, "UI_good", 8, 4, .5, null, null, null, "UF_evil"));
+			this.units.push(new Unit(this, "UI_good", 21, 13, .5, null, null, null, "UF_evil"));
+			this.units.push(new Unit(this, "UI_evil", 14, 2, .5, null, null, null, 1200));
+
+			this.units.push(new Unit(this, "UE_good", 4, 10, null, null, null, "roam", 8));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "seek", null, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "seek", null, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 50, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 50, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 150, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 150, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 200, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 200, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 250, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 250, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 300, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 300, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 350, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "still", 350, true));
+
+			this.cash = 0;
+			this.cashOppo = 250000;
+			this.jukebox = 1;
+			}
+		if (this.level == 18) // big bases and UG_goods attacking
+			{
+			this.buildings.push(new Building(this, "BA_evil", 12, 5));
+			this.buildings.push(new Building(this, "BG_evil", 11, 3));
+			this.buildings.push(new Building(this, "BB_evil", 11, 5));
+			this.buildings.push(temp = new Building(this, "BA_good", -10, -10));
+			temp.stats.isThreat = false;
+			this.buildings.push(new Building(this, "BD_good", 5, 20));
+			this.buildings.push(new Building(this, "BD_good", 16, 20));
+			this.buildings.push(new Building(this, "BB_good", 10, 15));
+			this.buildings.push(new Building(this, "BB_good", 11, 15));
+			this.buildings.push(new Building(this, "BD_good", 10, 21));
+			this.buildings.push(new Building(this, "BD_good", 11, 21));
+			this.buildings.push(new Building(this, "BD_good", 10, 23));
+			this.buildings.push(new Building(this, "BD_good", 11, 23));
+			this.buildings.push(new Building(this, "BB_good", 10, 25));
+			this.buildings.push(new Building(this, "BB_good", 11, 25));
+			this.buildings.push(new Building(this, "BF_good", 10, 28));
+			this.buildings.push(new Building(this, "BD_good", 8, 27));
+			this.buildings.push(new Building(this, "BB_good", 9, 27));
+			this.buildings.push(new Building(this, "BB_good", 12, 27));
+			this.buildings.push(new Building(this, "BD_good", 13, 27));
+			this.buildings.push(new Building(this, "BB_good", 4, 28));
+			this.buildings.push(new Building(this, "BB_good", 5, 28));
+			this.buildings.push(new Building(this, "BB_good", 16, 28));
+			this.buildings.push(new Building(this, "BB_good", 17, 28));
+			this.buildings.push(new Building(this, "BG_good", 18, 28));
+			this.buildings.push(new Building(this, "BE_good", 4, 25));
+			this.buildings.push(new Building(this, "BC_good", 16, 25));
+
+			this.units.push(new Unit(this, "UC_evil", 11, 7));
+			this.units.push(new Unit(this, "UC_evil", 12, 8));
+			this.units.push(new Unit(this, "UC_evil", 13, 7));
+			this.units.push(new Unit(this, "UD_evil", 15, 8, .5));
+			this.units.push(new Unit(this, "UC_good", 5, 26, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_good", 5, 26, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UC_good", 15, 26, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_good", 15, 26, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UF_good", 7, 22, 0.0625, null, null, "still"));
+			this.units.push(new Unit(this, "UF_good", 14, 22, 0.9375, null, null, "still"));
+			this.units.push(new Unit(this, "UE_good", 8, 21, 0.9375, null, null, "still", 2500));
+			this.units.push(new Unit(this, "UE_good", 13, 21, 0.0625, null, null, "still", 7500, true));
+			this.units.push(new Unit(this, "UF_good", 7, 27, 0, null, null, "still", 5000));
+			this.units.push(new Unit(this, "UF_good", 14, 27, 0, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UG_good", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_good", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_good", 15, 26, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UA_good", 15, 26, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UA_good", 15, 26, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UB_good", 15, 26, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UB_good", 15, 26, null, null, null, "still", 100, true));
+			this.units.push(new Unit(this, "UI_evil", 7, 29, .5, null, null, null, 10000));
+			this.units.push(new Unit(this, "UI_evil", 14, 29, .5, null, null, null, 10000));
+
+			this.camera.focus = this.arena.tileHandles["_12_4"];
+			this.cash = 2000;
+			this.cashOppo = 250000;
+			this.jukebox = 3;
+			}
+		if (this.level == 19) // pack of aliens against a minefield
+			{
+			this.rejig = function(what)
+				{
+				what.nav.offsetX = what.nav.offsetY = .5;
+				what.posX = (what.nav.currentX -.5) * what.nav.arena.tileSize;
+				what.posY = (what.nav.currentY -.5) * what.nav.arena.tileSize;
+				}
+			this.construction.shortcuts["UA_evil"].max = 10;
+			this.buildings.push(new Building(this, "BB_evil", 4, 3));
+			this.buildings.push(new Building(this, "BG_evil", 7, 3));
+			this.buildings.push(new Building(this, "BC_evil", 5, 23, "good", .2));
+			this.buildings.push(new Building(this, "BC_good", -10, -10)); // hack to have a threat off screen
+			this.buildings.push(new Building(this, "BD_good", 4, 12, null, .8)); // .4 was .8, nerfed by Josh //reverted due to complaint
+			this.buildings.push(new Building(this, "BD_good", 3, 13));
+			this.buildings.push(new Building(this, "BB_good", 3, 11));
+			this.buildings.push(new Building(this, "BB_good", 2, 11));
+			this.buildings.push(new Building(this, "BB_good", 2, 13));
+			this.buildings.push(new Building(this, "BD_good", 1, 13));
+
+			this.buildings.push(new Building(this, "BD_good", 10, 13));
+			this.buildings.push(new Building(this, "BB_good", 9, 11));
+			this.buildings.push(new Building(this, "BB_good", 9, 13));
+			this.buildings.push(new Building(this, "BB_good", 8, 11));
+			this.buildings.push(new Building(this, "BD_good", 8, 13));
+			this.buildings.push(new Building(this, "BD_good", 7, 12, null, .8)); // .4 was .8, nerfed by Josh //reverted due to complaint
+
+
+			this.buildings.push(a = new Building(this, "BH_good", 6, 28));
+			this.buildings.push(new Building(this, "BB_good", 5, 28));
+			this.buildings.push(new Building(this, "BD_good", 4, 28));
+			this.buildings.push(new Building(this, "BD_good", 7, 28));
+
+			this.units.push(temp = new Unit(this, "UH_evil", 6, 3, .5625)); this.rejig(temp);
+			temp.stats.capacity = 9;
+			this.units.push(new Unit(this, "UA_evil", 5, 4));
+			this.units.push(new Unit(this, "UA_evil", 5, 4));
+			this.units.push(new Unit(this, "UA_evil", 5, 4));
+			this.units.push(new Unit(this, "UA_evil", 5, 5));
+			this.units.push(new Unit(this, "UA_evil", 5, 5));
+			this.units.push(new Unit(this, "UA_evil", 5, 5));
+			this.units.push(new Unit(this, "UB_evil", 4, 5));
+			this.units.push(new Unit(this, "UB_evil", 4, 5));
+			this.units.push(new Unit(this, "UA_evil", 6, 5));
+			this.units.push(new Unit(this, "UA_evil", 6, 5));
+			this.units.push(new Unit(this, "UA_evil", 6, 5));
+			this.units.push(new Unit(this, "UB_evil", 7, 5));
+			this.units.push(temp = new Unit(this, "UB_evil", 7, 5)); this.rejig(temp);
+
+			this.units.push(new Unit(this, "UE_good", 10, 27, .875, null, null, "still"));
+			this.units.push(new Unit(this, "UE_good", 1, 27, .125, null, null, "still"));
+
+			this.units.push(new Unit(this, "UA_good", 10, 22, null, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_good", 1, 22, null, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UI_good", 1, 17, .5, null, null, null, 8000));
+			this.units.push(new Unit(this, "UI_good", 3, 3, .5, null, null, null, 2000));
+			this.units.push(new Unit(this, "UC_good", 5, 29, null, null, null, "still", 4000));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level19_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_6_13"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level19_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level19_ind3"), "message", 80));
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_6_4"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, "", "message", 1000));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level19_ind4"), "message"));
+
+			this.arena.shroud.reveal(2,13,3);
+			this.arena.shroud.reveal(6,11,4);
+			this.arena.shroud.reveal(9,13,3);
+			this.arena.shroud.reveal(6,28,2);
+
+			this.camera.focus = this.arena.tileHandles["_6_4"];
+			this.cash = 0;
+			this.cashOppo = 250000;
+			this.jukebox = 2;
+			}
+		if (this.level == 20) // evil conflict
+			{
+			this.isConflict=true;
+			
+			this.buildings.push(c = new Building(this, "BA_evil", 25, 12));
+			this.buildings.push(new Building(this, "BB_evil", 6, 7));
+			this.buildings.push(b = new Building(this, "BD_evil", 5, 7));
+			this.buildings.push(new Building(this, "BD_evil", 23, 7));
+			this.units.push(new Unit(this, "UE_evil", 25, 9, .375));
+			this.units.push(new Unit(this, "UF_evil", 26, 9, .625));
+			this.units.push(new Unit(this, "UC_evil", 24, 11, .375));
+
+			this.units.push(new Unit(this, "UC_evil", 27, 11, .625));
+			this.units.push(new Unit(this, "UD_evil", 18, 5, .5));
+			this.units.push(new Unit(this, "UI_good", 4, 28, .5, null, null, null, "UB_evil"));
+			this.units.push(new Unit(this, "UI_good", 21, 21, .5, null, null, null, "UF_evil"));
+			this.units.push(new Unit(this, "UI_good", 10, 10, .5, null, null, null, "UD_evil"));
+
+			this.buildings.push(a = new Building(this, "BA_good", 5, 20));
+			this.buildings.push(new Building(this, "BD_good", 1, 16));
+			this.buildings.push(new Building(this, "BD_good", 10, 18));
+			this.buildings.push(new Building(this, "BD_good", 9, 18));
+			this.buildings.push(new Building(this, "BD_good", 7, 15));
+			this.buildings.push(new Building(this, "BD_good", 6, 15));
+			this.buildings.push(new Building(this, "BD_good", 26, 23));
+			this.buildings.push(new Building(this, "BB_good", 25, 23));
+			this.buildings.push(new Building(this, "BD_good", 24, 23));
+			this.buildings.push(new Building(this, "BD_good", 8, 28));
+			this.buildings.push(new Building(this, "BC_good", 5, 28));
+			this.buildings.push(new Building(this, "BG_good", 3, 28));
+			this.buildings.push(new Building(this, "BH_good", 2, 28));
+			this.buildings.push(new Building(this, "BE_good", 5, 24));
+			this.buildings.push(new Building(this, "BF_good", 2, 26));
+			this.buildings.push(new Building(this, "BB_good", 8, 23));
+			this.buildings.push(new Building(this, "BB_good", 8, 21));
+			this.buildings.push(new Building(this, "BB_good", 3, 17));
+			this.buildings.push(new Building(this, "BB_good", 3, 19));
+			this.buildings.push(new Building(this, "BB_good", 2, 19));
+			this.buildings.push(new Building(this, "BB_good", 2, 21));
+			this.buildings.push(new Building(this, "BB_good", 3, 21));
+			this.buildings.push(new Building(this, "BB_good", 3, 23));
+			this.buildings.push(new Building(this, "BB_good", 2, 23));
+
+			this.units.push(new Unit(this, "UD_good", 11, 25));
+			this.units.push(new Unit(this, "UD_good", 27, 26));
+			this.units.push(new Unit(this, "UG_good", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_good", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UC_good", 5, 24, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UC_good", 5, 24, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UF_good", 15, 15, null, null, null, "roam", 6, false)); // no longer respawns
+			this.units.push(new Unit(this, "UF_good", 14, 14, null, null, null, "roam", 6, true));
+			this.units.push(new Unit(this, "UE_good", null, null, null, null, null, "still", 1000, false)); // no longer respawns
+			this.units.push(new Unit(this, "UE_good", null, null, null, null, null, "still", 2000, true));
+			this.units.push(new Unit(this, "UA_good", 6, 2, null, null, null, "roam", 2, true));
+			this.units.push(new Unit(this, "UA_good", 25, 29, null, null, null, "roam", 2, true));
+			this.units.push(new Unit(this, "UA_good", 5, 22, null, null, null, "roam", 8, true));
+			this.units.push(new Unit(this, "UB_good", null, null, null, null, null, "seek", null, true));
+			this.units.push(new Unit(this, "UI_evil", 28, 26, .5));
+			this.units.push(new Unit(this, "UI_evil", 3, 5, .5));
+
+
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level20_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level20_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, c, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level20_ind3"), "message", 80));
+
+			this.arena.shroud.reveal(6,19,2);
+			this.arena.shroud.reveal(29,11,4);
+			this.arena.shroud.reveal(29,5,4);
+			this.arena.shroud.reveal(24,5,4);
+
+			this.camera.focus = c;
+			this.cash = 10000;
+			this.cashOppo = 20000;
+			this.jukebox = 4;
+			}
+		if (this.level == 21) // pizza?
+			{
+			this.isBonusLevel=true;
+			
+			this.buildings.push(new Building(this, "BA_good", 10, 27));
+			this.units.push(new Unit(this, "UD_good"));
+
+			this.buildings.push(new Building(this, "BA_evil", -10, -10)); // hack to make it only possible to complete after pizza + repair!
+			this.buildings.push(new Building(this, "BC_evil", 13, 4));
+			this.buildings.push(new Building(this, "BD_evil", 12, 3));
+			this.buildings.push(new Building(this, "BD_evil", 15, 3));
+			this.buildings.push(new Building(this, "BB_evil", 13, 2));
+			this.buildings.push(new Building(this, "BB_evil", 14, 2));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level21_ind1"), "message", 80));
+
+			this.cash = 2000;
+			this.cashOppo = 999999900;
+			this.jukebox = 2;
+			}
+		if (this.level == 22) // soccer
+			{
+			this.isBonusLevel=true;
+			
+			this.buildings.push(new Building(this, "BA_good", 2, 4));
+			this.buildings.push(new Building(this, "BC_evil", 25, 2));
+			this.units.push(new Unit(this, "UD_good", 4, 11, .5));
+			this.units.push(new Unit(this, "UA_good", 4, 6, .375));
+			this.units.push(new Unit(this, "UA_good", 4, 6, .375));
+
+			this.buildings.push(new Building(this, "BA_evil", 18, 4));
+			this.buildings.push(new Building(this, "BB_evil", 17, 2));
+			this.buildings.push(new Building(this, "BB_evil", 17, 4));
+			this.buildings.push(new Building(this, "BC_evil", 15, 3));
+			this.buildings.push(new Building(this, "BD_evil", 18, 7));
+			this.buildings.push(new Building(this, "BD_evil", 15, 7));
+			this.buildings.push(new Building(this, "BD_evil", 13, 13));
+			this.units.push(new Unit(this, "UD_evil", 17, 11, .5));
+			this.units.push(new Unit(this, "UD_evil", 16, 12, .5));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UB_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UA_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UI_evil", 19, 13, 5));
+			this.units.push(new Unit(this, "UI_evil", 18, 14, 5));
+			this.units.push(new Unit(this, "UI_good", 19, 14, .5, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_evil", 17, 15, 5));
+			this.units.push(new Unit(this, "UI_evil", 18, 15, 5));
+			this.units.push(new Unit(this, "UI_evil", 19, 15, 5));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level22_ind1"), "message"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level22_ind2"), "message", 240));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level22_ind2"), "message", 1)); // hack
+
+			this.arena.shroud.reveal(5,6,4);
+
+			this.cash = 2000;
+			this.cashOppo = 30000;
+			this.jukebox = 1;
+			}
+		if (this.level == 23) // music
+			{
+			this.isBonusLevel=true;
+			
+			this.buildings.push(new Building(this, "BB_good", 8, 3));
+			this.buildings.push(new Building(this, "BB_good", 8, 5));
+			this.buildings.push(new Building(this, "BB_good", 8, 7));
+			this.buildings.push(new Building(this, "BD_good", 7, 9));
+			this.buildings.push(new Building(this, "BD_good", 9, 9));
+			this.units.push(temp = new Unit(this, "UE_good", 8, 10, .5));
+
+			this.buildings.push(new Building(this, "BF_evil", 1, 29));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UG_evil", null, null, null, null, null, null, null, true));
+			this.units.push(new Unit(this, "UI_evil", 8, 18, 5, null, null, null, 500, true));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level23_ind1"), "message"));
+
+			this.camera.focus = temp;
+
+			this.cash = 1000;
+			this.cashOppo = 999999900;
+			this.jukebox = 2;
+			}
+		if (this.level == 24) // maze
+			{
+			this.isBonusLevel=true;
+			
+			this.units.push(temp = new Unit(this, "UE_good", 15, 28, 0));
+			this.units.push(new Unit(this, "UI_good", 6, 22, 5, null, null, null, "UA_good"));
+			this.units.push(new Unit(this, "UI_good", 12, 22, 5, null, null, null, "UA_good"));
+			this.units.push(new Unit(this, "UI_good", 15, 5, 5, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 3, 11, 5, null, null, null, "UB_good"));
+
+			this.buildings.push(new Building(this, "BC_evil", 1, 29));
+			this.units.push(new Unit(this, "UF_evil", 12, 3, .5, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 6, 11, .5, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 21, 14, .625, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 6, 18, .625, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 21, 25, .75, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 3, 25, .25, null, null, "still"));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level24_ind1"), "message"));
+
+			this.arena.shroud.reveal(15,30,4);
+
+			this.camera.focus = temp;
+			this.cash = 0;
+			this.cashOppo = 0;
+			this.jukebox = 2;
+			}
+		if (this.level == 26) // temple
+			{
+			this.isBonusLevel=true;
+			
+			this.buildings.push(new Building(this, "BA_good", -10, -10)); // hack to keep the level alive
+			this.units.push(temp = new Unit(this, "UA_evil", 15, 28, 0.0625));
+			this.units.push(new Unit(this, "UI_evil", 23, 27, .5, null, null, null, "UA_evil"));
+			this.units.push(new Unit(this, "UI_good", 4, 26, .5, null, null, null, "UE_evil"));
+			this.units.push(new Unit(this, "UI_evil", 7, 13, .5, null, null, null, "UB_evil"));
+			this.units.push(new Unit(this, "UI_evil", 22, 5, .5, null, null, null, "UB_evil"));
+			this.units.push(new Unit(this, "UI_good", 28, 26, .5, null, null, null, "UC_evil")); 
+			this.units.push(new Unit(this, "UI_good", 29, 14, .5, null, null, null, "UE_evil")); 
+			this.units.push(new Unit(this, "UI_good", 17, 21, .5, null, null, null, "UC_evil")); 
+			this.units.push(new Unit(this, "UI_evil", 28, 7, .5, null, null, null, "UA_evil"));
+			this.units.push(new Unit(this, "UI_evil", 29, 7, .5, null, null, null, "UA_evil"));
+			this.units.push(new Unit(this, "UI_evil", 29, 15, .5, null, null, null, "UA_evil"));
+			this.units.push(new Unit(this, "UI_evil", 28, 15, .5, null, null, null, "UA_evil"));
+			this.units.push(new Unit(this, "UI_evil", 4, 5, .5, null, null, null, 1000)); 
+
+			this.units.push(new Unit(this, "UE_good", 11, 17, .5, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UA_good", 27, 19, 9/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UA_good", 27, 24, 14/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UA_good", 17, 15, 0, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_good", 17, 20, 0, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_good", 5, 26, .25, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 21, 14, 7/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 23, 14, 9/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 29, 9, 0, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UF_good", 10, 5, .25, null, null, "still", 10000));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level26_ind1"), "message", 120));
+
+			this.camera.focus = temp;
+			this.cash = 0;
+			this.cashOppo = 50000;
+			this.jukebox = 3;
+			}
+		if (this.level == 27) // alien chess
+			{
+			this.isBonusLevel=true;
+			
+			this.rejig = function(what)
+				{
+				what.nav.offsetX = what.nav.offsetY = .5;
+				what.posX = (what.nav.currentX -.5) * what.nav.arena.tileSize;
+				what.posY = (what.nav.currentY -.5) * what.nav.arena.tileSize;
+				what.stats.obstruct = true;
+				what.setBlock(what.tilePos.x, what.tilePos.y);
+				}
+			this.buildings.push(new Building(this, "BB_evil", -10, -10));
+			this.buildings.push(new Building(this, "BH_evil", -10, -10));
+			this.units.push(temp = new Unit(this, "UB_evil", 2, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UC_evil", 3, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UE_evil", 4, 2, .5)); this.rejig(temp);
+			this.units.push(a = temp = new Unit(this, "UD_evil", 5, 2, .5)); this.rejig(temp);
+			temp.stats.miner = temp.stats.bait = temp.nav.path = false;
+			this.units.push(temp = new Unit(this, "UF_evil", 6, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UE_evil", 7, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UC_evil", 8, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UB_evil", 9, 2, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 2, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 3, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 4, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 5, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 6, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 7, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 8, 3, .5)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_evil", 9, 3, .5)); this.rejig(temp);
+
+			this.units.push(temp = new Unit(this, "UF_good", 2, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UC_good", 3, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UE_good", 4, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UD_good", 5, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			temp.stats.miner = temp.stats.bait = temp.nav.path = temp.nav.npath = false;
+			this.units.push(temp = new Unit(this, "UF_good", 6, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UE_good", 7, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UC_good", 8, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UF_good", 9, 9, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 2, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 3, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 4, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 5, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 6, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 7, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 8, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+			this.units.push(temp = new Unit(this, "UA_good", 9, 8, 0, null, null, "still", 10000)); this.rejig(temp);
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level27_ind1"), "message", 120));
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.cashOppo = 0;
+			this.jukebox = 4;
+			}
+		if (this.level == 28) // commando
+			{
+			this.isBonusLevel=true;
+			
+			this.units.push(a = new Unit(this, "UQ_evil", 28, 3, .5));
+//			this.units.push(new Unit(this, "UP_evil", 24, 3, 10/16, null, .01));
+
+			this.buildings.push(new Building(this, "BK_good", 4, 27));
+			this.buildings.push(new Building(this, "BB_good", 6, 27));
+			this.buildings.push(new Building(this, "BB_good", 3, 27));
+			this.buildings.push(new Building(this, "BB_good", 18, 4));
+
+			this.buildings.push(new Building(this, "BB_good", 15, 4));
+			this.buildings.push(new Building(this, "BB_good", 24, 17));
+			this.buildings.push(new Building(this, "BB_good", 25, 17));
+			this.buildings.push(new Building(this, "BB_good", 2, 4));
+			this.buildings.push(new Building(this, "BB_good", 3, 10));
+			this.buildings.push(new Building(this, "BC_good", 27, 27));
+			this.buildings.push(new Building(this, "BD_good", 4, 19));
+			this.buildings.push(new Building(this, "BD_good", 5, 19));
+			this.buildings.push(new Building(this, "BD_good", 16, 9));
+			this.buildings.push(new Building(this, "BD_good", 8, 7));
+			this.buildings.push(new Building(this, "BE_good", 16, 5));
+			this.buildings.push(new Building(this, "BG_good", 29, 27));
+			this.buildings.push(new Building(this, "BL_good", 19, 20));
+
+			this.units.push(new Unit(this, "UA_good", 25, 8, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 28, 8, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 26, 9, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 28, 9, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 26, 10, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 27, 10, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_good", 28, 10, 0, null, null, a, null));
+
+			this.units.push(new Unit(this, "UC_good", 19, 3, 4/16, null, null, "still", random(1000)));
+			this.units.push(new Unit(this, "UC_good", 18, 29, 0, null, null, "still", random(1000)));
+			this.units.push(new Unit(this, "UA_good", 8, 21, 0, null, null, "still", random(1000)));
+			this.units.push(new Unit(this, "UA_good", 5, 5, 0, null, null, "still", random(1000)));
+			this.units.push(new Unit(this, "UA_good", 21, 26, 0, null, null, "still", random(1000)));
+
+			this.units.push(new Unit(this, "UE_good", 26, 28, 0, null, null, a));
+			this.units.push(new Unit(this, "UC_good", 26, 13, 2/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 29, 13, 14/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 27, 25, 3/16, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UC_good", 28, 25, 13/15, null, null, "roam", 2));
+
+			this.units.push(new Unit(this, "UC_good", 2, 15, 3/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 4, 15, 1/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 6, 15, 15/16, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UC_good", 8, 15, 13/16, null, null, "still", 10000));
+
+//			this.units.push(new Unit(this, "UR_good", 16, 27, 0, null, null, "still", 10000));
+			this.units.push(new Unit(this, "UR_good", 16, 27, 0, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UP_good", 13, 20, 0, null, null, "roam", 10));
+			this.units.push(new Unit(this, "UE_good", 16, 5, 0, null, null, "roam", 6));
+
+			this.units.push(new Unit(this, "UI_good", 24, 17, .5, null, null, null, 1500));
+			this.units.push(new Unit(this, "UI_good", 18, 4, .5, null, null, null, 1500));
+			this.units.push(new Unit(this, "UI_good", 29, 27, .5, null, null, null, 1500));
+			this.units.push(new Unit(this, "UI_good", 3, 10, .5, null, null, null, 1500));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level28_ind1"), "message", 120));
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.cashOppo = 999999900;
+			this.jukebox = 2;
+			}
+		if (this.level == 29) // santa
+			{
+			this.isBonusLevel=true;
+			
+			this.rejig = function(what, x, y)
+				{
+				what.nav.offsetX = x;
+				what.nav.offsetY = y;
+				what.posX = (what.nav.currentX -(1-x)) * what.nav.arena.tileSize;
+				what.posY = (what.nav.currentY -(1-y)) * what.nav.arena.tileSize;
+				}
+
+			this.buildings.push(new Building(this, "BJ_evil", 12, 11));
+			this.units.push(a = new Unit(this, "UM_evil", 12, 12, .75));
+			this.rejig(a, .5, .5);
+
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 12, 10/16));
+			this.rejig(temp, .8, .6);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 12, 10/16));
+			this.rejig(temp, 1, .8);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .6, 0);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .8, .2);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .4, .4);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .6, .6);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .2, .8);
+			this.units.push(temp = new Unit(this, "UN_evil", 11, 13, 10/16));
+			this.rejig(temp, .4, 1);
+
+			this.units.push(new Unit(this, "UO_evil", 2, 7, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 3, 17, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 15, 3, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 17, 5, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 21, 13, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 12, 21, null, null, null, null, "powerup"));
+			this.units.push(new Unit(this, "UO_evil", 11, 10, null, null, null, null, "powerup"));
+
+			this.buildings.push(new Building(this, "BD_evil", 17, 11, this.parent.oppo));
+			this.buildings.push(new Building(this, "BB_evil", 15, 19, this.parent.oppo));
+			this.buildings.push(new Building(this, "BD_good", 6, 11, this.parent.oppo));
+			this.buildings.push(new Building(this, "BB_good", 8, 19, this.parent.oppo));
+
+			this.units.push(new Unit(this, "UF_good", 6, 5, 7/16, this.parent.oppo, null, "still"));
+			this.units.push(new Unit(this, "UC_good", 5, 15, 7/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UC_good", 5, 15, 7/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UC_good", 5, 15, 7/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_good", 11, 5, 7/16, this.parent.oppo, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_evil", 13, 5, 9/16, this.parent.oppo, null, "roam", 2));
+			this.units.push(new Unit(this, "UE_good", 9, 19, 4/16, this.parent.oppo, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 14, 19, 12/16, this.parent.oppo, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 21, 16, 13/16, this.parent.oppo, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 18, 15, 15/16, this.parent.oppo, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 19, 7, 2/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_evil", 19, 7, 2/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_evil", 19, 7, 2/16, this.parent.oppo, null, "roam", 4));
+			this.units.push(new Unit(this, "UC_evil", 20, 11, 2/16, this.parent.oppo, null, "roam", 6));
+			this.units.push(new Unit(this, "UC_evil", 20, 11, 2/16, this.parent.oppo, null, "roam", 6));
+			this.units.push(new Unit(this, "UC_evil", 20, 11, 2/16, this.parent.oppo, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_good", 22, 22, 2/16, null, null, "still")); // hack to prevent winning by killing everyone
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level29_ind1"), "message"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level29_ind2"), "message", 120));
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.cashOppo = 999999900;
+			this.jukebox = 2;
+			this.arena.doSnow();
+			}
+		if (this.level == 31) // Hive # 1
+			{
+			this.isSpecialLevel=true;
+			
+//			this.buildings.push(new Building(this, "BB_good", 9, 4));
+//			this.buildings.push(new Building(this, "BD_good", 10, 4));
+//			this.buildings.push(new Building(this, "BF_good", 11, 4));
+			this.buildings.push(new Building(this, "BA_evil", -10, -10)); // hack to keep the level alive
+			this.buildings.push(a = new Building(this, "BK_good", 7, 4));
+			this.units.push(b = new Unit(this, "UP_good", 11, 7, 10/16));
+			this.units.push(new Unit(this, "UB_good", 6, 3, 5/16));
+			this.units.push(new Unit(this, "UB_good", 9, 4, 12/16));
+
+			this.units.push(new Unit(this, "UI_good", 8, 8, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 9, 6, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 7, 5, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 2, 26, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 10, 29, null, null, null, null, 500, true));
+			this.units.push(new Unit(this, "UI_good", 6, 29, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 14, 18, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 14, 28, null, null, null, null, 1000));
+			this.units.push(new Unit(this, "UI_good", 1, 17, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 14, 7, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 11, 26, null, null, null, null, 1000));
+			this.units.push(new Unit(this, "UI_good", 2, 8, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 6, 18, null, null, null, null, 500));
+			this.units.push(new Unit(this, "UI_good", 2, 29, null, null, null, null, 500));
+
+			this.units.push(new Unit(this, "UA_evil", 8, 18, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 8, 16, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 8, 17, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 1, 19, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 2, 19, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 3, 19, 0, null, null, a, null));
+			this.units.push(new Unit(this, "UA_evil", 14, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 15, 7, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 1, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 9, 29, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 14, 12, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 1, 29, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 3, 8, null, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UE_evil", 8, 17, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UC_evil", 2, 26, null, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UC_evil", 14, 28, null, null, null, "roam", 4));
+
+			this.units.push(new Unit(this, "UP_evil", 8, 26, null, null, null, "roam", 4));
+			this.units.push(c = new Unit(this, "UP_evil", 13, 18, 9/16, null, null, "still"));
+			this.units.push(new Unit(this, "UP_evil", 3, 18, 2/16, null, null, "still"));
+
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_9_8"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level31_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level31_ind2"), "message", 80));
+			this.indicators.push(new Indicator(this, c, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level31_ind3"), "message", 80));
+			this.indicators.push(new Indicator(this, this.arena.tileHandles["_8_18"], null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level31_ind4"), "message", 80));
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level31_ind4"), "message"));
+
+//			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+//			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind1"), "message", 80));
+//			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+//			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind2"), "message", 80));
+//			this.indicators.push(new Indicator(this, c, null, null, "focus"));
+//			this.indicators.push(new Indicator(this, null, null, dialogue("int_level10_ind3"), "message", 80));
+
+			this.arena.shroud.reveal(13,18,3);
+			this.arena.shroud.reveal(8,7,3);
+			this.arena.shroud.reveal(8,18,4);
+//			this.arena.shroud.reveal(2,26,4);
+//			this.arena.shroud.reveal(7,26,4);
+
+			this.camera.focus = a;
+			this.cash = 0;
+			this.jukebox = 1;
+			}
+		if (this.level == 32) // Hive # 2
+			{
+			this.isSpecialLevel=true;
+			
+			this.buildings.push(new Building(this, "BA_evil", -10, -10)); // hack to keep the level alive
+			this.buildings.push(new Building(this, "BB_good", 24, 4));
+			this.buildings.push(new Building(this, "BD_good", 25, 4));
+			this.buildings.push(new Building(this, "BF_good", 26, 4));
+			this.buildings.push(a = new Building(this, "BK_good", 22, 4));
+			this.buildings.push(b = new Building(this, "BL_good", 22, 17, null, .8));
+			b.repairing = true;
+			this.specialBuilding = b; // used for outcome
+
+			this.units.push(d = new Unit(this, "UA_good", 4, 4, 10/16));
+			this.units.push(new Unit(this, "UB_good", 4, 2, 7/16));
+			this.units.push(new Unit(this, "UB_good", 3, 2, 6/16));
+			this.units.push(new Unit(this, "UR_good", 22, 7, 9/16));
+			this.units.push(new Unit(this, "UR_good", 21, 5, 11/16));
+
+			this.buildings.push(c = new Building(this, "BK_evil", 22, 27));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, b, null, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, b, null, true));
+			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, b, null, true));
+//			this.units.push(new Unit(this, "UC_evil", null, null, null, null, null, b, null, true));
+
+			this.units.push(new Unit(this, "UF_evil", 28, 11, 14/16, null, null, "still"));
+			this.units.push(new Unit(this, "UP_evil", 27, 13, 10/16, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 19, 14, 15/16, null, null, "still"));
+			this.units.push(new Unit(this, "UP_evil", 17, 13, 3/16, null, null, "still"));
+
+			this.units.push(new Unit(this, "UE_evil", 13, 7, 12/16, null, null, "still", 5000));
+			this.units.push(new Unit(this, "UE_evil", 2, 18, 3/16, null, null, "still", 8000));
+			this.units.push(new Unit(this, "UE_evil", 15, 22, 14/16, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 11, 15, 9/16, null, null, "still"));
+
+			this.units.push(new Unit(this, "UA_evil", 9, 26, 3/16, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_evil", 3, 11, 1/16, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 3, 25, null, null, null, "roam", 2));
+			this.units.push(new Unit(this, "UA_evil", 10, 4, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_evil", 8, 12, null, null, null, "roam", 4));
+			this.units.push(new Unit(this, "UA_evil", 12, 10, null, null, null, "roam", 6));
+			this.units.push(new Unit(this, "UA_evil", 17, 6, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 28, 18, null, null, null, "roam", 2));
+
+			this.units.push(new Unit(this, "UI_good", 6, 6, null, null, null, null, "UR_good"));
+			this.units.push(new Unit(this, "UI_good", 2, 28, null, null, null, null, 10000));
+			this.units.push(new Unit(this, "UI_good", 10, 22, null, null, null, null, "UC_good"));
+
+
+
+			this.indicators.push(new Indicator(this, c, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level32_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, b, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level32_ind2"), "message", 120));
+			this.indicators.push(new Indicator(this, a, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level32_ind3"), "message", 60));
+			this.indicators.push(new Indicator(this, d, null, null, "focus"));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level32_ind4"), "message"));
+
+
+			this.arena.shroud.reveal(22,27,4);
+			this.arena.shroud.reveal(22,22,4);
+			this.arena.shroud.reveal(23,13,3);
+
+			this.camera.focus = c;
+			this.cash = 2000;
+			this.cashOppo = 999999900;
+			this.jukebox = 4;
+			}
+		if (this.level == 33) // Hive # 3
+			{
+			this.isLastSpecialLevel=true;
+			
+			this.buildings.push(new Building(this, "BB_evil", -10, -10));
+			this.buildings.push(new Building(this, "BB_evil", -10, -10));
+
+			this.buildings.push(new Building(this, "BK_good", 11, 4));
+			this.units.push(new Unit(this, "UI_good", 6, 12, null, null, null, null, 2000));
+			this.units.push(new Unit(this, "UI_good", 17, 13, null, null, null, null, 2000));
+
+
+			this.units.push(new Unit(this, "UI_good", 10, 5, null, null, null, null, "UE_good"));
+			this.units.push(new Unit(this, "UI_good", 11, 6, null, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 12, 6, null, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 13, 5, null, null, null, null, "UE_good"));
+			this.units.push(new Unit(this, "UC_good", 10, 5, 10/16));
+			this.units.push(new Unit(this, "UR_good", 11, 7, 9/16));
+			this.units.push(new Unit(this, "UR_good", 12, 7, 7/16));
+			this.units.push(new Unit(this, "UC_good", 13, 5, 6/16));
+
+			this.units.push(new Unit(this, "UI_good", 2, 11, null, null, null, null, "UP_good"));
+			this.units.push(new Unit(this, "UI_good", 21, 11, null, null, null, null, "UP_good"));
+			this.units.push(new Unit(this, "UI_good", 2, 14, null, null, null, null, "UF_good"));
+			this.units.push(new Unit(this, "UI_good", 21, 14, null, null, null, null, "UF_good"));
+
+			if (random(2) == 1) // sick
+				{
+				this.units.push(new Unit(this, "UO_evil", 3, 27, null, null, null, null, "UQ_evil_oppo"));
+				this.units.push(new Unit(this, "UO_evil", 20, 27, null, null, null, null, 10000));
+				}
+			else
+				{
+				this.units.push(new Unit(this, "UO_evil", 3, 27, null, null, null, null, 10000));
+				this.units.push(new Unit(this, "UO_evil", 20, 27, null, null, null, null, "UQ_evil_oppo"));
+				}
+			this.units.push(new Unit(this, "UP_evil", 5, 9, 2/16, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 4, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 5, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 6, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 4, 9, null, null, null, "still"));
+//			this.units.push(new Unit(this, "UA_evil", 5, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 6, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 4, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 5, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UA_evil", 6, 10, null, null, null, "still"));
+
+			this.units.push(new Unit(this, "UP_evil", 18, 9, 6/16, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 17, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 18, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 19, 8, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 17, 9, null, null, null, "still"));
+//			this.units.push(new Unit(this, "UC_evil", 18, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 19, 9, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 17, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 18, 10, null, null, null, "still"));
+			this.units.push(new Unit(this, "UC_evil", 19, 10, null, null, null, "still"));
+
+			this.units.push(new Unit(this, "UP_evil", 5, 16, 14/16, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 4, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 5, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 6, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 4, 16, null, null, null, "still"));
+//			this.units.push(new Unit(this, "UF_evil", 5, 16, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 6, 16, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 4, 17, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 5, 17, null, null, null, "still"));
+			this.units.push(new Unit(this, "UF_evil", 6, 17, null, null, null, "still"));
+
+			this.units.push(new Unit(this, "UP_evil", 18, 16, 10/16, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 17, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 18, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 19, 15, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 17, 16, null, null, null, "still"));
+//			this.units.push(new Unit(this, "UE_evil", 18, 16, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 19, 16, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 17, 17, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 18, 17, null, null, null, "still"));
+			this.units.push(new Unit(this, "UE_evil", 19, 17, null, null, null, "still"));
+
+			this.buildings.push(new Building(this, "BD_evil", 11, 12));
+			this.buildings.push(new Building(this, "BD_evil", 12, 12));
+
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level33_ind1"), "message", 80));
+			this.indicators.push(new Indicator(this, null, null, dialogue("int_level33_ind2"), "message", 80));
+
+			this.cash = 6000;
+			this.jukebox = 3;
+			}
+		}
+		
+	var hookOutcome:Object = _level0.addPreHook(this.outcome, outcomeHook);
+	this.outcome = hookOutcome.override;
+}
+]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Level" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="shootHook" color="#4FFF4F" parentLayerIndex="18" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function shootHook(target) {
+	if (this.parent.training && this.friend && this.stats.negotiator)
+		return "HOOK_HANDLED";
+	if (this.stats.negotiator && target.stats.negotiator)
+		return "HOOK_HANDLED";
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="18" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function LevelHook(parent, level) {
+	
+	var hookShoot:Object = _level0.addPreHook(this.shoot, shootHook);
+	this.shoot = hookShoot.override;
+	
+	//level.outro v2
+	this.outtro = function() {
+		this.levelUpCounter++;
+		// first time
+		if (this.levelUpCounter == 1) {
+			if (this.victory) {
+				this.parent.hud.showMessage(dialogue("int_level" + this.level + "_complete"));
+			} else {
+				this.parent.hud.showMessage(dialogue("int_levelLose"));
+			}
+		}
+		if (this.levelUpCounter == this.levelUpCounterMax - 10) {
+			this.parent.flashin();
+		}
+		// last time   
+		//leave alone
+		if (this.levelUpCounter == this.levelUpCounterMax) {
+			Mouse.show();
+			//var isSpecialLevel = (this.level > 30); //re-locate
+			//var isLastSpecialLevel = (this.level == 33); //re-locate
+			//var isBonusLevel = (this.level > 20) && !isSpecialLevel; //re-locate
+			if (this.victory) {
+				if (this.isConflict) {
+					this.parent.parent.gameOver("complete");
+				} else if (this.isBonusLevel || this.isLastSpecialLevel) {
+					this.parent.parent.gameOver(true);
+				} else {
+					this.parent.levelUp();
+				}
+			} else {
+				this.parent.parent.gameOver();
+			}
+		}
+	};
+	
+	this.hack_init = function() {
+		// HACK: If the current level's team is not the default, wipe the indicators.
+		// This prevents impossible to fulfill indicator conditions.
+		if (this.parent.team != this.parent.parent.teams1337[this.level]) {
+			if (this.indicators.length > 0) {
+				this.indicators.splice(0);
+			}
+		}
+	}
+	
+	var indHackHook:Object = _level0.addPostHook(this.init, this.hack_init);
+	this.init = indHackHook.override;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Control" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="ControlHook" color="#9933CC" parentLayerIndex="21" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function ControlHook(parent, up, right, down, left, fire) {
+	this.handle = function() {
+		this.drawMC = this.parent.arena.tileMC.createEmptyMovieClip("draw", 9999998);
+		this.cursorMC._visible = this.active;
+		if (!this.active) {
+			return;
+		}
+
+		if (Key.isDown(27) || (_level1.MOUSEDOWN && this.parent.parent.hud.MC.exit.hitTest(_xmouse, _ymouse, true))) {
+			this.parent.parent.hud.popup();
+			this.parent.parent.active = false;
+			this.cursorMC._visible = false;
+			Mouse.show();
+			return;
+		}
+		// Allow WSAD in addition to arrow keys.  
+		this.UP = Key.isDown(this.keyUP) || Key.isDown(87);
+		this.RIGHT = Key.isDown(this.keyRIGHT) || Key.isDown(68);
+		this.DOWN = Key.isDown(this.keyDOWN) || Key.isDown(83);
+		this.LEFT = Key.isDown(this.keyLEFT) || Key.isDown(65);
+		this.FIRE = Key.isDown(this.keyFIRE);
+
+		// Fixes being able to hold 'h' to view your base and ignoring active indicators.
+		// This is only a real issue on training levels 3 and up since the enemy team cannot attack while indicators are still active.
+		if (Key.isDown(72) && (this.parent.indicators.length == 0 || !this.parent.camera.focus)) {
+			this.parent.camera.focus = this.parent.findBuilding("BA_" + this.parent.parent.team, this.parent.parent.team) || this.parent.findBuilding("BK_" + this.parent.parent.team, this.parent.parent.team);
+		}
+
+		this.posX = Math.round(limit(_xmouse, _level1.SCREENX - this.parent.arena.viewWidth + 1, _level1.SCREENX) - this.parent.arena.posX - (_level1.SCREENX - this.parent.arena.viewWidth));
+		this.posY = Math.round(limit(_ymouse, 1, this.parent.arena.viewHeight) - this.parent.arena.posY) * 2;
+		if ((this.prevMouseX == _xmouse) && (this.prevMouseY == _ymouse) && (this.parent.count > 20)) {
+			this.still++;
+		} else {
+			this.still = 0;
+		}
+		this.prevMouseX = _xmouse;
+		this.prevMouseY = _ymouse;
+		this.tilePos = this.parent.arena.translatePos(this.posX, this.posY);
+		if (this.still > 1) {
+			if ((_xmouse > _level1.SCREENX - this.scrollMargin) && (_xmouse < _level1.SCREENX)) {
+				this.RIGHT = true;
+			} else if ((_xmouse < (_level1.SCREENX - this.parent.arena.viewWidth) + this.scrollMargin) && (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth))) {
+				this.LEFT = true;
+			}
+			if (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth)) {
+				if ((_ymouse < this.scrollMargin) && (_ymouse > 0)) {
+					this.UP = true;
+				} else if ((_ymouse > this.parent.arena.viewHeight - this.scrollMargin) && (_ymouse < this.parent.arena.viewHeight)) {
+					this.DOWN = true;
+				}
+			}
+
+		}
+		if (_level1.MOUSESCROLL > 0) {
+			this.UP = true;
+		}
+		if (_level1.MOUSESCROLL < 0) {
+			this.DOWN = true;
+		}
+
+		if (this.dblClickCount) {
+			this.dblClickCount--;
+			if (!this.dblClickCount && this.singleClick) {
+				this.doConfirmedPress();
+			}
+		}
+
+		if ((this.cursorState == "superweapon") && (this.advancedCursorState == "superweapon")) {
+			this.mouseDownCount = 0;
+			if (!this.MOUSEDOWN && _level1.MOUSEDOWN) {
+				this.advancedCursorState = false;
+				this.cursorState = "standard";
+				this.MOUSEDOWN = _level1.MOUSEDOWN = false;
+				this.pressX = this.posX;
+				this.pressY = this.posY;
+				this.parent.launchSuperweapon(this.posX,this.posY);
+			}
+			this.MOUSEDOWN = _level1.MOUSEDOWN;
+		} else if (this.parent.construction.buildingSite) {
+			this.MOUSEDOWN = _level1.MOUSEDOWN;
+			if (this.MOUSEDOWN) {
+				this.mouseDownCount++;
+			} else {
+				this.mouseDownCount = 0;
+			}
+			this.cursorState = "standard";
+			if ((this.mouseDownCount < 2) && this.MOUSEDOWN && (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth)) && this.parent.construction.buildingSite.breakGround()) {
+				delete this.parent.construction.buildingSite;
+				this.mouseDownCount = 0;
+				this.MOUSEDOWN = false;
+			}
+		} else {
+			this.doCursor();
+			if (!this.MOUSEDOWN && _level1.MOUSEDOWN) {
+				this.doPress();
+			}
+			if (this.MOUSEDOWN && !_level1.MOUSEDOWN) {
+				this.doRelease();
+			}
+			this.MOUSEDOWN = _level1.MOUSEDOWN;
+			if (this.MOUSEDOWN) {
+				this.mouseDownCount++;
+			}
+			if (!this.MOUSEDOWN) {
+				this.isDragging = false;
+			}
+			var dx = this.pressX - this.posX;
+			var dy = this.pressY - this.posY;
+			if (!this.isDragging && this.MOUSEDOWN && (((dx * dx) + (dy * dy)) > 2000)) {
+				this.parent.parent.sfx.play("INT_cursor_drag");
+				this.isDragging = true;
+				this.doDrag(true);
+			} else if (this.isDragging) {
+				this.doDrag();
+
+			}
+			this.doSquads();
+		}
+
+		if (this.FIRE || ASnative(800, 2)(4)) {
+			this.parent.parent.sfx.play("INT_invalid");
+			this.resetSelected();
+		}
+		this.updateSelected();
+
+		if (_xmouse < (_level1.SCREENX - this.parent.arena.viewWidth)) {
+			this.cursorState = "standard";
+		}
+
+		this.updateCursor();
+	};
+
+	this.doSquads = function() {
+		if (this.ignoreSquads) {
+			this.ignoreSquads--;
+			return;
+		}
+		// Assign squad with Q + (number 0 through 9).  
+		if (Key.isDown(81)) {
+			for (var s = 1; s <= this.parent.squads.totalSquads; s++) {
+				if (Key.isDown(48 + s)) {
+					this.parent.squads.assign(s,this.selected);
+					this.ignoreSquads = 5;
+				}
+			}
+		}
+		// Jump to squad with E + (number 0 through 9).  
+		// The key used to be W (charcode 87).
+		if (Key.isDown(69)) {
+			for (var s = 1; s <= this.parent.squads.totalSquads; s++) {
+				if (Key.isDown(48 + s)) {
+					if (temp = this.parent.squads.center(s)) {
+						this.parent.camera.posX = temp.x;
+						this.parent.camera.posY = temp.y;
+						this.resetSelected();
+						var temp = this.parent.squads.retrieve(s);
+						for (var i in temp) {
+							// for offworlders
+							if ((temp[i].posX >= 0) && (temp[i].posY >= 0)) {
+								temp[i].selected = true;
+							}
+						}
+					}
+				}
+			}
+		} else {
+			for (var s = 1; s <= this.parent.squads.totalSquads; s++) {
+				if (Key.isDown(48 + s)) {
+					var temp = this.parent.squads.retrieve(s);
+					if (temp.length) {
+						if (!Key.isDown(Key.SHIFT)) {
+							this.resetSelected();
+						}
+						for (var i in temp) {
+							// for offworlders
+							if ((temp[i].posX >= 0) && (temp[i].posY >= 0)) {
+								temp[i].selected = true;
+							}
+						}
+					}
+					this.ignoreSquads = 5;
+				}
+			}
+		}
+		// Only using beeblebrox (aka test mode).
+		if (_level1.TESTMODE) {
+			// Requested by ETX - Ctrl+Z self-destructs selected buildings/units.
+			if (Key.isDown(Key.CONTROL) && Key.isDown(90)) {
+				for (var i in this.parent.units) {
+					var current = this.parent.units[i];
+					if (current.active && current.friend && current.selected) {
+						this.parent.units[i].destroy();
+					}
+				}
+				for (var i in this.parent.buildings) {
+					var current = this.parent.buildings[i];
+					if (current.active && current.friend && current.selected) {
+						this.parent.buildings[i].destroy();
+					}
+				}
+			}
+		}
+	};
+
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Game" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="23" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript offsets="1240,332">
+                                        <script><![CDATA[function GameHook(parent, team, level) {
+
+	this.swapTeams = function() {
+		if (this.team == "good") {
+			this.team = "evil";
+		} else {
+			this.team = "good";
+		}
+	};
+	
+	this.overrideTeam = function() {
+		// override team
+		this.team = this.parent.teams1337[this.currentLevel];
+		
+		if (this.parent.checkCheat("cheatOtherTeam")) {
+			this.swapTeams();
+		}
+		
+		// update HUD skin
+		this.hud.MC.gotoAndStop(this.team);
+		this.hud.MC.training.gotoAndStop(this.team);
+		this.hud.MC.indicator.arrow.gotoAndStop(this.team);
+	};
+	
+	this.overrideTeam();
+	
+	// why? WHY?!?!
+	this.levelUp_Hack = function() {
+		// needed? probably.
+		this.level.destroy();
+		delete this.level;
+		
+		// override team
+		this.overrideTeam();
+		
+		// See Level.init() for code related to removing indicators.
+		this.level = new Level(this, this.currentLevel);
+	}
+	
+	this.levelUp = function() {
+		Mouse.show();
+		this.level.destroy();
+		delete this.level;
+		this.currentLevel++;
+		// Make sure the next level is valid otherwise loop back to 1
+		if (this.data["map" + this.currentLevel] === undefined || this.data["map" + this.currentLevel] == null) {
+			_level0.Log("Level " + this.currentLevel + " is invalid! Looping back to level 1.");
+			this.currentLevel = 1;
+		}
+		/*
+		// Don't need to fix going backwards because it doesn't crash, it just doesn't do what you'd expect (staying put on level 1).
+		if (this.currentLevel <= 0) {
+			var highestLevel = 0;
+			for (var i in this.data) {
+				if (i.indexOf("map", 0) == 0) {
+					highestLevel++;
+				}
+			}
+			this.currentLevel = highestLevel;
+		}
+		*/ 
+
+		this.levelUp_Hack();
+
+		this.flash();
+	};
+	
+	// ???
+	this.levelUp_Hack();
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Panel" color="#808080" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="PanelAppend" color="#4FFF4F" parentLayerIndex="25" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function PanelAppend() {
+	//new array to store teams
+	this.teams1337 = new Array();
+	//new array storing custom cheats
+	this.customCheats = new Array();
+
+/*
+	OLD IF STATEMENT-DEFINED TEAMS: 
+	DEF: "good" IF >10 "evil" IF > 20 AND <26 "good" IF > 30 AND < 36 "good"
+*/
+	this.teams1337[1] = "good";
+	this.teams1337[2] = "good";
+	this.teams1337[3] = "good";
+	this.teams1337[4] = "good";
+	this.teams1337[5] = "good";
+	this.teams1337[6] = "good";
+	this.teams1337[7] = "good";
+	this.teams1337[8] = "good";
+	this.teams1337[9] = "good";
+	this.teams1337[10] = "good";
+	this.teams1337[21] = "good";
+	this.teams1337[22] = "good";
+	this.teams1337[23] = "good";
+	this.teams1337[24] = "good";
+
+	this.teams1337[31] = "good";
+	this.teams1337[32] = "good";
+	this.teams1337[33] = "good";
+
+	this.teams1337[11] = "evil";
+	this.teams1337[12] = "evil";
+	this.teams1337[13] = "evil";
+	this.teams1337[14] = "evil";
+	this.teams1337[15] = "evil";
+	this.teams1337[16] = "evil";
+	this.teams1337[17] = "evil";
+	this.teams1337[18] = "evil";
+	this.teams1337[19] = "evil";
+	this.teams1337[20] = "evil";
+	this.teams1337[26] = "evil";
+	this.teams1337[27] = "evil";
+	this.teams1337[28] = "evil";
+	this.teams1337[29] = "evil";
+
+	//unused
+	this.teams1337[25] = "good";
+	this.teams1337[30] = "evil";
+	this.teams1337[34] = "good";
+	this.teams1337[35] = "good";
+
+	this.enterCode = function(code) {
+		var level = false;
+		if (code == "fullscreen") {
+			Stage["displayState"] = "fullScreen";
+			_level0.goFullScreen();
+			level = "cheatFullscreen";
+		}
+		if (code == "fatwallet") {
+			this.cheatCashup = true;
+			level = "cheatCashup";
+			_root.kvEvent(696);
+		}
+		if (code == "299792458" || code == "quickbuild") {
+			this.cheatBuildspeed = true;
+			level = "cheatBuildspeed";
+			_root.kvEvent(697);
+		}
+		if (code == "awesome") {
+			this.cheatFirepower = true;
+			level = "cheatFirepower";
+			_root.kvEvent(698);
+		}
+		if (code == "n00b" || code == "newbie") {
+			this.cheatShields = true;
+			level = "cheatShields";
+			_root.kvEvent(699);
+		}
+		if (code == "clearskies") {
+			this.cheatShroud = true;
+			level = "cheatShroud";
+			_root.kvEvent(700);
+		}
+		if (code == "moneypenny") {
+			this.cheatCashup = true;
+			this.cheatBuildspeed = true;
+			this.cheatFirepower = true;
+			this.cheatShields = true;
+			this.cheatShroud = true;
+			level = "cheatAll";
+		}
+		if (code == "1337") {
+			this.resetCheats();
+			level = "cheatReset";
+		}
+		for (var i in this.customCheats) {
+			if (code.toLowerCase() == this.customCheats[i].code) {
+				this.customCheats[i].isEnabled = true;
+				level = this.customCheats[i].id;
+				if (this.customCheats[i].linked != null) {
+					for (var i2 in this.customCheats[i].linked) {
+						for (var i3 in this.customCheats) {
+							if (this.customCheats[i3].id == this.customCheats[i].linked[i2]) {
+								this.customCheats[i3].isEnabled = true;
+							}
+						}
+					}
+				}
+				break;
+			}
+		}
+		for (var i in this.codes) {
+			if (code.toLowerCase() == this.codes[i].toLowerCase()) {
+				level = i;
+				break;
+			}
+		}
+		this.MC.splash.bottom.code.code = "";
+		this.MC.splash.bottom.code.gotoAndPlay("result");
+		if (level) {
+			this.sfx.play("INT_collect");
+			if (level.substr(0, 5) == "cheat") {
+				this.MC.splash.bottom.code.result = dialogue("int_code_" + level).toUpperCase();
+			} else {
+				this.MC.splash.bottom.code.result = dialogue("int_code_valid").toUpperCase();
+				this.level = level - 1;
+				var team = this.teams1337[level];
+
+				this.startGame(team);
+			}
+		} else {
+			this.sfx.play("INT_invalid");
+			this.MC.splash.bottom.code.result = dialogue("int_code_invalid").toUpperCase();
+		}
+		if (code == "credits") {
+			this.MC.splash.bottom.code.result = "www.4T2.co.uk";
+			getURL("http://www.4T2.co.uk/", "_blank");
+		}
+		if (code == "beeblebrox") {
+			this.MC.splash.bottom.code.result = "TESTMODE";
+			_level1.TESTMODE = true;
+		}
+		if (code == "redux" || code == "cacredux" || code == "crystalien-redux") {
+			this.MC.splash.bottom.code.result = "CrystAlien Redux";
+			getURL("http://marsmissionwiki.wikifoundry.com/page/CrystAlien+Redux+Project", "_blank");
+		}
+		/*if (code == "archive" || code == "oldversion" || code == "versions") {
+			this.MC.splash.bottom.code.result = "CAC Archive";
+			getURL("http://crystalien-redux.com", "_blank");
+		}*/
+		if (code == "cheat" || code == "cheats" || code == "codes") {
+			this.MC.splash.bottom.code.result = "Cheater!";
+			this.sfx.play("cheater");
+			getURL("http://marsmissionwiki.wikifoundry.com/page/CrystAlien+Conflict+Cheats", "_blank");
+		}
+	};
+	this.startGame = function(team) {
+		this.state = "startgame";
+		if (team != "good" && team != "evil") {
+			team = "good";
+		}
+		this.team = team;
+		this.count = 0;
+	};
+	this.resetCheats = function() {
+		this.cheatCashup = false;
+		this.cheatBuildspeed = false;
+		this.cheatFirepower = false;
+		this.cheatShields = false;
+		this.cheatShroud = false;
+		for (var i in this.customCheats) {
+			this.customCheats[i].isEnabled = false;
+		}
+	};
+	this.cheatsEnabled = function() {
+		var yesCheating = false;
+		for (var i in this.customCheats) {
+			if (this.customCheats[i].isEnabled) {
+				yesCheating = true;
+				break;
+			}
+		}
+		return (this.cheatCashup || this.cheatBuildspeed || this.cheatFirepower || this.cheatShields || this.cheatShroud || yesCheating);
+	};
+
+	this.checkCheat = function(cheatID) {
+//		var cheatActive = false;
+//		for (var i in this.customCheats) {
+//			if (this.customCheats[i].id == cheatID) {
+//				cheatActive = this.customCheats[i].isEnabled;
+//			}
+//		}
+//		return cheatActive;
+		
+		// rewritten by Josh for <reasons>
+		for (var i in this.customCheats) {
+			if (this.customCheats[i].id == cheatID && this.customCheats[i].isEnabled) {
+				return true;
+			}
+		}
+		return false;
+	};
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Mod" color="#FF800A" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="27" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[var wrapper:MovieClip;
+var game:MovieClip;
+var hookedIn:Boolean = false;
+
+function CACMod_Error(errmsg:String):Void {
+	wrapper.Log("<span style='color:red'>An error '" + errmsg + "' occurred in <b>Redux Modifications</b> mod!</span>");
+}
+
+function CACMod_Init(parent:MovieClip):Number {
+	wrapper = parent;
+
+	wrapper.cheatObj = cheatObj;
+	wrapper.registerCheat = registerCheat;
+
+	return 1;
+}
+
+function CACMod_OnGameMenu():Void {
+	if (!hookedIn) {
+		// Make a nicer reference to the game's root.
+		game = _level1;
+		
+		// No more high scores related functions!
+		game.sendScore = DisabledFunction;
+		game.saveScore = DisabledFunction;
+		game.getScores = DisabledFunction;
+		game.SHA1 = DisabledFunction;
+
+		// Hook LevelStats and replace setup()
+		var hook1:Object = wrapper.addPostHook(game.LevelStats, LevelStatsHook);
+		game.LevelStats = hook1.override;
+		
+		// Hook Level and replace outtro()
+		var hook2:Object = wrapper.addPostHook(game.Level, LevelHook);
+		game.Level = hook2.override;
+
+		// Hook Arena and fix bug in layoutTiles() where right outer boundry of the map was undefined.
+		var hook3:Object = wrapper.addPostHook(game.Arena, ArenaHook);
+		game.Arena = hook3.override;
+		
+		// Hook Construction and fix extra unit past maximum bug.
+		var hook4:Object = wrapper.addPostHook(game.Construction, ConstructionHook);
+		game.Construction = hook4.override;
+		
+		// Hook BuildingSite and fix bug where buildings could be placed in invalid locations by moving the mouse quickly after clicking.
+		var hook5:Object = wrapper.addPostHook(game.BuildingSite, BuildingSiteHook);
+		game.BuildingSite = hook5.override;
+		
+		// Hook Game and fix bug where jumping to an invalid level using beeblebrox cheat (TESTMODE) caused a crash.
+		var hook6:Object = wrapper.addPostHook(game.Game, GameHook);
+		game.Game = hook6.override;
+		
+		// Hook UnitNav to fix a bug in Unit where units with no home base and undefined x and y position would cause a crash.
+		// UnitNav is used because it is created/called at exactly the right moment inside Unit.
+		// Unit is not used because then we'd have to replace the entire unit class just to insert a single if statement (not cool).
+		var hook7:Object = wrapper.addPreHook(game.UnitNav, UnitNavHook);
+		game.UnitNav = hook7.override;
+		
+		// Hook Control (see comments in ControlHook for more information).
+		var hook8:Object = wrapper.addPostHook(game.Control, ControlHook);
+		game.Control = hook8.override;
+				
+		// Hook Weapon to fix a bug where projectiles didn't test collision until after their first move,
+		// leading to missed collisions if the projectile already started at it's target.
+		var hook9:Object = wrapper.addPostHook(game.Weapon, WeaponHook);
+		game.Weapon = hook9.override;
+
+		PanelAppend.apply(game.panel);
+		
+		// For fun of course ;)
+		wrapper.registerCheat("cheatSnow", "winter");
+		wrapper.registerCheat("cheatSnow", "frosty");
+		wrapper.registerCheat("cheatOtherTeam", "theotherside");
+		
+		// Edit game version string.
+		game.VERSION += " Redux"; /*wrapper.mods["redux"]["version"]*/
+		
+		hookedIn = true;
+		wrapper.Log("<span style='color:orange'><b>Redux Modifications:</b> Modifications in place...</span>");
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[stop();]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="DebugMovieChecked" v="FlashPro"/>
+          <PD n="TestMovieChecked" v="FlashPro"/>
+     </persistentData>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="15159" publishTime="1487620879"/>
+          <PublishItem publishSize="15797" publishTime="1478413309"/>
+          <PublishItem publishSize="15797" publishTime="1478412410"/>
+          <PublishItem publishSize="15805" publishTime="1478412191"/>
+          <PublishItem publishSize="15820" publishTime="1478407492"/>
+          <PublishItem publishSize="15820" publishTime="1478407190"/>
+          <PublishItem publishSize="15801" publishTime="1478406511"/>
+          <PublishItem publishSize="15786" publishTime="1478406258"/>
+          <PublishItem publishSize="15697" publishTime="1478403149"/>
+          <PublishItem publishSize="15657" publishTime="1478399428"/>
+          <PublishItem publishSize="15657" publishTime="1478223372"/>
+          <PublishItem publishSize="15663" publishTime="1468811136"/>
+          <PublishItem publishSize="15662" publishTime="1468811029"/>
+          <PublishItem publishSize="15519" publishTime="1462583971"/>
+          <PublishItem publishSize="15570" publishTime="1462583819"/>
+          <PublishItem publishSize="15570" publishTime="1462583724"/>
+          <PublishItem publishSize="15542" publishTime="1462583594"/>
+          <PublishItem publishSize="15546" publishTime="1462581898"/>
+          <PublishItem publishSize="15549" publishTime="1462581860"/>
+          <PublishItem publishSize="15519" publishTime="1462581192"/>
+     </publishHistory>
+</DOMDocument>

@@ -1,0 +1,24 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/skinCloseDown" itemID="5494e96d-00000229" linkageExportForAS="true" linkageIdentifier="skinCloseDown" linkageClassName="mx.skins.SkinElement" lastModified="1419108108">
+  <timeline>
+    <DOMTimeline name="skinCloseDown">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Styles/closeButtonDown" selected="true" symbolType="graphic" loop="loop">
+                  <matrix>
+                    <Matrix ty="-8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="23" y="10"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

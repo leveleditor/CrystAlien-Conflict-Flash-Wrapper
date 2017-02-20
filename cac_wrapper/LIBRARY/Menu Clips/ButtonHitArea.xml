@@ -1,0 +1,31 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/ButtonHitArea" itemID="540cb5e0-0000022c" sourceFlashFilepath="Program Files (x86)\Adobe\Adobe Flash CS4\en\Configuration\Libraries\Buttons.fla" sourceLibraryItemHRef="tube flat hitarea" sourceLastModified="1115272333" symbolType="graphic" lastModified="1410119136" sourceItemID="4279440d-000047a3">
+  <timeline>
+    <DOMTimeline name="ButtonHitArea">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape selected="true" isFloating="true">
+                  <matrix>
+                    <Matrix d="0.99749755859375" tx="-0.05" ty="-0.05"/>
+                  </matrix>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#E7F2F6"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="!631.5 -139.5[#293.38 #FFFF90.25 674 -76!674 -76[#2B2.F6 #FFFFD8.F2 691 2!691 2[#2B2.F6 #2A.0A 674 79!674 79[#293.38 #72.DA 631.5 142.5!631.5 142.5[#25A.7C #AA.27 566.5 185.5!566.5 185.5[#20F.BE #C8.F1 487 201!487 201|-484 201!-484 201
+[#FFFDF3.41 #C8.F1 -563.5 185.5!-563.5 185.5[#FFFDA8.84 #AA.27 -628.5 142.5!-628.5 142.5[#FFFD6F.C7 #72.DA -671 79!-671 79[#FFFD50.09 #2A.0A -688 2!-688 2[#FFFD50.09 #FFFFD8.F2 -671 -76!-671 -76[#FFFD6F.C7 #FFFF90.25 -628.5 -139.5!-628.5
+ -139.5[#FFFDA8.84 #FFFF58.D9 -563.5 -182.5!-563.5 -182.5[#FFFDF3.41 #FFFF3A.0F -484 -198!-484 -198|487 -198!487 -198[#20F.BE #FFFF3A.0F 566.5 -182.5!566.5 -182.5[#25A.7C #FFFF58.D9 631.5 -139.5"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

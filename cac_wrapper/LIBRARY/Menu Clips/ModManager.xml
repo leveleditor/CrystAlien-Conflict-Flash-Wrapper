@@ -1,0 +1,178 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/ModManager" itemID="540cb691-00000231" linkageExportForAS="true" linkageIdentifier="ModManager" lastModified="1460520911" lastUniqueIdentifier="5">
+  <timeline>
+    <DOMTimeline name="ModManager">
+      <layers>
+        <DOMLayer name="Variables" color="#4F80FF" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[var shown:Boolean = false;]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Functions" color="#FF4FFF" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[import mx.controls.*;
+
+function onModCheckboxClick(sender:Object) {
+	var chk:CheckBox = sender.target;
+	_root.mods[chk["mod"]]["__enabled"] = chk.selected;
+}
+
+function show() {
+	this._visible = true;
+	if (!shown) {
+		shown = true;
+		var j:Number = 0;
+		for (var k:Number = 0; k < _root.modsIndex.length; k++) {
+			var i:String = _root.modsIndex[k];
+			var chk:CheckBox = this.attachMovie("CheckBox", "ModCheckBox" + j, getNextHighestDepth());
+			chk.setLabel(_root.mods[i]["name"] + " v" + _root.mods[i]["version"]);
+			chk.setSize(500, 20, true);
+			chk.move(15, 25 + j * 25, true);
+			chk.enabled = true;
+			chk.selected = Boolean(_root.mods[i]["__enabled"]);
+			chk.visible = true;
+			chk.addEventListener("click", onModCheckboxClick);
+			chk["mod"] = i;
+			j++;
+		}
+	}
+}
+function toggle() {
+	if (this._visible) {
+		hide();
+	} else {
+		show();
+	}
+}
+function hide() {
+	this._visible = false;
+}]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Logic" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[this._visible = false;
+stop();]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Controls" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Menu Clips/CloseButton" name="closeButton" symbolType="button">
+                  <matrix>
+                    <Matrix tx="574.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <Actionscript>
+                    <script><![CDATA[on (release) {
+	hide();
+}]]></script>
+                  </Actionscript>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Text" color="#808080" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMStaticText width="505.95" height="19.75" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="5" ty="5"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Mod Manager</characters>
+                      <textAttrs>
+                        <DOMTextAttrs aliasText="false" size="14" bitmapSize="280" face="Font 1*"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Mouse Blocker" color="#4FFFFF" locked="true" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Control Clips/MouseBlocker" centerPoint3DX="302.5" centerPoint3DY="150">
+                  <matrix>
+                    <Matrix a="14.4047546386719" d="7.14285278320313"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Background" color="#4FFF4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#999999"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <RadialGradient interpolationMethod="linearRGB">
+                            <matrix>
+                              <Matrix a="0.41339111328125" d="0.41339111328125" tx="302.5" ty="150"/>
+                            </matrix>
+                            <GradientEntry ratio="0"/>
+                            <GradientEntry color="#FFFFFF" ratio="1"/>
+                          </RadialGradient>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle1="1" strokeStyle="1" edges="!12100 6000|0 6000!0 6000|0 0!0 0|12100 0!12100 0|12100 6000"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

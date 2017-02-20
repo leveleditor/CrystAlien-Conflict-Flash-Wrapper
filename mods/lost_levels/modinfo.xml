@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mod>
+	<name>The Lost Levels</name>
+	<version>0.1.0.7</version>
+	<!-- Any lost levels of CAC that have been found will be in this mod! -->
+	<!-- Restores levels recovered from old versions of CAC to their former glory! -->
+	<description><![CDATA[Adds levels recovered from old versions of CAC. There is currently just one. Access code: whitney]]></description>
+	<author>Josh (leveleditor6680) &amp; Brian (ETXAlienRobot201)</author>
+	<homepage>http://crystalien-redux.com/</homepage>
+	<documentation></documentation>
+	<icon></icon>
+	<updateurl>http://crystalien-redux.com/dev/wrapper_latest.php</updateurl>
+	<swf>lost_levels.swf</swf>
+</mod>

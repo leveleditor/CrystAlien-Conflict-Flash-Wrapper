@@ -1,0 +1,59 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Control Clips/ModInitManager" itemID="54050f7b-000001f6" lastModified="1418528584">
+  <timeline>
+    <DOMTimeline name="ModInitManager">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[var modsToInit:Number = 0;
+for (var m in _root.mods) {
+	if (!_root.mods[m]["__initialized"] && _root.mods[m]["__initattempts"] < _root.MAX_INIT_ATTEMPTS && _root.mods[m]["__enabled"]) {
+		modsToInit++;
+		_root.mods[m]["__initattempts"]++;
+		var name:String = _root.mods[m]["name"];
+		var ver:String = _root.mods[m]["version"];
+		
+		if (_root.mods[m]["__initattempts"] >= _root.MAX_INIT_ATTEMPTS) {
+			_root.text += "Failed to initialize mod: " + name + " v" + ver + " (Max tries of " + _root.MAX_INIT_ATTEMPTS + " reached)";
+			Log("Failed to initialize mod: " + name + " v" + ver + " (Max tries of " + _root.MAX_INIT_ATTEMPTS + " reached)");
+		} else {
+			var i:String = "_level" + _root.mods[m]["__level"];
+			var lvl = eval(i);
+			if (lvl["CACMod_Init"] && lvl["CACMod_Error"]) {
+				//trace("found!");
+				lvl.__url = _root.mods[m]["__url"];
+				lvl.__level = _root.mods[m]["__level"];
+				lvl.__modxml = _root.mods[m]["__modxml"];
+				var returnCode:Number = lvl.CACMod_Init(_root);
+				_root.Log("Initialized mod: " + name + " v" + ver + " (Init returned code " + returnCode + ")");
+				_root.mods[m]["__initialized"] = true;
+			} else {
+				//trace("fail");
+			}
+		}
+	}
+}
+if (modsToInit <= 0) {
+	_root.AllModsInitializedCallback();
+	removeMovieClip(this);
+	stop();
+}]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="1" duration="8" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="9" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[gotoAndPlay(1);]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

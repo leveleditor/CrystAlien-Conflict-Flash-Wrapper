@@ -1,0 +1,17 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="CheckBox Assets/ States/CheckTrueOver" itemID="54966896-000006f6" linkageExportForAS="true" linkageIdentifier="CheckTrueOver" lastModified="1419143318">
+  <timeline>
+    <DOMTimeline name="CheckTrueOver">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance selected="true" libraryItemName="CheckBox Assets/Elements/CheckTrueOver.png"/>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

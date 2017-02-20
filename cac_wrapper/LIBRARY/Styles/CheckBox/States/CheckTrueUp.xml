@@ -1,0 +1,17 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/CheckBox/States/CheckTrueUp" itemID="54965cf1-000004b2" linkageExportForAS="true" linkageIdentifier="CheckTrueUp" lastModified="1419140337">
+  <timeline>
+    <DOMTimeline name="CheckTrueUp">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance selected="true" libraryItemName="Styles/CheckBox/Elements/checkboxEnCheck.PNG"/>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

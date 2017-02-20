@@ -1,0 +1,61 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/Hexagon 1" itemID="536979db-0000005f" lastModified="1438397717" lastUniqueIdentifier="1">
+  <timeline>
+    <DOMTimeline name="Hexagon 1">
+      <layers>
+        <DOMLayer name="Outline" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal" weight="2">
+                        <fill>
+                          <SolidColor color="#00FF00"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge strokeStyle="1" edges="!1204 -2085|2408 0!2408 0|1204 2085!1204 2085|-1204 2085!-1204 2085|-2408 0!-2408 0|-1204 -2085!-1204 -2085|1204 -2085"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Flare" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Menu Clips/HexagonFlare">
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Fill" color="#FF800A" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="!-2408 0|-1204 -2085!-1204 -2085|1204 -2085!1204 -2085|2408 0!2408 0|1204 2085!1204 2085|-1204 2085!-1204 2085|-2408 0"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

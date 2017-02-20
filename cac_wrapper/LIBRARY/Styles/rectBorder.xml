@@ -1,0 +1,21 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/rectBorder" itemID="549506ea-0000040a" linkageExportForAS="true" linkageIdentifier="RectBorder" linkageClassName="utils.RectBorder" lastModified="1419065261" lastUniqueIdentifier="5">
+  <timeline>
+    <DOMTimeline name="rectBorder">
+      <layers>
+        <DOMLayer name="Layer 2" color="#9933CC" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Styles/rectBorderContents" name="contents" selected="true" centerPoint3DX="12" centerPoint3DY="12.05">
+                  <transformationPoint>
+                    <Point x="12" y="12.05"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

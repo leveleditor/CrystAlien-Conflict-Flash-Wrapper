@@ -1,0 +1,182 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/Background" itemID="53fd0ed0-00000037" lastModified="1438468933" lastUniqueIdentifier="26">
+  <timeline>
+    <DOMTimeline name="Background">
+      <layers>
+        <DOMLayer name="Actions" color="#FF800A" locked="true" autoNamed="false" visible="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[stop();]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Hexagons" color="#4FFF4F" locked="true" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-0.05" centerPoint3DY="0.15">
+                  <matrix>
+                    <Matrix tx="-0.05" ty="0.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="180.95" centerPoint3DY="-103.1">
+                  <matrix>
+                    <Matrix tx="180.95" ty="-103.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="181" centerPoint3DY="104.9">
+                  <matrix>
+                    <Matrix tx="181" ty="104.9"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-181" centerPoint3DY="-103.1">
+                  <matrix>
+                    <Matrix tx="-181" ty="-103.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-180.95" centerPoint3DY="104.9">
+                  <matrix>
+                    <Matrix tx="-180.95" ty="104.9"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-0.05" centerPoint3DY="-208.1">
+                  <matrix>
+                    <Matrix tx="-0.05" ty="-208.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-0.05" centerPoint3DY="208.15">
+                  <matrix>
+                    <Matrix tx="-0.05" ty="208.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="362" centerPoint3DY="0.15">
+                  <matrix>
+                    <Matrix tx="362" ty="0.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="361.95" centerPoint3DY="-208.1">
+                  <matrix>
+                    <Matrix tx="361.95" ty="-208.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="361.95" centerPoint3DY="208.15">
+                  <matrix>
+                    <Matrix tx="361.95" ty="208.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-361.95" centerPoint3DY="0.15">
+                  <matrix>
+                    <Matrix tx="-361.95" ty="0.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-361.95" centerPoint3DY="-208.1">
+                  <matrix>
+                    <Matrix tx="-361.95" ty="-208.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Menu Clips/Hexagon 1" centerPoint3DX="-361.95" centerPoint3DY="208.15">
+                  <matrix>
+                    <Matrix tx="-361.95" ty="208.15"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" inner="true" quality="3"/>
+                    <GlowFilter blurX="50" blurY="50" color="#00FF00" quality="3"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

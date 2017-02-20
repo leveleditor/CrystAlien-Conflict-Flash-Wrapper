@@ -1,0 +1,144 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/rectBorderContents" itemID="54952704-00000671" linkageExportForAS="true" linkageIdentifier="rectBorderContents" lastModified="1419108869" lastUniqueIdentifier="11">
+  <timeline>
+    <DOMTimeline name="rectBorderContents">
+      <layers>
+        <DOMLayer name="Functions" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <Actionscript>
+                <script><![CDATA[function update(w:Number, h: Number) {
+	
+	tl._height = 38;
+	tl._width = 8;
+	tl._y = 0;
+	tl._x = 0;
+
+	tc._height = 38;
+	tc._width = w - 16;
+	tc._y = 0;
+	tc._x = 8;
+	
+	tr._height = 38;
+	tr._width = 8;
+	tr._y = 0;
+	tr._x = w - tr._width;
+	
+	ml._height = h - 16;
+	ml._width = 8;
+	ml._y = 8;
+	ml._x = 0;
+
+	mr._height = h - 16;
+	mr._width = 8;
+	mr._y = 8;
+	mr._x = w - mr._width;
+	
+	bl._height = 8;
+	bl._width = 8;
+	bl._y = h - 8;
+	bl._x = 0;
+
+	bc._height = 8;
+	bc._width = w - 16;
+	bc._y = h - 8;
+	bc._x = 8;
+	
+	br._height = 8;
+	br._width = 8;
+	br._y = h - 8;
+	br._x = w - br._width;
+	
+	background._width = w;
+	background._height = h;
+}]]></script>
+              </Actionscript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Styles/middle_left" name="ml" centerPoint3DX="4" centerPoint3DY="12">
+                  <matrix>
+                    <Matrix ty="8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/middle_right" name="mr" centerPoint3DX="20" centerPoint3DY="12">
+                  <matrix>
+                    <Matrix tx="16" ty="8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/bottom_right" name="br" centerPoint3DX="20" centerPoint3DY="20">
+                  <matrix>
+                    <Matrix tx="16" ty="16"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/bottom_left" name="bl" centerPoint3DX="4" centerPoint3DY="20">
+                  <matrix>
+                    <Matrix ty="16"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/bottom_center" name="bc" centerPoint3DX="12" centerPoint3DY="20">
+                  <matrix>
+                    <Matrix tx="8" ty="16"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="4"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/top_left" name="tl" centerPoint3DX="4" centerPoint3DY="19">
+                  <transformationPoint>
+                    <Point x="4" y="19"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/top_center" name="tc" centerPoint3DX="12" centerPoint3DY="19">
+                  <matrix>
+                    <Matrix tx="8"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="19"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="Styles/top_right" name="tr" selected="true" centerPoint3DX="20" centerPoint3DY="19">
+                  <matrix>
+                    <Matrix tx="16"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="4" y="19"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Layer 3" color="#FF800A">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="Styles/rectBorderContentBg" name="background" centerPoint3DX="12" centerPoint3DY="12">
+                  <transformationPoint>
+                    <Point x="12" y="12"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

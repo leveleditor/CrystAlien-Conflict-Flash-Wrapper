@@ -1,0 +1,17 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/CheckBox/States/CheckFalseDisabled" itemID="54965c6e-000004ac" linkageExportForAS="true" linkageIdentifier="CheckFalseDisabled" lastModified="1419140206">
+  <timeline>
+    <DOMTimeline name="CheckFalseDisabled">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance selected="true" libraryItemName="Styles/CheckBox/Elements/checkboxDisen.PNG"/>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

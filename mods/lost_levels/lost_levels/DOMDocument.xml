@@ -1,0 +1,177 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="750" frameRate="31" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" gridSnapTo="true" objectsSnapTo="false" viewAngle3D="70.7391536835427" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Mod" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="CACMod" color="#4FFF4F" parentLayerIndex="0" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[var wrapper:MovieClip;
+var game:MovieClip;
+var hookedIn:Boolean = false;
+
+function CACMod_Error(errmsg:String):Void {
+	wrapper.Log("An error '" + errmsg + "' occurred in The Lost Levels mod!");
+}
+
+function CACMod_Init(parent:MovieClip):Number {
+	wrapper = parent;
+	return 1;
+}
+
+function CACMod_OnGameMenu():Void {
+	if (!hookedIn) {
+		// Make a nicer reference to the game's root.
+		game = _level1;
+
+		game.panel.codes[30] = "whitney";
+		
+		var hook1:Object = wrapper.addPostHook(game.Game,
+			function (parent, team, level) {
+				this.data["map30"] = "55*******#  %**********-$.***#  %*******+**# (.*-'  (.*-$.*****#  6<7    %*# %*****#         %*# ($.***#      )!&%*#   (.**#      %*#%*#    %**#   8!!/*,/*#    %**#   =***+***#    6<*#   9$.*****,4     *#     %******;    E<7     %******;   EM   )!!!/*****-5   DC   ($.*******#    PP     %*****-$'    PP     ($$$.*#                 6<7   EB                 EMC     E>>B        A?P     AFGH>B     EMCP  O".split("",10000);
+
+				var hook4:Object = _level0.addPostHook(this.handle,
+					function() {
+						if (this.level.level == 30 && this.parent.state == "movie") {
+							this.parent.doEndMovie("skip");
+						}
+					}
+				);
+				this.handle = hook4.override;
+			}
+		);
+		game.Game = hook1.override;
+		
+		var hook2:Object = wrapper.addPostHook(game.LevelStats,
+			function (parent) {
+				var hook3:Object = _level0.addPostHook(this.setup,
+					function () {
+						if (this.level == 30) // bodyguard
+						{
+							this.isBonusLevel = true;
+							
+							this.buildings.push(a = new game.Building(this, "BA_evil", 19, 18, "good"));
+							this.buildings.push(temp = new game.Building(this, "BB_evil", 18, 19, null, .1));
+							this.buildings.push(b = new game.Building(this, "BD_evil", 17, 15));
+							this.buildings.push(c = new game.Building(this, "BD_evil", 18, 13));
+				
+							this.buildings.push(new game.Building(this, "BB_good", 19, 4, "good"));
+							this.buildings.push(new game.Building(this, "BB_good", 14, 17, "good"));
+							this.buildings.push(new game.Building(this, "BB_good", 11, 10, "good"));
+							this.buildings.push(new game.Building(this, "BB_good", 17, 7, "good"));
+				
+							this.buildings.push(new game.Building(this, "BC_good", 11, 12, "good"));
+							this.buildings.push(new game.Building(this, "BD_good", 11, 19, "good"));
+							this.buildings.push(new game.Building(this, "BD_good", 16, 7, "good"));
+				
+				
+							this.units.push(new game.Unit(this, "UA_evil", 10, 2, .5));
+							this.units.push(new game.Unit(this, "UA_evil", 9, 2, .5));
+							this.units.push(new game.Unit(this, "UA_evil", 10, 2, .5));
+							this.units.push(new game.Unit(this, "UA_evil", 9, 2, .5));
+							this.units.push(new game.Unit(this, "UC_evil", 8, 4, .5));
+							this.units.push(new game.Unit(this, "UC_evil", 11, 4, .5));
+							this.units.push(new game.Unit(this, "UE_evil", 9, 3, .5));
+							this.units.push(new game.Unit(this, "UE_evil", 10, 3, .5));
+							this.units.push(new game.Unit(this, "UF_evil", 9, 4, .5));
+							this.units.push(new game.Unit(this, "UF_evil", 10, 4, .5));
+				
+							this.units.push(new game.Unit(this, "UF_good", 5, 10, .5, null, null, "still", 10000));
+							this.units.push(new game.Unit(this, "UF_good", 12, 10, .5, null, null, "still", 10000));
+				
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "roam", 15, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "roam", 10, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "roam", 5, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "roam", 10, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "roam", 15, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "seek", null, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "seek", null, true));
+							this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "seek", null, true));
+				
+							this.units.push(new game.Unit(this, "UB_good", 18, 17, .5, null, null, temp));
+							this.units.push(new game.Unit(this, "UB_good", 18, 17, .5, null, null, a));
+							this.units.push(new game.Unit(this, "UB_good", 17, 14, .5, null, null, b));
+							this.units.push(new game.Unit(this, "UB_good", 17, 14, .5, null, null, c));
+				
+							this.units.push(temp = new game.Unit(this, "UB_evil", 9, 3, .5));
+				
+							this.indicators.push(new game.Indicator(this, null, null, game.dialogue("int_level30_ind1"), "message", 120));
+							this.indicators.push(new game.Indicator(this, temp, null, null, "focus"));
+				
+							this.camera.focus = a;
+							//this.cash = 2000;
+							this.cashOppo = 30000;
+							this.jukebox = 1;
+						}
+					}
+				);
+				this.setup = hook3.override;
+				
+				var hook5:Object = _level0.addPreHook(this.outcome,
+					function() {
+						if (!this.active) {
+							return;
+						}
+						if (this.level == 30) {
+							if (this.findBuilding("BA_evil").friend) {
+								this.win();
+							}
+						}
+					}
+				);
+				this.outcome = hook5.override;
+			}
+		);
+		game.LevelStats = hook2.override;
+
+		hookedIn = true;
+		wrapper.Log("The Lost Levels: All hooked in...");
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[stop();]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="DebugMovieChecked" v="FlashPro"/>
+          <PD n="TestMovieChecked" v="FlashPro"/>
+     </persistentData>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="1353" publishTime="1435637187"/>
+          <PublishItem publishSize="1353" publishTime="1435637117"/>
+          <PublishItem publishSize="1352" publishTime="1418533900"/>
+          <PublishItem publishSize="1309" publishTime="1417912517"/>
+          <PublishItem publishSize="1254" publishTime="1417905657"/>
+          <PublishItem publishSize="1254" publishTime="1417905520"/>
+          <PublishItem publishSize="1254" publishTime="1417905515"/>
+          <PublishItem publishSize="1243" publishTime="1417855396"/>
+          <PublishItem publishSize="1270" publishTime="1417855373"/>
+          <PublishItem publishSize="1268" publishTime="1417855343"/>
+          <PublishItem publishSize="1243" publishTime="1417855319"/>
+          <PublishItem publishSize="1243" publishTime="1417855313"/>
+          <PublishItem publishSize="1344" publishTime="1417855255"/>
+          <PublishItem publishSize="1338" publishTime="1417855215"/>
+          <PublishItem publishSize="1326" publishTime="1417855113"/>
+          <PublishItem publishSize="1329" publishTime="1417855019"/>
+          <PublishItem publishSize="1311" publishTime="1417854772"/>
+          <PublishItem publishSize="1245" publishTime="1417854565"/>
+          <PublishItem publishSize="1256" publishTime="1417854525"/>
+          <PublishItem publishSize="1225" publishTime="1417854286"/>
+     </publishHistory>
+</DOMDocument>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mod>
+	<name><![CDATA[<b style='color:orange'>Redux Modifications + Bugfix Patch</b>]]></name>
+	<version>0.1.6.0</version>
+	<description><![CDATA[The official mod for CrystAlien Redux Project modifications. Contains unofficial patches to fix some bugs, add some functionality, and just generally modify the game.]]></description>
+	<author>Josh (leveleditor6680) &amp; Brian (ETXAlienRobot201)</author>
+	<homepage>http://crystalien-redux.com/</homepage>
+	<documentation>http://marsmissionwiki.wikifoundry.com/page/CrystAlien+Redux+Project</documentation>
+	<icon>//crystalien-redux.com/dev/images/cac_bugfix_patch_logo.png</icon>
+	<updateurl>http://crystalien-redux.com/dev/wrapper_latest.php</updateurl>
+	<swf>redux.swf</swf>
+</mod>
