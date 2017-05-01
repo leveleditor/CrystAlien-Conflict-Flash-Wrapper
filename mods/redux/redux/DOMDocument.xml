@@ -1941,10 +1941,10 @@ function registerCheat(id:String, code:String, linked:Array) {
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
                                         <script><![CDATA[function LevelHook(parent, level) {
-	
+
 	var hookShoot:Object = _level0.addPreHook(this.shoot, shootHook);
 	this.shoot = hookShoot.override;
-	
+
 	//level.outro v2
 	this.outtro = function() {
 		this.levelUpCounter++;
@@ -1959,7 +1959,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		if (this.levelUpCounter == this.levelUpCounterMax - 10) {
 			this.parent.flashin();
 		}
-		// last time   
+		// last time     
 		//leave alone
 		if (this.levelUpCounter == this.levelUpCounterMax) {
 			Mouse.show();
@@ -1979,7 +1979,97 @@ function registerCheat(id:String, code:String, linked:Array) {
 			}
 		}
 	};
-	
+
+	this.engageEnemy = function() {
+		if (!this.stats.weapon) {
+			return;
+		}
+		if (this.isBuilding) {
+			if (this.friend && this.parent.powerOff) {
+				return;
+			}
+			if (!this.friend && this.parent.powerOffOppo) {
+				return;
+			}
+		}
+		if (this.weaponCharge) {
+			this.weaponCharge--;
+			return;
+		}
+		if (this.blink) {
+			this.blink--;
+			return;
+		}
+		if (this.stats.boomerang && !this.target) {
+			return;
+		}
+		if (this.target.stats.carrier && (this.target.team == this.team)) {
+			return;
+		}
+		if (this.stats.flying && (this.nav.landerPerc > 25) && !this.stats.transformer) {
+			return;
+		}
+		var target;
+		//ETX WUZ HERE, WITH A PATCH
+		//Fixes the bug with units targeting flying units even though they shouldn't be able to.
+		var cantTouchThis = (this.target.stats.flying && this.stats.weapon == "laser" && this.target.nav.landerPerc < 75);
+		if (this.target && !cantTouchThis) {
+			target = this.target;
+		} else {
+			var highestThreat = 1;
+			for (var i in this.parent.buildings) {
+				var building = this.parent.buildings[i];
+				if (building.friend == this.friend) {
+					continue;
+				}
+				if (building.stats.threat < highestThreat) {
+					continue;
+				}
+				if (this.friend && !building.stats.weapon) {
+					continue;
+				}
+				var dist = distance(this.posX, this.posY, building.posX, building.posY);
+				if (dist < this.stats.weaponRange) {
+					target = building;
+					highestThreat = target.stats.threat;
+				}
+			}
+			for (var i in this.parent.units) {
+				var unit = this.parent.units[i];
+				if (unit.friend == this.friend) {
+					continue;
+				}
+				if (unit.stats.pickup) {
+					continue;
+				}
+				if (unit.stats.flying && (this.stats.weapon == "laser") && (unit.nav.landerPerc < 75)) {
+					continue;
+				}
+				if (unit.stats.threat < highestThreat) {
+					continue;
+				}
+				var dist = distance(this.posX, this.posY, unit.posX, unit.posY);
+				if (dist < this.stats.weaponRange) {
+					target = unit;
+					highestThreat = target.stats.threat;
+				}
+			}
+			// don't get too attached to gun towers!
+			if (target && this.hal && !(target.isBuilding && target.stats.weapon)) {
+				this.target = target;
+			}
+			// we don't want to do this every time! 
+			this.blink = 10 + random(4);
+		}
+		if (!target) {
+			return;
+		}
+		if (this.hal && this.target) {
+			this.hal.type = "seek";
+		}
+		this.shoot(target);
+	};
+
 	this.hack_init = function() {
 		// HACK: If the current level's team is not the default, wipe the indicators.
 		// This prevents impossible to fulfill indicator conditions.
@@ -1988,8 +2078,8 @@ function registerCheat(id:String, code:String, linked:Array) {
 				this.indicators.splice(0);
 			}
 		}
-	}
-	
+	};
+
 	var indHackHook:Object = _level0.addPostHook(this.init, this.hack_init);
 	this.init = indHackHook.override;
 }]]></script>
@@ -2577,7 +2667,7 @@ function CACMod_OnGameMenu():Void {
 		var hook9:Object = wrapper.addPostHook(game.Weapon, WeaponHook);
 		game.Weapon = hook9.override;
 		
-		// Hook Unit to fix land units not picking up crates when embarking from a carrier.
+		// Hook Unit to fix land units not picking up crates when disembarking from a carrier.
 		var hook10:Object = wrapper.addPostHook(game.Unit, UnitHook);
 		game.Unit = hook10.override;
 
@@ -2619,6 +2709,18 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="16012" publishTime="1493618426"/>
+          <PublishItem publishSize="16046" publishTime="1493618062"/>
+          <PublishItem publishSize="16046" publishTime="1493618041"/>
+          <PublishItem publishSize="16046" publishTime="1493617633"/>
+          <PublishItem publishSize="16046" publishTime="1493617608"/>
+          <PublishItem publishSize="16024" publishTime="1493617518"/>
+          <PublishItem publishSize="16046" publishTime="1493617019"/>
+          <PublishItem publishSize="16046" publishTime="1493616920"/>
+          <PublishItem publishSize="16046" publishTime="1493616909"/>
+          <PublishItem publishSize="16046" publishTime="1493616836"/>
+          <PublishItem publishSize="15538" publishTime="1493615330"/>
+          <PublishItem publishSize="15503" publishTime="1493613485"/>
           <PublishItem publishSize="15503" publishTime="1493613293"/>
           <PublishItem publishSize="15506" publishTime="1493612078"/>
           <PublishItem publishSize="15492" publishTime="1493611945"/>
@@ -2627,17 +2729,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="15797" publishTime="1478412410"/>
           <PublishItem publishSize="15805" publishTime="1478412191"/>
           <PublishItem publishSize="15820" publishTime="1478407492"/>
-          <PublishItem publishSize="15820" publishTime="1478407190"/>
-          <PublishItem publishSize="15801" publishTime="1478406511"/>
-          <PublishItem publishSize="15786" publishTime="1478406258"/>
-          <PublishItem publishSize="15697" publishTime="1478403149"/>
-          <PublishItem publishSize="15657" publishTime="1478399428"/>
-          <PublishItem publishSize="15657" publishTime="1478223372"/>
-          <PublishItem publishSize="15663" publishTime="1468811136"/>
-          <PublishItem publishSize="15662" publishTime="1468811029"/>
-          <PublishItem publishSize="15519" publishTime="1462583971"/>
-          <PublishItem publishSize="15570" publishTime="1462583819"/>
-          <PublishItem publishSize="15570" publishTime="1462583724"/>
-          <PublishItem publishSize="15542" publishTime="1462583594"/>
      </publishHistory>
 </DOMDocument>
