@@ -380,8 +380,55 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
+                    <DOMLayer name="Unit" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="UnitHook" color="#9933CC" parentLayerIndex="13" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function UnitHook(parent, type, x, y, angle, team, damage, target, obj, respawn) {
+	//ETX  wuz here
+	this.doCheckGroundedPassengers = function() {
+		for (i in this.stats.contents) {
+			if (!this.stats.contents[i].stats.flying) {
+				return true;
+			}
+		}
+		return false;
+	};
+
+	this.doDeploy = function() {
+		if (!this.stats.carrier) {
+			return;
+		}
+		if (this.stats.flying && (this.nav.landerPerc != 100)) {
+			return;
+		}
+		//and here  
+		var shouldPickup = this.doCheckGroundedPassengers();
+		if (shouldPickup) {
+			this.nav.checkCollect();
+		}
+
+		while (this.stats.contents.length) {
+			this.stats.contents.shift().doEmbark(this);
+		}
+
+		this.nav.voyage(this.nav.currentX,this.nav.currentY + 1);
+		this.hilite = true;
+		this.deploy = false;
+		this.nav.landerPerc = 75;
+		this.nav.still = 0;
+		this.nav.hesitate = 0;
+		this.ordered = true;
+	};
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
                     <DOMLayer name="UnitNav" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="UnitNavHook" color="#9933CC" parentLayerIndex="13" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="UnitNavHook" color="#9933CC" parentLayerIndex="15" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -402,7 +449,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="LevelStats" color="#FF4FFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="outcomeHook" color="#4FFF4F" parentLayerIndex="15" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="outcomeHook" color="#4FFF4F" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -435,7 +482,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="LevelStatsHook" color="#9933CC" parentLayerIndex="15" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="LevelStatsHook" color="#9933CC" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -1874,7 +1921,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Level" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="shootHook" color="#4FFF4F" parentLayerIndex="18" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="shootHook" color="#4FFF4F" parentLayerIndex="20" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -1889,7 +1936,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="18" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="20" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -1952,7 +1999,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Control" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="ControlHook" color="#9933CC" parentLayerIndex="21" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="ControlHook" color="#9933CC" parentLayerIndex="23" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2167,7 +2214,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Game" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="23" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="25" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript offsets="1240,332">
@@ -2247,7 +2294,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Panel" color="#808080" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="PanelAppend" color="#4FFF4F" parentLayerIndex="25" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="PanelAppend" color="#4FFF4F" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2459,7 +2506,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Mod" color="#FF800A" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="27" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="29" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2524,11 +2571,15 @@ function CACMod_OnGameMenu():Void {
 		// Hook Control (see comments in ControlHook for more information).
 		var hook8:Object = wrapper.addPostHook(game.Control, ControlHook);
 		game.Control = hook8.override;
-				
+		
 		// Hook Weapon to fix a bug where projectiles didn't test collision until after their first move,
 		// leading to missed collisions if the projectile already started at it's target.
 		var hook9:Object = wrapper.addPostHook(game.Weapon, WeaponHook);
 		game.Weapon = hook9.override;
+		
+		// Hook Unit to fix land units not picking up crates when embarking from a carrier.
+		var hook10:Object = wrapper.addPostHook(game.Unit, UnitHook);
+		game.Unit = hook10.override;
 
 		PanelAppend.apply(game.panel);
 		
@@ -2549,7 +2600,7 @@ function CACMod_OnGameMenu():Void {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="29" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2568,6 +2619,9 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="15503" publishTime="1493613293"/>
+          <PublishItem publishSize="15506" publishTime="1493612078"/>
+          <PublishItem publishSize="15492" publishTime="1493611945"/>
           <PublishItem publishSize="15159" publishTime="1487620879"/>
           <PublishItem publishSize="15797" publishTime="1478413309"/>
           <PublishItem publishSize="15797" publishTime="1478412410"/>
@@ -2585,8 +2639,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="15570" publishTime="1462583819"/>
           <PublishItem publishSize="15570" publishTime="1462583724"/>
           <PublishItem publishSize="15542" publishTime="1462583594"/>
-          <PublishItem publishSize="15546" publishTime="1462581898"/>
-          <PublishItem publishSize="15549" publishTime="1462581860"/>
-          <PublishItem publishSize="15519" publishTime="1462581192"/>
      </publishHistory>
 </DOMDocument>
