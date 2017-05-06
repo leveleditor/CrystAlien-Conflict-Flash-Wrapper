@@ -695,7 +695,8 @@ function registerCheat(id:String, code:String, linked:Array) {
 			{
 			this.buildings.push(new Building(this, "BA_good", 1, 11));
 			this.buildings.push(new Building(this, "BB_good", 3, 11));
-			this.units.push(new Unit(this, "UD_good", 10, 5, .5));
+			// Fixed a mountain tile becoming traversable by moving the miner off of it (from position 10, 5 to 11, 6).
+			this.units.push(new Unit(this, "UD_good", 11, 6, .5));
 			this.units.push(temp = new Unit(this, "UA_good", 3, 9, .25));
 			this.units.push(a = new Unit(this, "UA_good", 4, 9, .5));
 			this.units.push(b = new Unit(this, "UA_good", 4, 9, .125));
@@ -2884,6 +2885,11 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="16956" publishTime="1494100262"/>
+          <PublishItem publishSize="16955" publishTime="1494100220"/>
+          <PublishItem publishSize="16953" publishTime="1494100175"/>
+          <PublishItem publishSize="16953" publishTime="1494100129"/>
+          <PublishItem publishSize="16953" publishTime="1494099435"/>
           <PublishItem publishSize="16953" publishTime="1494099412"/>
           <PublishItem publishSize="16953" publishTime="1494099359"/>
           <PublishItem publishSize="16953" publishTime="1494099325"/>
@@ -2899,10 +2905,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="16046" publishTime="1493617608"/>
           <PublishItem publishSize="16024" publishTime="1493617518"/>
           <PublishItem publishSize="16046" publishTime="1493617019"/>
-          <PublishItem publishSize="16046" publishTime="1493616920"/>
-          <PublishItem publishSize="16046" publishTime="1493616909"/>
-          <PublishItem publishSize="16046" publishTime="1493616836"/>
-          <PublishItem publishSize="15538" publishTime="1493615330"/>
-          <PublishItem publishSize="15503" publishTime="1493613485"/>
      </publishHistory>
 </DOMDocument>
