@@ -506,14 +506,17 @@ function registerCheat(id:String, code:String, linked:Array) {
 	}
 
 	if (this.level == 19) {
+		// Fix lose condition: previously if you didn't own the breeding pit (not captured, been sold or destroyed)
+		// and you only owned one saboteur, and you used it to capture the satellite uplink, you would lose.
 		if (this.findBuilding("BH_good").friend) {
 			this.win();
-		}
-		if (!this.findBuilding("BC_evil").friend && !this.findUnit("UB_evil")) {
-			this.lose();
-		}
-		if (!this.findBuilding("BH_good")) {
-			this.lose();
+		} else {
+			if (!this.findBuilding("BC_evil").friend && !this.findUnit("UB_evil")) {
+				this.lose();
+			}
+			if (!this.findBuilding("BH_good")) {
+				this.lose();
+			}
 		}
 	}
 
@@ -627,8 +630,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			this.win();
 		}
 	}
-	//if ((this.outcomeFutures == 1) && this.findBuilding("BA_"+this.parent.team).friend && !this.findUnit("UD_"+this.parent.team).friend && (this.cash < this.construction.shortcuts["UD_"+this.parent.team].cost))     
-	//this.outcomeFutures--;
+
 	if (this.outcomeFutures == 1) {
 		var cashSunk = 0;// to fix bug where you have the funds, but it is committed to a constructing item
 		if (this.construction.constructingBuilding) {
@@ -2882,6 +2884,12 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="16953" publishTime="1494099412"/>
+          <PublishItem publishSize="16953" publishTime="1494099359"/>
+          <PublishItem publishSize="16953" publishTime="1494099325"/>
+          <PublishItem publishSize="16953" publishTime="1494098849"/>
+          <PublishItem publishSize="16953" publishTime="1494098831"/>
+          <PublishItem publishSize="16946" publishTime="1494097001"/>
           <PublishItem publishSize="16953" publishTime="1494096865"/>
           <PublishItem publishSize="16981" publishTime="1494096791"/>
           <PublishItem publishSize="16012" publishTime="1493618426"/>
@@ -2896,11 +2904,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="16046" publishTime="1493616836"/>
           <PublishItem publishSize="15538" publishTime="1493615330"/>
           <PublishItem publishSize="15503" publishTime="1493613485"/>
-          <PublishItem publishSize="15503" publishTime="1493613293"/>
-          <PublishItem publishSize="15506" publishTime="1493612078"/>
-          <PublishItem publishSize="15492" publishTime="1493611945"/>
-          <PublishItem publishSize="15159" publishTime="1487620879"/>
-          <PublishItem publishSize="15797" publishTime="1478413309"/>
-          <PublishItem publishSize="15797" publishTime="1478412410"/>
      </publishHistory>
 </DOMDocument>
