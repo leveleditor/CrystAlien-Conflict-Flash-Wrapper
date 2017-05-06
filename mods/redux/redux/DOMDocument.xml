@@ -449,21 +449,24 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="LevelStats" color="#FF4FFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="outcomeHook" color="#4FFF4F" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="outcomeOverride" color="#4FFF4F" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
-                                        <script><![CDATA[function outcomeHook() {
+                                        <script><![CDATA[function outcomeOverride() {
 	if (!this.active) {
 		return;
 	}
 
-	if (this.level == 23) {
-		// Fix lose condition: previously if you lost all buildings,
-		// you'd be unable to win (can't build anywhere) and
-		// unable to lose (AI won't attack your units).
-		if (!this.findBuilding("BB_good").friend && !this.findBuilding("BD_good")) {
-			this.lose();
+	if ((this.level == 1) || (this.level == 11) || (this.level == 26)) {
+		if (this.cash >= 1) {
+			this.win();
+		}
+	}
+
+	if (this.level == 6) {
+		if (!this.findBuilding("BC_evil")) {
+			this.win();
 		}
 	}
 
@@ -475,6 +478,177 @@ function registerCheat(id:String, code:String, linked:Array) {
 				this.lose();
 			}
 		}
+		if (this.findBuilding("BG_evil").friend) {
+			this.win();
+		}
+		if (!this.findBuilding("BG_evil")) {
+			this.lose();
+		}
+	}
+
+	if ((this.level == 10) || (this.level == 20)) {
+		if (!(this.count % 5000) && this.friendlyTarget.active && this.findBuilding("BH_" + this.parent.oppo) && !this.findBuilding("BH_" + this.parent.oppo).friend) {
+			this.parent.sfx.play("music_ingame_" + this.jukebox + "_stop");
+			do {
+				var newjuke = random(4) + 1;
+			} while (newjuke == this.jukebox);
+			this.jukebox = newjuke;
+			this.parent.sfx.play("music_ingame_" + this.jukebox + "_start");
+			this.launchSuperweapon(this.friendlyTarget.posX,this.friendlyTarget.posY);
+		}
+	}
+
+	if (this.level == 15) {
+		var isBuggy = this.findUnit("UE_evil");
+		if (!isBuggy) {
+			this.lose();
+		}
+	}
+
+	if (this.level == 19) {
+		if (this.findBuilding("BH_good").friend) {
+			this.win();
+		}
+		if (!this.findBuilding("BC_evil").friend && !this.findUnit("UB_evil")) {
+			this.lose();
+		}
+		if (!this.findBuilding("BH_good")) {
+			this.lose();
+		}
+	}
+
+	if (this.level == 22) {
+		var isPitch = this.findBuilding("BI_good");
+		if ((this.indicators.length == 2) && isPitch) {
+			this.indicator = false;
+			this.training = true;
+			for (var i in this.units) {
+				this.units[i].target = false;
+				this.units[i].nav.hesitate = 1000;
+				this.units[i].weaponCharge = 1000;
+			}
+			this.units.push(new Unit(this, "UB_good", 9, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_good", 9, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_good", 9, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_good", 9, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_good", 9, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_evil", 12, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_evil", 12, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_evil", 12, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_evil", 12, 13, 0, this.parent.team, null, isPitch));
+			this.units.push(new Unit(this, "UB_evil", 12, 13, 0, this.parent.team, null, isPitch));
+		} else if ((this.indicators.length == 0) && !this.indicator) {
+			this.camera.focus = isPitch;
+			this.win();
+		}
+	}
+
+	if (this.level == 23) {
+		// Fix lose condition: previously if you lost all buildings,
+		// you'd be unable to win (can't build anywhere) and
+		// unable to lose (AI won't attack your units).
+		if (!this.findBuilding("BB_good").friend && !this.findBuilding("BD_good")) {
+			this.lose();
+		}
+
+		if (!this.powerLow && (this.construction.shortcuts["BH_good"].total >= 4)) {
+			this.camera.focus = this.arena.tileHandles["_8_7"];
+			this.win();
+		}
+	}
+
+	if (this.level == 24) {
+		var isBuggy = this.findUnit("UE_good");
+		if ((isBuggy.tilePos.x == 12) && (isBuggy.tilePos.y == 2)) {
+			this.win();
+		}
+		if (!isBuggy) {
+			this.lose();
+		}
+	}
+
+	if (this.level == 27) {
+		if (!this.findUnit("UD_good")) {
+			this.win();
+		}
+		if (!this.findUnit("UD_evil")) {
+			this.lose();
+		}
+	}
+
+	if (this.level == 29) {
+		var sleigh = this.findBuilding("BJ_evil");
+		var santa = this.findUnit("UM_evil");
+		var isPresent = this.findUnit("UO_evil");
+		if (!sleigh) {
+			this.lose();
+		}
+		if (!santa) {
+			this.lose();
+		}
+		if (!this.findUnit("UN_evil")) {
+			this.lose();
+		}
+		if (!isPresent) {
+			if (this.indicators.length == 2) {
+				this.indicator = false;
+				this.training = true;
+				for (var i in this.units) {
+					if (this.units[i].friend) {
+						this.units[i].nav.returnHome();
+					}
+				}
+				this.training = true;
+				this.camera.focus = sleigh;
+			} else if ((this.indicators.length == 0) && !this.indicator && (santa.nav.path.length < 4)) {
+				this.win();
+			}
+		}
+	}
+
+	if (this.level == 31) {
+		var isDriller = this.findBuilding("BL_good");
+		if (isDriller) {
+			this.win();
+		}
+	}
+
+	if (this.level == 32) {
+		if (this.specialBuilding.health == this.specialBuilding.stats.maxHealth) {
+			this.win();
+		}
+		if (!this.specialBuilding.active) {
+			this.lose();
+		}
+	}
+
+	if (this.level > 1) {
+		if (!this.outcomeThreats) {
+			this.win();
+		}
+	}
+	//if ((this.outcomeFutures == 1) && this.findBuilding("BA_"+this.parent.team).friend && !this.findUnit("UD_"+this.parent.team).friend && (this.cash < this.construction.shortcuts["UD_"+this.parent.team].cost))     
+	//this.outcomeFutures--;
+	if (this.outcomeFutures == 1) {
+		var cashSunk = 0;// to fix bug where you have the funds, but it is committed to a constructing item
+		if (this.construction.constructingBuilding) {
+			cashSunk += this.construction.constructingBuilding.cost * (this.construction.constructingBuilding.progress / this.construction.constructingBuilding.constructionTime);
+		}
+		if (this.construction.constructingUnit) {
+			cashSunk += this.construction.constructingUnit.cost * (this.construction.constructingUnit.progress / this.construction.constructingUnit.constructionTime);
+		}
+		if (this.construction.buildingSite) {
+			cashSunk += this.construction.buildingSite.stats.cost;
+		}
+		if (this.findBuilding("BA_" + this.parent.team).friend && !this.findUnit("UD_" + this.parent.team).friend && ((this.cash + cashSunk) < this.construction.shortcuts["UD_" + this.parent.team].cost)) {
+			this.outcomeFutures--;
+		}
+		if (this.findBuilding("BK_" + this.parent.team).friend && ((this.cash + cashSunk) < this.construction.shortcuts["UP_" + this.parent.team].cost)) {
+			this.outcomeFutures--;
+		}
+	}
+	if (!this.outcomeFutures) {
+		this.lose();
 	}
 }]]></script>
                                    </Actionscript>
@@ -1911,8 +2085,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			}
 		}
 		
-	var hookOutcome:Object = _level0.addPreHook(this.outcome, outcomeHook);
-	this.outcome = hookOutcome.override;
+	this.outcome = outcomeOverride;
 }
 ]]></script>
                                    </Actionscript>
@@ -2709,6 +2882,8 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="16953" publishTime="1494096865"/>
+          <PublishItem publishSize="16981" publishTime="1494096791"/>
           <PublishItem publishSize="16012" publishTime="1493618426"/>
           <PublishItem publishSize="16046" publishTime="1493618062"/>
           <PublishItem publishSize="16046" publishTime="1493618041"/>
@@ -2727,7 +2902,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="15159" publishTime="1487620879"/>
           <PublishItem publishSize="15797" publishTime="1478413309"/>
           <PublishItem publishSize="15797" publishTime="1478412410"/>
-          <PublishItem publishSize="15805" publishTime="1478412191"/>
-          <PublishItem publishSize="15820" publishTime="1478407492"/>
      </publishHistory>
 </DOMDocument>
