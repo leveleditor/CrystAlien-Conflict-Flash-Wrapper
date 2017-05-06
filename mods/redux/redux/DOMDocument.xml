@@ -1067,7 +1067,12 @@ function registerCheat(id:String, code:String, linked:Array) {
 		if (this.level == 12) // destroy mining astros
 			{
 			this.units.push(temp = new Unit(this, "UD_good", 4, 4, .25, null, .3));
-			temp.stats.maxCargo = 999999900; //temp.stats.repair = true; // Josh: removed repair stat. why was it even there? we may never know.
+			temp.stats.maxCargo = 999999900;
+			// 1: Fixed miner being able to repair itself when playing as the opposite team, by removing repair stat.
+			// 2: Fixed level completing without destroying miner when playing as aliens as a result of 1.
+			if (this.parent.team == "evil") {
+				temp.stats.repair = true;
+			}
 			this.units.push(new Unit(this, "UA_good", 3, 4, .75, null, null, "guard", temp));
 			this.units.push(new Unit(this, "UA_good", 5, 4, .75, null, null, "guard", temp));
 			this.units.push(new Unit(this, "UA_good", 4, 3, .75, null, null, "roam", 8));
@@ -2885,6 +2890,12 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="17015" publishTime="1494102575"/>
+          <PublishItem publishSize="17048" publishTime="1494102419"/>
+          <PublishItem publishSize="17047" publishTime="1494102191"/>
+          <PublishItem publishSize="16994" publishTime="1494101744"/>
+          <PublishItem publishSize="16994" publishTime="1494101736"/>
+          <PublishItem publishSize="16956" publishTime="1494100447"/>
           <PublishItem publishSize="16956" publishTime="1494100262"/>
           <PublishItem publishSize="16955" publishTime="1494100220"/>
           <PublishItem publishSize="16953" publishTime="1494100175"/>
@@ -2899,11 +2910,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="16953" publishTime="1494096865"/>
           <PublishItem publishSize="16981" publishTime="1494096791"/>
           <PublishItem publishSize="16012" publishTime="1493618426"/>
-          <PublishItem publishSize="16046" publishTime="1493618062"/>
-          <PublishItem publishSize="16046" publishTime="1493618041"/>
-          <PublishItem publishSize="16046" publishTime="1493617633"/>
-          <PublishItem publishSize="16046" publishTime="1493617608"/>
-          <PublishItem publishSize="16024" publishTime="1493617518"/>
-          <PublishItem publishSize="16046" publishTime="1493617019"/>
      </publishHistory>
 </DOMDocument>
