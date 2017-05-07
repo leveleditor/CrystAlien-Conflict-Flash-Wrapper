@@ -25,6 +25,9 @@ function max() {
 function sgn() {
 	return _level1.sgn.apply(_root._level1, arguments);
 }
+function isArray() {
+	return _level1.isArray.apply(_root.level1, arguments);
+}
 
 function kvEvent() {
 	return _level1.kvEvent.apply(_root._level1, arguments);
@@ -448,8 +451,105 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
+                    <DOMLayer name="Indicator" color="#9933CC" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="IndicatorHook" color="#FF800A" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function IndicatorHook(parent, objA, objB, message, conditionType, lifespan) {
+
+	// If this indicator is of the objective to select one or more units...
+	if (this.conditionType == "selected") {
+		if (isArray(this.objA)) {
+			// Save each unit's current speed and temporarily set it to 0 so they cannot move.
+			for (var i in this.objA) {
+				this.objA[i].stats.indicatorHackSpeed = this.objA[i].stats.speed;
+				this.objA[i].stats.speed = 0;
+			}
+		} else {
+			// Save the unit's current speed and temporarily set it to 0 so it cannot move.
+			this.objA.stats.indicatorHackSpeed = this.objA.stats.speed;
+			this.objA.stats.speed = 0;
+		}
+	}
+
+	this.conditionMet = function() {
+		this.updatePos();
+		if (this.lifespan) {
+			this.lifespan--;
+			if (!this.lifespan) {
+				return true;
+			}
+		}
+		if (this.conditionType == "focus") {
+			return true;
+		}
+		if (this.conditionType == "selected") {
+			if (isArray(this.objA)) {
+				for (var i in this.objA) {
+					if (!this.objA[i].selected) {
+						return false;
+					}
+				}
+				// Restore the speed for each of the units.
+				for (var i in this.objA) {
+					this.objA[i].stats.speed = this.objA[i].stats.indicatorHackSpeed;
+				}
+				return true;
+			}
+			if (this.objA.selected) {
+				// Restore the speed for the unit.
+				this.objA.stats.speed = this.objA.stats.indicatorHackSpeed;
+				return true;
+			}
+		}
+		if (this.conditionType == "voyage") {
+			if ((this.objA.tilePos.x == this.objB.tilePos.x) && (this.objA.tilePos.y == this.objB.tilePos.y)) {
+				return true;
+			}
+		}
+		if (this.conditionType == "construction") {
+			if (this.parent.findBuilding(this.objA)) {
+				return true;
+			}
+			if (this.parent.findUnit(this.objA)) {
+				return true;
+			}
+			this.parent.parent.hud.showMessage(dialogue("int_construction_hint"));
+		}
+		if (this.conditionType == "message") {
+			if ((this.lifespan == undefined) || (this.lifespan >= 40)) {
+				this.parent.parent.hud.showMessage(this.message);
+			}
+		}
+		return false;
+	};
+
+	// This function is not in the original code, it's mainly just to revert the
+	// speed hack for selection type indicators. See LevelHook hack_init function.
+	this.cancel = function() {
+		if (this.conditionType == "selected") {
+			if (isArray(this.objA)) {
+				// Restore the speed for each of the units.
+				for (var i in this.objA) {
+					this.objA[i].stats.speed = this.objA[i].stats.indicatorHackSpeed;
+				}
+			}
+			if (this.objA.selected) {
+				// Restore the speed for the unit.
+				this.objA.stats.speed = this.objA.stats.indicatorHackSpeed;
+			}
+		}
+	};
+
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
                     <DOMLayer name="LevelStats" color="#FF4FFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="outcomeOverride" color="#4FFF4F" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="outcomeOverride" color="#4FFF4F" parentLayerIndex="19" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -658,7 +758,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="LevelStatsHook" color="#9933CC" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="LevelStatsHook" color="#9933CC" parentLayerIndex="19" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2102,7 +2202,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Level" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="shootHook" color="#4FFF4F" parentLayerIndex="20" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="shootHook" color="#4FFF4F" parentLayerIndex="22" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2117,7 +2217,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="20" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="22" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2312,6 +2412,10 @@ function registerCheat(id:String, code:String, linked:Array) {
 		// This prevents impossible to fulfill indicator conditions.
 		if (this.parent.team != this.parent.parent.teams1337[this.level]) {
 			if (this.indicators.length > 0) {
+				for (var i in this.indicators) {
+					// Give the indicator a chance to revert any changes it might have made.
+					this.indicators[i].cancel();
+				}
 				this.indicators.splice(0);
 			}
 		}
@@ -2326,7 +2430,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Control" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="ControlHook" color="#9933CC" parentLayerIndex="23" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="ControlHook" color="#9933CC" parentLayerIndex="25" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2541,7 +2645,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Game" color="#4FFFFF" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="25" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript offsets="1240,332">
@@ -2621,7 +2725,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Panel" color="#808080" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="PanelAppend" color="#4FFF4F" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="PanelAppend" color="#4FFF4F" parentLayerIndex="29" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2833,7 +2937,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Mod" color="#FF800A" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="29" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="31" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2908,6 +3012,11 @@ function CACMod_OnGameMenu():Void {
 		var hook10:Object = wrapper.addPostHook(game.Unit, UnitHook);
 		game.Unit = hook10.override;
 
+		// Hook Indicator to fix bugs with being able to move units before the indicator requests that they be selected.
+		// Now the units will not move until the indicator is ready and the condition is met.
+		var hook11:Object = wrapper.addPostHook(game.Indicator, IndicatorHook);
+		game.Indicator = hook11.override;
+		
 		PanelAppend.apply(game.panel);
 		
 		// For fun of course ;)
@@ -2927,7 +3036,7 @@ function CACMod_OnGameMenu():Void {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="29" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="31" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -2946,25 +3055,25 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
-          <PublishItem publishSize="17259" publishTime="1494125320"/>
-          <PublishItem publishSize="17259" publishTime="1494123872"/>
-          <PublishItem publishSize="16975" publishTime="1494102691"/>
-          <PublishItem publishSize="17015" publishTime="1494102575"/>
-          <PublishItem publishSize="17048" publishTime="1494102419"/>
-          <PublishItem publishSize="17047" publishTime="1494102191"/>
-          <PublishItem publishSize="16994" publishTime="1494101744"/>
-          <PublishItem publishSize="16994" publishTime="1494101736"/>
-          <PublishItem publishSize="16956" publishTime="1494100447"/>
-          <PublishItem publishSize="16956" publishTime="1494100262"/>
-          <PublishItem publishSize="16955" publishTime="1494100220"/>
-          <PublishItem publishSize="16953" publishTime="1494100175"/>
-          <PublishItem publishSize="16953" publishTime="1494100129"/>
-          <PublishItem publishSize="16953" publishTime="1494099435"/>
-          <PublishItem publishSize="16953" publishTime="1494099412"/>
-          <PublishItem publishSize="16953" publishTime="1494099359"/>
-          <PublishItem publishSize="16953" publishTime="1494099325"/>
-          <PublishItem publishSize="16953" publishTime="1494098849"/>
-          <PublishItem publishSize="16953" publishTime="1494098831"/>
-          <PublishItem publishSize="16946" publishTime="1494097001"/>
+          <PublishItem publishSize="17742" publishTime="1494136748"/>
+          <PublishItem publishSize="17742" publishTime="1494136740"/>
+          <PublishItem publishSize="17687" publishTime="1494135653"/>
+          <PublishItem publishSize="17687" publishTime="1494134166"/>
+          <PublishItem publishSize="17665" publishTime="1494133937"/>
+          <PublishItem publishSize="17664" publishTime="1494132687"/>
+          <PublishItem publishSize="17657" publishTime="1494132634"/>
+          <PublishItem publishSize="17658" publishTime="1494132468"/>
+          <PublishItem publishSize="17338" publishTime="1494131730"/>
+          <PublishItem publishSize="17888" publishTime="1494131319"/>
+          <PublishItem publishSize="17888" publishTime="1494131267"/>
+          <PublishItem publishSize="17883" publishTime="1494131081"/>
+          <PublishItem publishSize="17938" publishTime="1494130972"/>
+          <PublishItem publishSize="17947" publishTime="1494130887"/>
+          <PublishItem publishSize="17945" publishTime="1494130838"/>
+          <PublishItem publishSize="17932" publishTime="1494130781"/>
+          <PublishItem publishSize="17931" publishTime="1494130737"/>
+          <PublishItem publishSize="17909" publishTime="1494130576"/>
+          <PublishItem publishSize="17912" publishTime="1494130488"/>
+          <PublishItem publishSize="17907" publishTime="1494130320"/>
      </publishHistory>
 </DOMDocument>
