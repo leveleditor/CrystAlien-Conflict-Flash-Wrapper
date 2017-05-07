@@ -2140,7 +2140,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		if (this.levelUpCounter == this.levelUpCounterMax - 10) {
 			this.parent.flashin();
 		}
-		// last time     
+		// last time
 		//leave alone
 		if (this.levelUpCounter == this.levelUpCounterMax) {
 			Mouse.show();
@@ -2157,6 +2157,62 @@ function registerCheat(id:String, code:String, linked:Array) {
 				}
 			} else {
 				this.parent.parent.gameOver();
+			}
+		}
+	};
+
+	this.win = function() {
+		this.arena.shroud.clear();
+		if (this.level < 21) {
+			if ((this.level != 10) && (this.level != 20)) {
+				if (this.level < 11) {
+					SO.data.goodUnlocked = this.level;
+				} else if (this.level < 21) {
+					SO.data.evilUnlocked = this.level;
+				}
+			}
+		}
+		this.victory = true;
+		this.active = false;
+		this.parent.sfx.play("music_ingame_" + this.jukebox + "_stop");
+		this.parent.sfx.play("INT_optionsadd");
+		for (var i in this.units) {
+			var current = this.units[i];
+			if (current.active && !current.friend) {
+				// Fix opposing team's units remaining after winning a level.
+				// The real problem is that the units are destroyed before the buildings that respawn them.
+				// So we can just set them to not respawn.
+				current.respawn = false;
+				current.destroy();
+			}
+		}
+		for (var i in this.buildings) {
+			var current = this.buildings[i];
+			if (current.active && !current.friend) {
+				current.destroy();
+			}
+		}
+	};
+
+	this.lose = function() {
+		this.active = false;
+		this.victory = false;
+		this.parent.sfx.play("music_ingame_" + this.jukebox + "_stop");
+		this.parent.sfx.play("INT_optionsremove");
+		for (var i in this.units) {
+			var current = this.units[i];
+			if (current.active && current.friend) {
+				// Fix player team's units remaining after losing a level.
+				// The real problem is that the units are destroyed before the buildings that respawn them.
+				// So we can just set them to not respawn.
+				current.respawn = false;
+				current.destroy();
+			}
+		}
+		for (var i in this.buildings) {
+			var current = this.buildings[i];
+			if (current.active && current.friend) {
+				current.destroy();
 			}
 		}
 	};
@@ -2239,7 +2295,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			if (target && this.hal && !(target.isBuilding && target.stats.weapon)) {
 				this.target = target;
 			}
-			// we don't want to do this every time! 
+			// we don't want to do this every time!
 			this.blink = 10 + random(4);
 		}
 		if (!target) {
@@ -2890,6 +2946,9 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="17259" publishTime="1494125320"/>
+          <PublishItem publishSize="17259" publishTime="1494123872"/>
+          <PublishItem publishSize="16975" publishTime="1494102691"/>
           <PublishItem publishSize="17015" publishTime="1494102575"/>
           <PublishItem publishSize="17048" publishTime="1494102419"/>
           <PublishItem publishSize="17047" publishTime="1494102191"/>
@@ -2907,8 +2966,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="16953" publishTime="1494098849"/>
           <PublishItem publishSize="16953" publishTime="1494098831"/>
           <PublishItem publishSize="16946" publishTime="1494097001"/>
-          <PublishItem publishSize="16953" publishTime="1494096865"/>
-          <PublishItem publishSize="16981" publishTime="1494096791"/>
-          <PublishItem publishSize="16012" publishTime="1493618426"/>
      </publishHistory>
 </DOMDocument>
