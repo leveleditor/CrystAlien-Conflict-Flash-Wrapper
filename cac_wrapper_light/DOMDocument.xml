@@ -593,8 +593,8 @@
                                         <script><![CDATA[import utils.*;
 
 // CAC Settings
-var asseturl:String = "v6_5_";
-var xmlurl:String = "dialogue_v6_5_light.xml";
+var asseturl:String = "v6_4_";
+var xmlurl:String = "dialogue_wrapper_light.xml";
 var gamename:String = "CrystalAlienConflict";
 
 // Mod related
@@ -657,9 +657,33 @@ function _getVersion() {
 	return getVersion();
 }
 
-function goFullScreen() {
-	Stage["displayState"] = "fullScreen";
-	trace("goFullScreen() requested, displayState = " + Stage["displayState"]);
+function enterFullscreen() {
+	Log("enterFullscreen() requested");
+	if (ExternalInterface.available) {
+		try {
+			ExternalInterface.call("enterFullscreen");
+			Stage.scaleMode = "showAll";
+			Log("Wrapper called enterFullscreen();");
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("enterFullscreen() : ExternalInterface not available.");
+	}
+}
+function exitFullscreen() {
+	Log("exitFullscreen() requested");
+	if (ExternalInterface.available) {
+		try {
+			ExternalInterface.call("exitFullscreen");
+			Stage.scaleMode = "noScale";
+			Log("Wrapper called exitFullscreen();");
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("exitFullscreen() : ExternalInterface not available.");
+	}
 }
 
 function deleteFromArray(arr:Array, key:Object, value:Object):Void {
@@ -1328,25 +1352,25 @@ stop();]]></script>
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
-          <PublishItem publishSize="34142" publishTime="1478830668"/>
-          <PublishItem publishSize="34143" publishTime="1478830649"/>
-          <PublishItem publishSize="33541" publishTime="1478830633"/>
-          <PublishItem publishSize="33541" publishTime="1478830606"/>
-          <PublishItem publishSize="34144" publishTime="1478830534"/>
-          <PublishItem publishSize="34141" publishTime="1478830507"/>
-          <PublishItem publishSize="34142" publishTime="1478830477"/>
-          <PublishItem publishSize="34141" publishTime="1478830455"/>
-          <PublishItem publishSize="34141" publishTime="1478830440"/>
-          <PublishItem publishSize="34140" publishTime="1478830288"/>
-          <PublishItem publishSize="34141" publishTime="1478830239"/>
-          <PublishItem publishSize="34158" publishTime="1478830155"/>
-          <PublishItem publishSize="34142" publishTime="1478830141"/>
-          <PublishItem publishSize="34157" publishTime="1478830123"/>
-          <PublishItem publishSize="34141" publishTime="1478829656"/>
-          <PublishItem publishSize="34143" publishTime="1478829646"/>
-          <PublishItem publishSize="34136" publishTime="1478826786"/>
-          <PublishItem publishSize="34133" publishTime="1478826219"/>
-          <PublishItem publishSize="34134" publishTime="1478826163"/>
-          <PublishItem publishSize="34136" publishTime="1478825831"/>
+          <PublishItem publishSize="34211" publishTime="1496789590"/>
+          <PublishItem publishSize="34209" publishTime="1496789562"/>
+          <PublishItem publishSize="34203" publishTime="1496789430"/>
+          <PublishItem publishSize="34198" publishTime="1496789168"/>
+          <PublishItem publishSize="34207" publishTime="1495940707"/>
+          <PublishItem publishSize="34206" publishTime="1495940573"/>
+          <PublishItem publishSize="34202" publishTime="1495937143"/>
+          <PublishItem publishSize="34200" publishTime="1495932279"/>
+          <PublishItem publishSize="34181" publishTime="1495932103"/>
+          <PublishItem publishSize="34189" publishTime="1495931961"/>
+          <PublishItem publishSize="34188" publishTime="1495602761"/>
+          <PublishItem publishSize="34149" publishTime="1495602512"/>
+          <PublishItem publishSize="34151" publishTime="1495602389"/>
+          <PublishItem publishSize="34136" publishTime="1495601087"/>
+          <PublishItem publishSize="34137" publishTime="1495600885"/>
+          <PublishItem publishSize="34138" publishTime="1495598282"/>
+          <PublishItem publishSize="34140" publishTime="1495597510"/>
+          <PublishItem publishSize="34138" publishTime="1495597418"/>
+          <PublishItem publishSize="34127" publishTime="1495597350"/>
+          <PublishItem publishSize="34127" publishTime="1495597264"/>
      </publishHistory>
 </DOMDocument>

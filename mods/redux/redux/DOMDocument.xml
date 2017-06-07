@@ -2782,8 +2782,10 @@ function registerCheat(id:String, code:String, linked:Array) {
 	this.enterCode = function(code) {
 		var level = false;
 		if (code == "fullscreen") {
-			Stage["displayState"] = "fullScreen";
-			_level0.goFullScreen();
+			// Previously this cheat just used Flash's native fullscreen feature:
+			// Stage["displayState"] = "fullScreen";
+			// but now we instead call on the wrapper to handle going fullscreen.
+			_level0.enterFullscreen();
 			level = "cheatFullscreen";
 		}
 		if (code == "fatwallet") {
@@ -2901,6 +2903,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		for (var i in this.customCheats) {
 			this.customCheats[i].isEnabled = false;
 		}
+		_level0.exitFullscreen();
 	};
 	this.cheatsEnabled = function() {
 		var yesCheating = false;
@@ -2962,6 +2965,12 @@ function CACMod_OnGameMenu():Void {
 	if (!hookedIn) {
 		// Make a nicer reference to the game's root.
 		game = _level1;
+		
+		// So long story short, this is basically what made v6.5 do anything resembling antialiasing.
+		// Now that we've gone back to using v6.4, we can just copy this line of code here.
+		// Although we technically don't need it anymore, it's good to keep it for reference
+		// and in case another mod decides to restore the old fullscreen method or such.
+		Stage.fullScreenSourceRect = new flash.geom.Rectangle(0, 0, 600, 400);
 		
 		// No more high scores related functions!
 		game.sendScore = DisabledFunction;
@@ -3055,25 +3064,25 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
-          <PublishItem publishSize="17742" publishTime="1494136748"/>
-          <PublishItem publishSize="17742" publishTime="1494136740"/>
-          <PublishItem publishSize="17687" publishTime="1494135653"/>
-          <PublishItem publishSize="17687" publishTime="1494134166"/>
-          <PublishItem publishSize="17665" publishTime="1494133937"/>
-          <PublishItem publishSize="17664" publishTime="1494132687"/>
-          <PublishItem publishSize="17657" publishTime="1494132634"/>
-          <PublishItem publishSize="17658" publishTime="1494132468"/>
-          <PublishItem publishSize="17338" publishTime="1494131730"/>
-          <PublishItem publishSize="17888" publishTime="1494131319"/>
-          <PublishItem publishSize="17888" publishTime="1494131267"/>
-          <PublishItem publishSize="17883" publishTime="1494131081"/>
-          <PublishItem publishSize="17938" publishTime="1494130972"/>
-          <PublishItem publishSize="17947" publishTime="1494130887"/>
-          <PublishItem publishSize="17945" publishTime="1494130838"/>
-          <PublishItem publishSize="17932" publishTime="1494130781"/>
-          <PublishItem publishSize="17931" publishTime="1494130737"/>
-          <PublishItem publishSize="17909" publishTime="1494130576"/>
-          <PublishItem publishSize="17912" publishTime="1494130488"/>
-          <PublishItem publishSize="17907" publishTime="1494130320"/>
+          <PublishItem publishSize="17785" publishTime="1496799312"/>
+          <PublishItem publishSize="17785" publishTime="1496799283"/>
+          <PublishItem publishSize="17785" publishTime="1496637228"/>
+          <PublishItem publishSize="17080" publishTime="1496211687"/>
+          <PublishItem publishSize="17080" publishTime="1496211660"/>
+          <PublishItem publishSize="17799" publishTime="1495942027"/>
+          <PublishItem publishSize="17793" publishTime="1495941802"/>
+          <PublishItem publishSize="17786" publishTime="1495941690"/>
+          <PublishItem publishSize="17721" publishTime="1495932243"/>
+          <PublishItem publishSize="17745" publishTime="1495931957"/>
+          <PublishItem publishSize="17745" publishTime="1495931910"/>
+          <PublishItem publishSize="17739" publishTime="1495602542"/>
+          <PublishItem publishSize="17739" publishTime="1495602274"/>
+          <PublishItem publishSize="17763" publishTime="1495601093"/>
+          <PublishItem publishSize="17763" publishTime="1495600913"/>
+          <PublishItem publishSize="17763" publishTime="1495600573"/>
+          <PublishItem publishSize="17742" publishTime="1495600489"/>
+          <PublishItem publishSize="17782" publishTime="1495600062"/>
+          <PublishItem publishSize="17799" publishTime="1495599937"/>
+          <PublishItem publishSize="17801" publishTime="1495599597"/>
      </publishHistory>
 </DOMDocument>

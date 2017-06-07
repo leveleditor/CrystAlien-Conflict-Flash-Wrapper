@@ -2740,8 +2740,8 @@
                                         <script><![CDATA[import utils.*;
 
 // CAC Settings
-var asseturl:String = "v6_5_";
-var xmlurl:String = "dialogue_v6_5.xml";
+var asseturl:String = "v6_4_";
+var xmlurl:String = "dialogue_wrapper.xml";
 var gamename:String = "CrystalAlienConflict";
 
 // Mod related
@@ -2794,14 +2794,32 @@ function _getVersion() {
 	return getVersion();
 }
 
-function goFullScreen() {
-	Stage["displayState"] = "fullScreen";
-	Log("goFullScreen() requested, displayState = " + Stage["displayState"]);
-	Stage["displayState"] = "fullScreenInteractive";
-	Log("fullScreenInteractive requested, displayState = " + Stage["displayState"]);
-	if (Stage["displayState"] != "fullScreenInteractive") {
-		Stage["displayState"] = "fullScreen";
-		Log("fullScreenInteractive failed, falling back to fullScreen, displayState = " + Stage["displayState"]);
+function enterFullscreen() {
+	Log("enterFullscreen() requested");
+	if (ExternalInterface.available) {
+		try {
+			ExternalInterface.call("enterFullscreen");
+			Stage.scaleMode = "showAll";
+			Log("Wrapper called enterFullscreen();");
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("enterFullscreen() : ExternalInterface not available.");
+	}
+}
+function exitFullscreen() {
+	Log("exitFullscreen() requested");
+	if (ExternalInterface.available) {
+		try {
+			ExternalInterface.call("exitFullscreen");
+			Stage.scaleMode = "noScale";
+			Log("Wrapper called exitFullscreen();");
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("exitFullscreen() : ExternalInterface not available.");
 	}
 }
 
@@ -3688,6 +3706,13 @@ on (release) {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="73933" publishTime="1496789438"/>
+          <PublishItem publishSize="73934" publishTime="1496789171"/>
+          <PublishItem publishSize="73903" publishTime="1496365333"/>
+          <PublishItem publishSize="73901" publishTime="1496365251"/>
+          <PublishItem publishSize="73918" publishTime="1496358323"/>
+          <PublishItem publishSize="73917" publishTime="1496358014"/>
+          <PublishItem publishSize="73918" publishTime="1496357929"/>
           <PublishItem publishSize="73759" publishTime="1478222520"/>
           <PublishItem publishSize="73771" publishTime="1466550086"/>
           <PublishItem publishSize="73766" publishTime="1466549855"/>
@@ -3701,12 +3726,5 @@ on (release) {
           <PublishItem publishSize="73764" publishTime="1466549167"/>
           <PublishItem publishSize="73764" publishTime="1466548837"/>
           <PublishItem publishSize="73703" publishTime="1460520917"/>
-          <PublishItem publishSize="73687" publishTime="1460520811"/>
-          <PublishItem publishSize="73679" publishTime="1460520559"/>
-          <PublishItem publishSize="73678" publishTime="1460520512"/>
-          <PublishItem publishSize="73678" publishTime="1460520497"/>
-          <PublishItem publishSize="73681" publishTime="1460520483"/>
-          <PublishItem publishSize="73678" publishTime="1460520435"/>
-          <PublishItem publishSize="73679" publishTime="1460520420"/>
      </publishHistory>
 </DOMDocument>

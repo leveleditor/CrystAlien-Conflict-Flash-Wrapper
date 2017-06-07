@@ -72,8 +72,8 @@
     <EventFormat>4</EventFormat>
     <EventCompress>10</EventCompress>
     <OverrideSounds>1</OverrideSounds>
-    <Version>8</Version>
-    <ExternalPlayer></ExternalPlayer>
+    <Version>11</Version>
+    <ExternalPlayer>FlashPlayer10.2</ExternalPlayer>
     <ActionScriptVersion>2</ActionScriptVersion>
     <PackageExportFrame>1</PackageExportFrame>
     <PackagePaths></PackagePaths>
