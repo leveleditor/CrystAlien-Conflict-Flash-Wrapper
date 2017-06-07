@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <mod>
 	<name>The Lost Levels</name>
-	<version>0.1.0.7</version>
+	<version>0.1.0.8</version>
 	<!-- Any lost levels of CAC that have been found will be in this mod! -->
 	<!-- Restores levels recovered from old versions of CAC to their former glory! -->
 	<description><![CDATA[Adds levels recovered from old versions of CAC. There is currently just one. Access code: whitney]]></description>

@@ -586,7 +586,7 @@
           <DOMTimeline name="Scene 1">
                <layers>
                     <DOMLayer name="Scripts" color="#4FFFFF" autoNamed="false" layerType="folder"/>
-                    <DOMLayer name="Variables" color="#FF4F4F" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="Variables" color="#FF4F4F" parentLayerIndex="0" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" duration="4" keyMode="9728">
                                    <Actionscript>
@@ -605,7 +605,7 @@ var gameMenuLoaded:Boolean = false;
 var MAX_INIT_ATTEMPTS:Number = 100;
 
 // Wrapper variables
-var version:Version = new Version(0, 2, 20, 3);
+var version:Version = new Version(0, 2, 21, 0);
 var fwversion:String = "CAC Flash Wrapper (Light) " + version;
 var flversion:String = "Flash Player " + $version;
 var gameswf:String = "loader_v0_5_1_unofficial.swf"; //"v6_5_game.swf";
@@ -851,7 +851,7 @@ function addPreHook(oldFunc:Function, callback:Function):Object {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="Logic" color="#4FFF4F" parentLayerIndex="0" current="true" isSelected="true" autoNamed="false">
+                    <DOMLayer name="Logic" color="#4FFF4F" parentLayerIndex="0" autoNamed="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
