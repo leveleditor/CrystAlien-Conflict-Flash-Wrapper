@@ -2971,6 +2971,9 @@ function CACMod_OnGameMenu():Void {
 		// Although we technically don't need it anymore, it's good to keep it for reference
 		// and in case another mod decides to restore the old fullscreen method or such.
 		Stage.fullScreenSourceRect = new flash.geom.Rectangle(0, 0, 600, 400);
+		// Start the displayState at noScale which is what exiting fullscreen mode sets it to.
+		// This prevents browser zoom from scaling the game and causing display bugs. This line was also present in v6.5.
+		Stage.scaleMode = "noScale";
 		
 		// No more high scores related functions!
 		game.sendScore = DisabledFunction;
@@ -3064,6 +3067,7 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="17802" publishTime="1496891494"/>
           <PublishItem publishSize="17785" publishTime="1496799312"/>
           <PublishItem publishSize="17785" publishTime="1496799283"/>
           <PublishItem publishSize="17785" publishTime="1496637228"/>
@@ -3083,6 +3087,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="17742" publishTime="1495600489"/>
           <PublishItem publishSize="17782" publishTime="1495600062"/>
           <PublishItem publishSize="17799" publishTime="1495599937"/>
-          <PublishItem publishSize="17801" publishTime="1495599597"/>
      </publishHistory>
 </DOMDocument>
