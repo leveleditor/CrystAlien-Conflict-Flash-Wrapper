@@ -452,26 +452,105 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Indicator" color="#9933CC" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="IndicatorHook" color="#FF800A" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="IndicatorOverride" color="#FF800A" parentLayerIndex="17" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
-                                        <script><![CDATA[function IndicatorHook(parent, objA, objB, message, conditionType, lifespan) {
-
-	// If this indicator is of the objective to select one or more units...
-	if (this.conditionType == "selected") {
-		if (isArray(this.objA)) {
-			// Save each unit's current speed and temporarily set it to 0 so they cannot move.
-			for (var i in this.objA) {
-				this.objA[i].stats.indicatorHackSpeed = this.objA[i].stats.speed;
-				this.objA[i].stats.speed = 0;
-			}
-		} else {
-			// Save the unit's current speed and temporarily set it to 0 so it cannot move.
-			this.objA.stats.indicatorHackSpeed = this.objA.stats.speed;
-			this.objA.stats.speed = 0;
-		}
+                                        <script><![CDATA[function IndicatorOverride(parent, objA, objB, message, conditionType, lifespan) {
+	this.parent = parent;
+	this.objA = objA;
+	this.objB = objB;
+	this.message = message.toUpperCase();
+	this.conditionType = conditionType;
+	this.lifespan = lifespan;
+	if ((this.lifespan != undefined) && (this.lifespan <= 40)) {
+		this.lifespan = 41;
 	}
+
+	this.MC = false;
+	if ((this.conditionType == "selected") || (this.conditionType == "voyage")) {
+		this.MC = this.parent.control.indicatorMC;
+	}
+	if (this.conditionType == "construction") {
+		this.MC = this.parent.parent.hud.MC.indicator;
+	}
+
+	this.setupSpeedHack = function() {
+		// If this indicator is of the objective to select one or more units...
+		if (this.conditionType == "selected") {
+			if (isArray(this.objA)) {
+				for (var i in this.objA) {
+					// Don't overwrite the saved speed if we already saved it.
+					if (this.objA[i].stats.indicatorHackSpeed) {
+						return;
+					}
+					// Save each unit's current speed and temporarily set it to 0 so it cannot move.
+					this.objA[i].stats.indicatorHackSpeed = this.objA[i].stats.speed;
+					this.objA[i].stats.speed = 0;
+				}
+			} else {
+				// Don't overwrite the saved speed if we already saved it.
+				if (this.objA.stats.indicatorHackSpeed) {
+					return;
+				}
+				// Save the unit's current speed and temporarily set it to 0 so it cannot move.
+				this.objA.stats.indicatorHackSpeed = this.objA.stats.speed;
+				this.objA.stats.speed = 0;
+			}
+		}
+	};
+
+	this.updatePos = function(init) {
+		if (this.conditionType == "construction") {
+			var options = this.parent.construction.options;
+			for (var i = 0; i < options.length; i++) {
+				var current = options[i];
+				if (current.type == this.objA) {
+					this.objB = current;
+				}
+			}
+		}
+		if (this.objA.substr(0, 5) == "find:") {
+			var id = this.objA.substr(5);
+			var temp;
+			if (temp = this.parent.findUnit(id)) {
+				this.objA = temp;
+			}
+		}
+
+		if (isArray(this.objA)) {
+			var x = 0;
+			var y = 0;
+			for (var i in this.objA) {
+				x += this.objA[i].posX;
+				y += this.objA[i].posY;
+			}
+			this.posX = Math.round(x / this.objA.length);
+			this.posY = Math.round(y / this.objA.length);
+		} else {
+			this.posX = this.objA.posX;
+			this.posY = this.objA.posY;
+		}
+
+		// Make sure this is an actual object before trying to modify it.
+		if (this.objA && typeof (this.objA) !== "string") {
+			this.setupSpeedHack();
+		}
+
+		if (this.objB) {
+			if (!init && (this.conditionType == "voyage") && !this.objA.selected) {
+				return;
+			}
+			this.posX = this.objB.posX;
+			this.posY = this.objB.posY;
+			if (this.objB.isTile) {
+				this.posX += this.parent.arena.tileSize2;
+			}
+			if (this.objB.isTile) {
+				this.posY += this.parent.arena.tileSize2;
+			}
+		}
+	};
 
 	this.conditionMet = function() {
 		this.updatePos();
@@ -542,6 +621,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		}
 	};
 
+	this.updatePos(true);
 }]]></script>
                                    </Actionscript>
                                    <elements/>
@@ -3024,10 +3104,9 @@ function CACMod_OnGameMenu():Void {
 		var hook10:Object = wrapper.addPostHook(game.Unit, UnitHook);
 		game.Unit = hook10.override;
 
-		// Hook Indicator to fix bugs with being able to move units before the indicator requests that they be selected.
+		// Override Indicator to fix bugs with being able to move units before the indicator requests that they be selected.
 		// Now the units will not move until the indicator is ready and the condition is met.
-		var hook11:Object = wrapper.addPostHook(game.Indicator, IndicatorHook);
-		game.Indicator = hook11.override;
+		game.Indicator = IndicatorOverride;
 		
 		PanelAppend.apply(game.panel);
 		
@@ -3067,6 +3146,17 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="18286" publishTime="1503849859"/>
+          <PublishItem publishSize="18166" publishTime="1503849522"/>
+          <PublishItem publishSize="18162" publishTime="1503849392"/>
+          <PublishItem publishSize="18123" publishTime="1503849298"/>
+          <PublishItem publishSize="18112" publishTime="1503848762"/>
+          <PublishItem publishSize="18120" publishTime="1503848720"/>
+          <PublishItem publishSize="18120" publishTime="1503848616"/>
+          <PublishItem publishSize="18101" publishTime="1503848162"/>
+          <PublishItem publishSize="18108" publishTime="1503847963"/>
+          <PublishItem publishSize="17811" publishTime="1503847598"/>
+          <PublishItem publishSize="17813" publishTime="1503847366"/>
           <PublishItem publishSize="17802" publishTime="1496891494"/>
           <PublishItem publishSize="17785" publishTime="1496799312"/>
           <PublishItem publishSize="17785" publishTime="1496799283"/>
@@ -3076,16 +3166,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="17799" publishTime="1495942027"/>
           <PublishItem publishSize="17793" publishTime="1495941802"/>
           <PublishItem publishSize="17786" publishTime="1495941690"/>
-          <PublishItem publishSize="17721" publishTime="1495932243"/>
-          <PublishItem publishSize="17745" publishTime="1495931957"/>
-          <PublishItem publishSize="17745" publishTime="1495931910"/>
-          <PublishItem publishSize="17739" publishTime="1495602542"/>
-          <PublishItem publishSize="17739" publishTime="1495602274"/>
-          <PublishItem publishSize="17763" publishTime="1495601093"/>
-          <PublishItem publishSize="17763" publishTime="1495600913"/>
-          <PublishItem publishSize="17763" publishTime="1495600573"/>
-          <PublishItem publishSize="17742" publishTime="1495600489"/>
-          <PublishItem publishSize="17782" publishTime="1495600062"/>
-          <PublishItem publishSize="17799" publishTime="1495599937"/>
      </publishHistory>
 </DOMDocument>
