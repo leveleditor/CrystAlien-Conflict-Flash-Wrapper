@@ -2728,20 +2728,29 @@ function registerCheat(id:String, code:String, linked:Array) {
                     <DOMLayer name="GameHook" color="#4FFF4F" parentLayerIndex="27" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
-                                   <Actionscript offsets="1240,332">
+                                   <Actionscript offsets="1423,332">
                                         <script><![CDATA[function GameHook(parent, team, level) {
 
 	this.swapTeams = function() {
 		if (this.team == "good") {
 			this.team = "evil";
+			this.oppo = "good";
 		} else {
 			this.team = "good";
+			this.oppo = "evil";
 		}
 	};
 	
 	this.overrideTeam = function() {
 		// override team
 		this.team = this.parent.teams1337[this.currentLevel];
+		
+		// make sure the opposing team is updated
+		if (this.team == "good") {
+			this.oppo = "evil";
+		} else {
+			this.oppo = "good";
+		}
 		
 		if (this.parent.checkCheat("cheatOtherTeam")) {
 			this.swapTeams();
@@ -3146,6 +3155,8 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="18257" publishTime="1504232348"/>
+          <PublishItem publishSize="17919" publishTime="1504232322"/>
           <PublishItem publishSize="18286" publishTime="1503849859"/>
           <PublishItem publishSize="18166" publishTime="1503849522"/>
           <PublishItem publishSize="18162" publishTime="1503849392"/>
@@ -3164,7 +3175,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="17080" publishTime="1496211687"/>
           <PublishItem publishSize="17080" publishTime="1496211660"/>
           <PublishItem publishSize="17799" publishTime="1495942027"/>
-          <PublishItem publishSize="17793" publishTime="1495941802"/>
-          <PublishItem publishSize="17786" publishTime="1495941690"/>
      </publishHistory>
 </DOMDocument>
