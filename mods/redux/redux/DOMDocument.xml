@@ -2346,9 +2346,9 @@ function registerCheat(id:String, code:String, linked:Array) {
 		if (this.level < 21) {
 			if ((this.level != 10) && (this.level != 20)) {
 				if (this.level < 11) {
-					SO.data.goodUnlocked = this.level;
+					_global.game.SO.data.goodUnlocked = this.level;
 				} else if (this.level < 21) {
-					SO.data.evilUnlocked = this.level;
+					_global.game.SO.data.evilUnlocked = this.level;
 				}
 			}
 		}
@@ -3054,6 +3054,8 @@ function CACMod_OnGameMenu():Void {
 	if (!hookedIn) {
 		// Make a nicer reference to the game's root.
 		game = _level1;
+		// Set a global reference to the game, so we can access the SO (Shared Object) for saving progress where needed.
+		_global.game = game;
 		
 		// So long story short, this is basically what made v6.5 do anything resembling antialiasing.
 		// Now that we've gone back to using v6.4, we can just copy this line of code here.
