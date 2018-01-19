@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>CAC Flash Wrapper Light | CrystAlien Redux</title>
+		<style type="text/css">
+			body {
+				background-color: #000000;
+				color: #fff;
+				margin: 0;
+			}
+			#game {
+				padding: 0;
+				width: 600px;
+				height: 400px;
+				margin: auto;
+			}
+		</style>
+		<script type="text/javascript">
+			function Log(msg) {
+				console.log(unescape(msg));
+			}
+		</script>
+		<style type="text/css">
+			body {
+				background-color: #000000;
+			}
+			#game {
+				width: 600px;
+				height: 400px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="game">
+			<object type="application/x-shockwave-flash" data="cac_wrapper_light.swf" width="600" height="400" id="flash">
+				<param name="movie" value="cac_wrapper_light.swf" />
+				<param name="quality" value="high" />
+				<param name="allowfullscreen" value="true" />
+				<param name="allowscriptaccess" value="sameDomain" />
+				<param name="wmode" value="window" />
+				<param name="menu" value="false" />
+				<param name="scale" value="noscale" />
+				<param name="browserzoom" value="noscale" />
+				<param name="FlashVars" value="console=true" />
+			</object>
+		</div>
+	</body>
+</html>

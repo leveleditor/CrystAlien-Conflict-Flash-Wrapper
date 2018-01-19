@@ -1,0 +1,79 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="600" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" viewAngle3D="59.1837342884091" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="3">
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[import flash.html.HTMLLoader;
+
+function onLoaded(e:Event):void {
+	loader.window.console = {};
+	loader.window.console.log = function(msg){
+		trace(msg);
+	};
+}
+
+var loader:HTMLLoader = new HTMLLoader();
+var request = new URLRequest("cac_wrapper_light.html");
+loader.width = stage.stageWidth;
+loader.height = stage.stageHeight;
+loader.load(request);
+loader.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
+addChild(loader);
+
+stop();]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="com.air.artemis.airdest" v="cac_wrapper_AIR.air"/>
+          <PD n="com.air.artemis.included.count" v="10"/>
+          <PD n="TestMovieChecked" v="ADLDesktop"/>
+          <PD n="com.air.artemis.pubair" v="true"/>
+          <PD n="com.air.artemis.included.item0" v="cac_wrapper_light.html"/>
+          <PD n="com.air.artemis.pubipa" v="false"/>
+          <PD n="com.air.artemis.included.item1" v="cac_wrapper_light.swf"/>
+          <PD n="com.air.artemis.included.item2" v="loader_v0_5_1_unofficial.swf"/>
+          <PD n="com.air.artemis.included.item3" v="mods/modlist_light.xml"/>
+          <PD n="flash.swf.basename" v="cac_wrapper_AIR"/>
+          <PD n="com.air.artemis.included.item4" v="mods/redux/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item5" v="mods/redux/redux.swf"/>
+          <PD n="com.air.artemis.included.item6" v="mods/lost_levels/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item7" v="mods/lost_levels/lost_levels.swf"/>
+          <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
+          <PD n="swf.folder.path" v=""/>
+          <PD n="com.air.artemis.included.item8" v="dialogue_wrapper_light.xml"/>
+          <PD n="com.air.artemis.included.item9" v="v6_4_game.swf"/>
+          <PD n="com.air.artemis.pubexe" v="false"/>
+     </persistentData>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="978" publishTime="1516464127"/>
+          <PublishItem publishSize="978" publishTime="1516464003"/>
+          <PublishItem publishSize="978" publishTime="1516463635"/>
+          <PublishItem publishSize="978" publishTime="1516463522"/>
+          <PublishItem publishSize="978" publishTime="1516463492"/>
+          <PublishItem publishSize="1173" publishTime="1516463435"/>
+          <PublishItem publishSize="978" publishTime="1516463346"/>
+          <PublishItem publishSize="978" publishTime="1516463035"/>
+          <PublishItem publishSize="978" publishTime="1516462947"/>
+          <PublishItem publishSize="978" publishTime="1516462828"/>
+          <PublishItem publishSize="978" publishTime="1516462600"/>
+          <PublishItem publishSize="1172" publishTime="1516330392"/>
+          <PublishItem publishSize="1171" publishTime="1516330344"/>
+          <PublishItem publishSize="1161" publishTime="1516330198"/>
+          <PublishItem publishSize="1165" publishTime="1516330167"/>
+          <PublishItem publishSize="1128" publishTime="1516330071"/>
+          <PublishItem publishSize="86" publishTime="1516330051"/>
+          <PublishItem publishSize="667" publishTime="1516329858"/>
+          <PublishItem publishSize="669" publishTime="1516329756"/>
+          <PublishItem publishSize="667" publishTime="1505603618"/>
+     </publishHistory>
+</DOMDocument>
