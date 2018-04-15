@@ -679,9 +679,12 @@ function registerCheat(id:String, code:String, linked:Array) {
 	}
 
 	if (this.level == 15) {
-		var isBuggy = this.findUnit("UE_evil");
-		if (!isBuggy) {
-			this.lose();
+		// Bugfix: Only enforce the lose condition if the level is being played as the correct team.
+		if (this.parent.team == "evil") {
+			var isBuggy = this.findUnit("UE_evil");
+			if (!isBuggy) {
+				this.lose();
+			}
 		}
 	}
 
@@ -3157,6 +3160,7 @@ function CACMod_OnGameMenu():Void {
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="18294" publishTime="1523760392"/>
           <PublishItem publishSize="18257" publishTime="1504232348"/>
           <PublishItem publishSize="17919" publishTime="1504232322"/>
           <PublishItem publishSize="18286" publishTime="1503849859"/>
@@ -3176,6 +3180,5 @@ function CACMod_OnGameMenu():Void {
           <PublishItem publishSize="17785" publishTime="1496637228"/>
           <PublishItem publishSize="17080" publishTime="1496211687"/>
           <PublishItem publishSize="17080" publishTime="1496211660"/>
-          <PublishItem publishSize="17799" publishTime="1495942027"/>
      </publishHistory>
 </DOMDocument>
