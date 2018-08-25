@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <mod>
 	<name><![CDATA[<b style='color:orange'>Redux Modifications + Bugfix Patch</b>]]></name>
-	<version>0.1.7.3</version>
+	<version>0.1.7.4</version>
 	<description><![CDATA[The official mod for CrystAlien Redux Project modifications. Contains unofficial patches to fix some bugs, add some functionality, and just generally modify the game.]]></description>
 	<author>Josh (leveleditor6680) &amp; Brian (ETXAlienRobot201)</author>
 	<homepage>http://crystalien-redux.com/</homepage>

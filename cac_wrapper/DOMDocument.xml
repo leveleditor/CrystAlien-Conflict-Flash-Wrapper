@@ -2753,7 +2753,7 @@ var MAX_INIT_ATTEMPTS:Number = 100;
 
 // Wrapper variables
 var version:Version = new Version(0, 2, 13, 0);
-var gameswf:String = "v6_5_game.swf";
+var gameswf:String = "v6_4_game.swf";
 var progressText:String = "Loading %3%% (<SWF>) [%1/%2]";
 ]]></script>
                                    </Actionscript>
