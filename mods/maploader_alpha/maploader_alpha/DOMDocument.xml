@@ -1,0 +1,1235 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="750" frameRate="31" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" gridSnapTo="true" objectsSnapTo="false" breakPointCount="2" timelineLabelWidth="226" viewAngle3D="70.7391536835427" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <media>
+          <DOMCompiledClipItem name="Button" itemID="549e1fed-00000017" linkageExportForAS="true" linkageIdentifier="Button" linkageClassName="Button" sourceLastImported="1164217986" tooltip="Button" customIconID="0" actionscriptClass="mx.controls.Button" swfScmHRef="mtfs6h82sr.swf" swfScmSourceFilename="C:\Users\Josh\AppData\Local\Adobe\Flash CS5.5\en_US\Configuration\TMPmtfs6h82sr..swf" persistLivePreview11="true" editFrameIndex="1" requiredMinimumPlayerVersion="0" requiredMinimumASVersion="0" parametersAreLocked="true" swcPath="Button.xml" rootSymbolLinkageID="Button" movieRectRight="2000" movieRectBottom="440" playerVersion="6" actionscriptVersion="2">
+               <parametersAsXML><![CDATA[   <property id="icon">
+      <Inspectable name="icon" variable="icon" category="" verbose="0" defaultValue="" type="Default"/>
+   </property>
+   <property id="label">
+      <Inspectable name="label" variable="label" category="" verbose="0" defaultValue="Button" type="Default"/>
+   </property>
+   <property id="labelPlacement">
+      <Inspectable name="labelPlacement" variable="labelPlacement" category="" verbose="0" defaultValue="right" enumeration="left,right,top,bottom" type="List"/>
+   </property>
+   <property id="selected">
+      <Inspectable name="selected" variable="selected" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="toggle">
+      <Inspectable name="toggle" variable="toggle" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="enabled">
+      <Inspectable name="enabled" variable="enabled" category="Other" verbose="1" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="visible">
+      <Inspectable name="visible" variable="visible" category="Other" verbose="1" defaultValue="true" type="Boolean"/>
+   </property>
+   <property id="minHeight">
+      <Inspectable name="minHeight" variable="minHeight" category="Size" verbose="1" defaultValue="0" type="Number"/>
+   </property>
+   <property id="minWidth">
+      <Inspectable name="minWidth" variable="minWidth" category="Size" verbose="1" defaultValue="0" type="Number"/>
+   </property>
+]]></parametersAsXML>
+               <classProperties><![CDATA[<?xml version="1.0" encoding ="utf-8"?>
+<componentPackage xmlns="http://www.macromedia.com/flash/swccatalog/7">
+<component id="Button" class="mx.controls.Button" implementation="Button.swf" iconFile="Button.png" tooltip="Button" src="mx.controls.Button.asi" modified="1059073889">
+<movieBounds xmin="0" xmax="2000" ymin="0" ymax="440" />
+    <include id="BoundingBox"/>
+    <include id="SimpleButton"/>
+    <include id="Border"/>
+    <include id="RectBorder"/>
+    <include id="ButtonSkin"/>
+    <exportAfter id="__Packages.mx.controls.Button"/>
+<class id="mx.controls.Button" >
+      <Event param1="click" />
+      <TagName param1="Button" />
+      <IconFile param1="Button.png" />
+   <property id="_inherited_selected" type="Boolean" >
+      <Bindable />
+      <ChangeEvent param1="click" />
+   </property>
+   <method id="icon" >
+      <param id="linkage"  />
+      <Inspectable defaultValue="" />
+   </method>
+   <method id="label" >
+      <param id="lbl" type="String" />
+      <Inspectable defaultValue="Button" />
+   </method>
+   <method id="labelPlacement" >
+      <param id="val" type="String" />
+      <Inspectable enumeration="left,right,top,bottom" defaultValue="right" />
+   </method>
+</class>
+<class id="mx.controls.SimpleButton" >
+      <Event param1="click" />
+      <TagName param1="SimpleButton" />
+   <method id="selected" returnType="Boolean">
+      <Inspectable defaultValue="false" />
+   </method>
+   <method id="toggle" returnType="Boolean">
+      <Inspectable defaultValue="false" />
+   </method>
+</class>
+<class id="mx.core.UIComponent" >
+      <Event param1="focusIn" />
+      <Event param1="focusOut" />
+      <Event param1="keyDown" />
+      <Event param1="keyUp" />
+   <property id="enabled" type="Boolean" >
+      <Inspectable defaultValue="true" verbose="1" category="Other" />
+   </property>
+</class>
+<class id="mx.core.UIObject" >
+      <Event param1="resize" />
+      <Event param1="move" />
+      <Event param1="draw" />
+      <Event param1="load" />
+      <Event param1="unload" />
+   <method id="minHeight" returnType="Number">
+      <Inspectable defaultValue="0" verbose="1" category="Size" />
+   </method>
+   <method id="minWidth" returnType="Number">
+      <Inspectable defaultValue="0" verbose="1" category="Size" />
+   </method>
+   <method id="visible" returnType="Boolean">
+      <Inspectable defaultValue="true" verbose="1" category="Other" />
+   </method>
+</class>
+<class id="MovieClip" >
+</class>
+<asset id="BoundingBox" modified="1054593655">
+</asset>
+<asset id="UIComponentExtensions" modified="1058814666">
+      <exportAfter id="__Packages.mx.core.ext.UIComponentExtensions"/>
+</asset>
+<asset id="FocusRect" modified="1055744819">
+      <include id="BoundingBox"/>
+      <exportAfter id="__Packages.mx.skins.halo.FocusRect"/>
+</asset>
+<asset id="FocusManager" modified="1082415917">
+      <include id="FocusRect"/>
+      <include id="UIObject"/>
+      <exportAfter id="__Packages.mx.managers.FocusManager"/>
+</asset>
+<asset id="UIObjectExtensions" modified="1058814702">
+      <exportAfter id="__Packages.mx.core.ext.UIObjectExtensions"/>
+</asset>
+<asset id="Defaults" modified="1055737279">
+      <exportAfter id="__Packages.mx.skins.halo.Defaults"/>
+</asset>
+<asset id="UIObject" modified="1058814731">
+      <include id="Defaults"/>
+      <include id="UIObjectExtensions"/>
+      <exportAfter id="__Packages.mx.core.UIObject"/>
+</asset>
+<asset id="UIComponent" modified="1058814700">
+      <include id="UIObject"/>
+      <include id="FocusManager"/>
+      <include id="UIComponentExtensions"/>
+      <exportAfter id="__Packages.mx.core.UIComponent"/>
+</asset>
+<asset id="SimpleButtonUp" modified="1062225026">
+      <include id="BrdrBlk"/>
+      <include id="BrdrFace"/>
+      <include id="BrdrShdw"/>
+      <include id="BrdrHilght"/>
+      <include id="BrdrFace"/>
+</asset>
+<asset id="BrdrHilght" modified="1052770908">
+</asset>
+<asset id="BrdrBlk" modified="1052770913">
+</asset>
+<asset id="SimpleButtonIn" modified="1062225020">
+      <include id="BrdrBlk"/>
+      <include id="BrdrHilght"/>
+      <include id="BrdrShdw"/>
+      <include id="BrdrFace"/>
+</asset>
+<asset id="BrdrFace" modified="1051767541">
+</asset>
+<asset id="BrdrShdw" modified="1058931521">
+</asset>
+<asset id="SimpleButtonDown" modified="1062225019">
+      <include id="BrdrShdw"/>
+      <include id="BrdrFace"/>
+</asset>
+<asset id="SimpleButton" modified="1055744781">
+      <include id="BoundingBox"/>
+      <include id="SimpleButtonDown"/>
+      <include id="SimpleButtonIn"/>
+      <include id="SimpleButtonUp"/>
+      <include id="UIComponent"/>
+      <exportAfter id="__Packages.mx.controls.SimpleButton"/>
+</asset>
+<asset id="Border" modified="1062224872">
+      <include id="UIObject"/>
+      <exportAfter id="__Packages.mx.skins.Border"/>
+</asset>
+<asset id="RectBorder" modified="1062224887">
+      <include id="Border"/>
+      <exportAfter id="__Packages.mx.skins.halo.RectBorder"/>
+</asset>
+<asset id="ButtonSkin" modified="1062224893">
+      <exportAfter id="__Packages.mx.skins.halo.ButtonSkin"/>
+</asset>
+<asset id="__Packages.mx.skins.ColoredSkinElement" src="mx.skins.ColoredSkinElement.asi" modified="1164217986">
+</asset>
+<asset id="__Packages.mx.core.UIObject" src="mx.core.UIObject.asi" modified="1164217985">
+    <include id="__Packages.mx.skins.SkinElement" />
+    <include id="__Packages.mx.styles.CSSStyleDeclaration" />
+    <include id="__Packages.mx.styles.StyleManager" />
+</asset>
+<asset id="__Packages.mx.skins.SkinElement" src="mx.skins.SkinElement.asi" modified="1164217986">
+</asset>
+<asset id="__Packages.mx.styles.CSSTextStyles" src="mx.styles.CSSTextStyles.asi" modified="1164217986">
+</asset>
+<asset id="__Packages.mx.styles.CSSStyleDeclaration" src="mx.styles.CSSStyleDeclaration.asi" modified="1164217986">
+    <include id="__Packages.mx.styles.StyleManager" />
+    <exportAfter id="__Packages.mx.styles.CSSTextStyles" />
+</asset>
+<asset id="__Packages.mx.styles.StyleManager" src="mx.styles.StyleManager.asi" modified="1164217986">
+</asset>
+<asset id="__Packages.mx.core.UIComponent" src="mx.core.UIComponent.asi" modified="1164217985">
+    <exportAfter id="__Packages.mx.core.UIObject" />
+</asset>
+<asset id="__Packages.mx.controls.SimpleButton" src="mx.controls.SimpleButton.asi" modified="1164217983">
+    <exportAfter id="__Packages.mx.core.UIComponent" />
+</asset>
+<asset id="__Packages.mx.controls.Button" src="mx.controls.Button.asi" modified="1164217982">
+    <exportAfter id="__Packages.mx.controls.SimpleButton" />
+    <exportAfter id="__Packages.mx.core.UIObject" />
+</asset>
+<asset id="__Packages.mx.events.EventDispatcher" src="mx.events.EventDispatcher.asi" modified="1164217985">
+</asset>
+<asset id="__Packages.mx.events.UIEventDispatcher" src="mx.events.UIEventDispatcher.asi" modified="1164217986">
+    <exportAfter id="__Packages.mx.events.EventDispatcher" />
+</asset>
+<asset id="__Packages.mx.core.ext.UIObjectExtensions" src="mx.core.ext.UIObjectExtensions.asi" modified="1164217985">
+    <include id="__Packages.mx.skins.ColoredSkinElement" />
+    <include id="__Packages.mx.styles.CSSStyleDeclaration" />
+    <exportAfter id="__Packages.mx.core.UIObject" />
+    <exportAfter id="__Packages.mx.skins.SkinElement" />
+    <exportAfter id="__Packages.mx.styles.CSSTextStyles" />
+    <exportAfter id="__Packages.mx.events.UIEventDispatcher" />
+</asset>
+<asset id="__Packages.mx.skins.Border" src="mx.skins.Border.asi" modified="1164217986">
+    <exportAfter id="__Packages.mx.core.UIObject" />
+</asset>
+<asset id="__Packages.mx.skins.RectBorder" src="mx.skins.RectBorder.asi" modified="1164217986">
+    <exportAfter id="__Packages.mx.skins.Border" />
+</asset>
+<asset id="__Packages.mx.skins.halo.ButtonSkin" src="mx.skins.halo.ButtonSkin.asi" modified="1164217986">
+    <exportAfter id="__Packages.mx.core.ext.UIObjectExtensions" />
+    <exportAfter id="__Packages.mx.skins.RectBorder" />
+</asset>
+<asset id="__Packages.mx.skins.halo.Defaults" src="mx.skins.halo.Defaults.asi" modified="1164217986">
+    <include id="__Packages.mx.core.UIComponent" />
+    <exportAfter id="__Packages.mx.core.UIObject" />
+    <exportAfter id="__Packages.mx.styles.CSSStyleDeclaration" />
+    <exportAfter id="__Packages.mx.core.ext.UIObjectExtensions" />
+</asset>
+<asset id="__Packages.mx.skins.halo.FocusRect" src="mx.skins.halo.FocusRect.asi" modified="1164217986">
+    <include id="__Packages.mx.managers.DepthManager" />
+    <exportAfter id="__Packages.mx.core.UIComponent" />
+    <exportAfter id="__Packages.mx.skins.SkinElement" />
+    <exportAfter id="__Packages.mx.skins.halo.Defaults" />
+</asset>
+<asset id="__Packages.mx.managers.DepthManager" src="mx.managers.DepthManager.asi" modified="1164217986">
+    <include id="__Packages.mx.core.UIObject" />
+</asset>
+<asset id="__Packages.mx.managers.FocusManager" src="mx.managers.FocusManager.asi" modified="1164217986">
+    <include id="__Packages.mx.controls.SimpleButton" />
+    <include id="__Packages.mx.managers.DepthManager" />
+    <include id="__Packages.mx.managers.SystemManager" />
+    <exportAfter id="__Packages.mx.core.UIComponent" />
+    <exportAfter id="__Packages.mx.core.ext.UIObjectExtensions" />
+</asset>
+<asset id="__Packages.mx.managers.SystemManager" src="mx.managers.SystemManager.asi" modified="1164217986">
+    <include id="__Packages.mx.core.UIComponent" />
+    <include id="__Packages.mx.events.EventDispatcher" />
+</asset>
+<asset id="__Packages.mx.managers.OverlappedWindows" src="mx.managers.OverlappedWindows.asi" modified="1164217986">
+    <include id="__Packages.mx.core.UIComponent" />
+    <exportAfter id="__Packages.mx.managers.SystemManager" />
+</asset>
+<asset id="__Packages.mx.core.ext.UIComponentExtensions" src="mx.core.ext.UIComponentExtensions.asi" modified="1164217985">
+    <include id="__Packages.mx.styles.CSSSetStyle" />
+    <exportAfter id="__Packages.mx.core.UIComponent" />
+    <exportAfter id="__Packages.mx.managers.FocusManager" />
+    <exportAfter id="__Packages.mx.managers.OverlappedWindows" />
+</asset>
+<asset id="__Packages.mx.styles.CSSSetStyle" src="mx.styles.CSSSetStyle.asi" modified="1164217986">
+    <include id="__Packages.mx.styles.StyleManager" />
+    <exportAfter id="__Packages.mx.styles.CSSStyleDeclaration" />
+</asset>
+<asset id="__Packages.mx.skins.halo.RectBorder" src="mx.skins.halo.RectBorder.asi" modified="1164217986">
+    <include id="__Packages.mx.styles.CSSStyleDeclaration" />
+    <exportAfter id="__Packages.mx.core.ext.UIObjectExtensions" />
+    <exportAfter id="__Packages.mx.skins.RectBorder" />
+</asset>
+</component>
+</componentPackage>
+]]></classProperties>
+               <customIcon>
+                    <CustomIcon rowByteCount="72" colorDepth="32" width="18" height="18" frameRight="360" frameBottom="360" isTransparent="true" href="mtfs6h82sr1.dat"/>
+               </customIcon>
+               <SwcItem name="Button" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.controls.Button" intrinsicScript='import mx.core.UIObject;&#xD;&#xA;import mx.controls.SimpleButton;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;[Event("click")] &#xD;&#xA;[TagName("Button")] &#xD;&#xA;[IconFile("Button.png")] &#xD;&#xA;intrinsic class mx.controls.Button extends mx.controls.SimpleButton&#xD;&#xA;{&#xD;&#xA;   public function Button();&#xD;&#xA;   public var __label:String;&#xD;&#xA;   public var __labelPlacement:String;&#xD;&#xA;   public var _color;&#xD;&#xA;   public function _getIcon(Void):String;&#xD;&#xA;   public var _iconLinkageName:String;&#xD;&#xA;   [Bindable] [ChangeEvent("click")] public var _inherited_selected:Boolean;&#xD;&#xA;   public function _setIcon(linkage):Void;&#xD;&#xA;   public var borderW:Number;&#xD;&#xA;   public var btnOffset:Number;&#xD;&#xA;   public function calcSize(tag:Number, ref:Object):Void;&#xD;&#xA;   public var centerContent:Boolean;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public var clipParameters:Object;&#xD;&#xA;   public function createChildren(Void):Void;&#xD;&#xA;   public function draw();&#xD;&#xA;   public var falseDisabledIcon:String;&#xD;&#xA;   public var falseDisabledSkin:String;&#xD;&#xA;   public var falseDownIcon:String;&#xD;&#xA;   public var falseDownSkin:String;&#xD;&#xA;   public var falseOverIcon:String;&#xD;&#xA;   public var falseOverSkin:String;&#xD;&#xA;   public var falseUpIcon:String;&#xD;&#xA;   public var falseUpSkin:String;&#xD;&#xA;   public function getBtnOffset(Void):Number;&#xD;&#xA;   public function getLabel(Void):String;&#xD;&#xA;   public function getLabelPlacement(Void):String;&#xD;&#xA;   public var hitArea_mc:MovieClip;&#xD;&#xA;   function get icon():String;&#xD;&#xA;   [Inspectable(defaultValue="")] function set icon(linkage);&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public var initIcon;&#xD;&#xA;   public function invalidateStyle(c:String):Void;&#xD;&#xA;   [Inspectable(defaultValue="Button")] function set label(lbl:String);&#xD;&#xA;   function get label():String;&#xD;&#xA;   public var labelPath:Object;&#xD;&#xA;   [Inspectable(enumeration="left,right,top,bottom"defaultValue="right")] function set labelPlacement(val:String);&#xD;&#xA;   function get labelPlacement():String;&#xD;&#xA;   static var mergedClipParameters:Boolean;&#xD;&#xA;   public function onRelease(Void):Void;&#xD;&#xA;   public function setColor(c:Number):Void;&#xD;&#xA;   public function setEnabled(enable:Boolean):Void;&#xD;&#xA;   public function setHitArea(w:Number, h:Number);&#xD;&#xA;   public function setLabel(label:String):Void;&#xD;&#xA;   public function setLabelPlacement(val:String):Void;&#xD;&#xA;   public function setSkin(tag:Number, linkageName:String, initobj:Object):MovieClip;&#xD;&#xA;   public function setView(offset:Number):Void;&#xD;&#xA;   public function size(Void):Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner;&#xD;&#xA;   public var trueDisabledIcon:String;&#xD;&#xA;   public var trueDisabledSkin:String;&#xD;&#xA;   public var trueDownIcon:String;&#xD;&#xA;   public var trueDownSkin:String;&#xD;&#xA;   public var trueOverIcon:String;&#xD;&#xA;   public var trueOverSkin:String;&#xD;&#xA;   public var trueUpIcon:String;&#xD;&#xA;   public var trueUpSkin:String;&#xD;&#xA;   static var version:String;&#xD;&#xA;   public function viewSkin(varName:String):Void;&#xD;&#xA;};&#xD;&#xA;'>
+                    <assetMap>
+                         <AssetMapItem key="Border">
+                              <SwcItem name="Border" implementation="Button.swf" version="1062224872" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="UIObject" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.Border" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="BoundingBox">
+                              <SwcItem name="BoundingBox" implementation="Button.swf" version="1054593655" isTopLevel="true"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="BrdrBlk">
+                              <SwcItem name="BrdrBlk" implementation="Button.swf" version="1052770913" isTopLevel="true"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="BrdrFace">
+                              <SwcItem name="BrdrFace" implementation="Button.swf" version="1051767541" isTopLevel="true"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="BrdrHilght">
+                              <SwcItem name="BrdrHilght" implementation="Button.swf" version="1052770908" isTopLevel="true"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="BrdrShdw">
+                              <SwcItem name="BrdrShdw" implementation="Button.swf" version="1058931521" isTopLevel="true"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="ButtonSkin">
+                              <SwcItem name="ButtonSkin" implementation="Button.swf" version="1062224893" isTopLevel="true">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.halo.ButtonSkin" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="Defaults">
+                              <SwcItem name="Defaults" implementation="Button.swf" version="1055737279" isTopLevel="true">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.halo.Defaults" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="FocusManager">
+                              <SwcItem name="FocusManager" implementation="Button.swf" version="1082415917" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="FocusRect" implementation="Button.swf"/>
+                                        <IncludesItem name="UIObject" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.managers.FocusManager" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="FocusRect">
+                              <SwcItem name="FocusRect" implementation="Button.swf" version="1055744819" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="BoundingBox" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.halo.FocusRect" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="RectBorder">
+                              <SwcItem name="RectBorder" implementation="Button.swf" version="1062224887" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="Border" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.halo.RectBorder" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="SimpleButton">
+                              <SwcItem name="SimpleButton" implementation="Button.swf" version="1055744781" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="BoundingBox" implementation="Button.swf"/>
+                                        <IncludesItem name="SimpleButtonDown" implementation="Button.swf"/>
+                                        <IncludesItem name="SimpleButtonIn" implementation="Button.swf"/>
+                                        <IncludesItem name="SimpleButtonUp" implementation="Button.swf"/>
+                                        <IncludesItem name="UIComponent" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.controls.SimpleButton" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="SimpleButtonDown">
+                              <SwcItem name="SimpleButtonDown" implementation="Button.swf" version="1062225019" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="BrdrShdw" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrFace" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="SimpleButtonIn">
+                              <SwcItem name="SimpleButtonIn" implementation="Button.swf" version="1062225020" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="BrdrBlk" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrHilght" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrShdw" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrFace" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="SimpleButtonUp">
+                              <SwcItem name="SimpleButtonUp" implementation="Button.swf" version="1062225026" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="BrdrBlk" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrFace" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrShdw" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrHilght" implementation="Button.swf"/>
+                                        <IncludesItem name="BrdrFace" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="UIComponent">
+                              <SwcItem name="UIComponent" implementation="Button.swf" version="1058814700" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="UIObject" implementation="Button.swf"/>
+                                        <IncludesItem name="FocusManager" implementation="Button.swf"/>
+                                        <IncludesItem name="UIComponentExtensions" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="UIComponentExtensions">
+                              <SwcItem name="UIComponentExtensions" implementation="Button.swf" version="1058814666" isTopLevel="true">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIComponentExtensions" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="UIObject">
+                              <SwcItem name="UIObject" implementation="Button.swf" version="1058814731" isTopLevel="true">
+                                   <includesList>
+                                        <IncludesItem name="Defaults" implementation="Button.swf"/>
+                                        <IncludesItem name="UIObjectExtensions" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="UIObjectExtensions">
+                              <SwcItem name="UIObjectExtensions" implementation="Button.swf" version="1058814702" isTopLevel="true">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.controls.Button">
+                              <SwcItem name="__Packages.mx.controls.Button" implementation="Button.swf" version="1164217982" isTopLevel="true" intrinsicClass="mx.controls.Button" intrinsicScript='import mx.core.UIObject;&#xD;&#xA;import mx.controls.SimpleButton;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;[Event("click")] &#xD;&#xA;[TagName("Button")] &#xD;&#xA;[IconFile("Button.png")] &#xD;&#xA;intrinsic class mx.controls.Button extends mx.controls.SimpleButton&#xD;&#xA;{&#xD;&#xA;   public function Button();&#xD;&#xA;   public var __label:String;&#xD;&#xA;   public var __labelPlacement:String;&#xD;&#xA;   public var _color;&#xD;&#xA;   public function _getIcon(Void):String;&#xD;&#xA;   public var _iconLinkageName:String;&#xD;&#xA;   [Bindable] [ChangeEvent("click")] public var _inherited_selected:Boolean;&#xD;&#xA;   public function _setIcon(linkage):Void;&#xD;&#xA;   public var borderW:Number;&#xD;&#xA;   public var btnOffset:Number;&#xD;&#xA;   public function calcSize(tag:Number, ref:Object):Void;&#xD;&#xA;   public var centerContent:Boolean;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public var clipParameters:Object;&#xD;&#xA;   public function createChildren(Void):Void;&#xD;&#xA;   public function draw();&#xD;&#xA;   public var falseDisabledIcon:String;&#xD;&#xA;   public var falseDisabledSkin:String;&#xD;&#xA;   public var falseDownIcon:String;&#xD;&#xA;   public var falseDownSkin:String;&#xD;&#xA;   public var falseOverIcon:String;&#xD;&#xA;   public var falseOverSkin:String;&#xD;&#xA;   public var falseUpIcon:String;&#xD;&#xA;   public var falseUpSkin:String;&#xD;&#xA;   public function getBtnOffset(Void):Number;&#xD;&#xA;   public function getLabel(Void):String;&#xD;&#xA;   public function getLabelPlacement(Void):String;&#xD;&#xA;   public var hitArea_mc:MovieClip;&#xD;&#xA;   function get icon():String;&#xD;&#xA;   [Inspectable(defaultValue="")] function set icon(linkage);&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public var initIcon;&#xD;&#xA;   public function invalidateStyle(c:String):Void;&#xD;&#xA;   [Inspectable(defaultValue="Button")] function set label(lbl:String);&#xD;&#xA;   function get label():String;&#xD;&#xA;   public var labelPath:Object;&#xD;&#xA;   [Inspectable(enumeration="left,right,top,bottom"defaultValue="right")] function set labelPlacement(val:String);&#xD;&#xA;   function get labelPlacement():String;&#xD;&#xA;   static var mergedClipParameters:Boolean;&#xD;&#xA;   public function onRelease(Void):Void;&#xD;&#xA;   public function setColor(c:Number):Void;&#xD;&#xA;   public function setEnabled(enable:Boolean):Void;&#xD;&#xA;   public function setHitArea(w:Number, h:Number);&#xD;&#xA;   public function setLabel(label:String):Void;&#xD;&#xA;   public function setLabelPlacement(val:String):Void;&#xD;&#xA;   public function setSkin(tag:Number, linkageName:String, initobj:Object):MovieClip;&#xD;&#xA;   public function setView(offset:Number):Void;&#xD;&#xA;   public function size(Void):Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner;&#xD;&#xA;   public var trueDisabledIcon:String;&#xD;&#xA;   public var trueDisabledSkin:String;&#xD;&#xA;   public var trueDownIcon:String;&#xD;&#xA;   public var trueDownSkin:String;&#xD;&#xA;   public var trueOverIcon:String;&#xD;&#xA;   public var trueOverSkin:String;&#xD;&#xA;   public var trueUpIcon:String;&#xD;&#xA;   public var trueUpSkin:String;&#xD;&#xA;   static var version:String;&#xD;&#xA;   public function viewSkin(varName:String):Void;&#xD;&#xA;};&#xD;&#xA;'>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.controls.SimpleButton" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.controls.SimpleButton">
+                              <SwcItem name="__Packages.mx.controls.SimpleButton" implementation="Button.swf" version="1164217983" isTopLevel="true" intrinsicClass="mx.controls.SimpleButton" intrinsicScript='import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;[Event("click")] &#xD;&#xA;[TagName("SimpleButton")] &#xD;&#xA;intrinsic class mx.controls.SimpleButton extends mx.core.UIComponent&#xD;&#xA;{&#xD;&#xA;   public function SimpleButton();&#xD;&#xA;   public var __emphasized:Boolean;&#xD;&#xA;   public var __emphatic:Boolean;&#xD;&#xA;   public var __emphaticStyleName:String;&#xD;&#xA;   public var __state:Boolean;&#xD;&#xA;   public var __toggle:Boolean;&#xD;&#xA;   public var autoRepeat:Boolean;&#xD;&#xA;   public var boundingBox_mc:MovieClip;&#xD;&#xA;   public var btnOffset:Number;&#xD;&#xA;   public var buttonDownHandler:Function;&#xD;&#xA;   public function calcSize(Void):Void;&#xD;&#xA;   public function changeIcon(tag:Number, linkageName:String):Void;&#xD;&#xA;   public function changeSkin(tag:Number, linkageName:String):Void;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public var clickHandler:Function;&#xD;&#xA;   public function createChildren(Void):Void;&#xD;&#xA;   public var detail:Number;&#xD;&#xA;   public var dfi;&#xD;&#xA;   public var dfs;&#xD;&#xA;   public var disabledIcon:Object;&#xD;&#xA;   public var disabledSkin:Object;&#xD;&#xA;   public var downIcon:Object;&#xD;&#xA;   public var downSkin:Object;&#xD;&#xA;   public function draw(Void):Void;&#xD;&#xA;   public var dti;&#xD;&#xA;   public var dts;&#xD;&#xA;   function get emphasized():Boolean;&#xD;&#xA;   function set emphasized(val:Boolean);&#xD;&#xA;   static var emphasizedStyleDeclaration;&#xD;&#xA;   static var falseDisabled:Number;&#xD;&#xA;   public var falseDisabledIcon:String;&#xD;&#xA;   public var falseDisabledIconEmphasized:String;&#xD;&#xA;   public var falseDisabledSkin:String;&#xD;&#xA;   public var falseDisabledSkinEmphasized:String;&#xD;&#xA;   static var falseDown:Number;&#xD;&#xA;   public var falseDownIcon:String;&#xD;&#xA;   public var falseDownIconEmphasized:String;&#xD;&#xA;   public var falseDownSkin:String;&#xD;&#xA;   public var falseDownSkinEmphasized:String;&#xD;&#xA;   static var falseOver:Number;&#xD;&#xA;   public var falseOverIcon:String;&#xD;&#xA;   public var falseOverIconEmphasized:String;&#xD;&#xA;   public var falseOverSkin:String;&#xD;&#xA;   public var falseOverSkinEmphasized:String;&#xD;&#xA;   static var falseUp:Number;&#xD;&#xA;   public var falseUpIcon:String;&#xD;&#xA;   public var falseUpIconEmphasized:String;&#xD;&#xA;   public var falseUpSkin:String;&#xD;&#xA;   public var falseUpSkinEmphasized:String;&#xD;&#xA;   public var fdi;&#xD;&#xA;   public var fds;&#xD;&#xA;   public var fri;&#xD;&#xA;   public var frs;&#xD;&#xA;   public var fui;&#xD;&#xA;   public var fus;&#xD;&#xA;   public function getLabel(Void):String;&#xD;&#xA;   public function getSelected():Boolean;&#xD;&#xA;   public function getState(Void):Boolean;&#xD;&#xA;   public function getToggle(Void):Boolean;&#xD;&#xA;   public var iconName:Object;&#xD;&#xA;   public var idNames;&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public var initializing:Boolean;&#xD;&#xA;   public var interval;&#xD;&#xA;   public function keyDown(e:Object):Void;&#xD;&#xA;   public function keyUp(e:Object):Void;&#xD;&#xA;   public var linkLength:Number;&#xD;&#xA;   public function onDragOut(Void):Void;&#xD;&#xA;   public function onDragOver(Void):Void;&#xD;&#xA;   public function onKillFocus(newFocus:Object):Void;&#xD;&#xA;   public function onPress(Void):Void;&#xD;&#xA;   public function onPressDelay(Void):Void;&#xD;&#xA;   public function onPressRepeat(Void):Void;&#xD;&#xA;   public function onRelease(Void):Void;&#xD;&#xA;   public function onReleaseOutside(Void):Void;&#xD;&#xA;   public function onRollOut(Void):Void;&#xD;&#xA;   public function onRollOver(Void):Void;&#xD;&#xA;   public var phase:String;&#xD;&#xA;   public var preset:Boolean;&#xD;&#xA;   public var refNames;&#xD;&#xA;   public function refresh(Void):Void;&#xD;&#xA;   public function removeIcons();&#xD;&#xA;   public var rolloverIcon:Object;&#xD;&#xA;   public var rolloverSkin:Object;&#xD;&#xA;   function set selected(val:Boolean);&#xD;&#xA;   [Inspectable(defaultValue=false)] function get selected():Boolean;&#xD;&#xA;   public function setEnabled(val:Boolean):Void;&#xD;&#xA;   public function setIcon(tag:Number, linkageName:String):Object;&#xD;&#xA;   public function setLabel(val:String):Void;&#xD;&#xA;   public function setSelected(val:Boolean);&#xD;&#xA;   public function setSkin(tag:Number, linkageName:String, initobj:Object):MovieClip;&#xD;&#xA;   public function setState(state:Boolean):Void;&#xD;&#xA;   public function setStateVar(state:Boolean):Void;&#xD;&#xA;   public function setToggle(val:Boolean);&#xD;&#xA;   public function setView(offset:Boolean):Void;&#xD;&#xA;   public function showEmphasized(e:Boolean):Void;&#xD;&#xA;   public function size(Void):Void;&#xD;&#xA;   public var skinName:Object;&#xD;&#xA;   public var stateNames;&#xD;&#xA;   public var style3dInset:Number;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   public var tagMap;&#xD;&#xA;   public var tdi;&#xD;&#xA;   public var tds;&#xD;&#xA;   function set toggle(val:Boolean);&#xD;&#xA;   [Inspectable(defaultValue=false)] function get toggle():Boolean;&#xD;&#xA;   public var tri;&#xD;&#xA;   public var trs;&#xD;&#xA;   static var trueDisabled:Number;&#xD;&#xA;   public var trueDisabledIcon:String;&#xD;&#xA;   public var trueDisabledIconEmphasized:String;&#xD;&#xA;   public var trueDisabledSkin:String;&#xD;&#xA;   public var trueDisabledSkinEmphasized:String;&#xD;&#xA;   static var trueDown:Number;&#xD;&#xA;   public var trueDownIcon:String;&#xD;&#xA;   public var trueDownIconEmphasized:String;&#xD;&#xA;   public var trueDownSkin:String;&#xD;&#xA;   public var trueDownSkinEmphasized:String;&#xD;&#xA;   static var trueOver:Number;&#xD;&#xA;   public var trueOverIcon:String;&#xD;&#xA;   public var trueOverIconEmphasized:String;&#xD;&#xA;   public var trueOverSkin:String;&#xD;&#xA;   public var trueOverSkinEmphasized:String;&#xD;&#xA;   static var trueUp:Number;&#xD;&#xA;   public var trueUpIcon:String;&#xD;&#xA;   public var trueUpIconEmphasized:String;&#xD;&#xA;   public var trueUpSkin:String;&#xD;&#xA;   public var trueUpSkinEmphasized:String;&#xD;&#xA;   public var tui;&#xD;&#xA;   public var tus;&#xD;&#xA;   public var upIcon:Object;&#xD;&#xA;   public var upSkin:Object;&#xD;&#xA;   function set value(val:Boolean);&#xD;&#xA;   function get value():Boolean;&#xD;&#xA;   static var version:String;&#xD;&#xA;   public function viewIcon(varName:String):Void;&#xD;&#xA;   public function viewSkin(varName:String, initObj:Object):Void;&#xD;&#xA;};&#xD;&#xA;'>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.core.UIComponent">
+                              <SwcItem name="__Packages.mx.core.UIComponent" implementation="Button.swf" version="1164217985" isTopLevel="true" intrinsicClass="mx.core.UIComponent" intrinsicScript='import mx.core.UIObject;&#xD;&#xA;import mx.skins.SkinElement;&#xD;&#xA;&#xD;&#xA;[Event("focusIn")] &#xD;&#xA;[Event("focusOut")] &#xD;&#xA;[Event("keyDown")] &#xD;&#xA;[Event("keyUp")] &#xD;&#xA;intrinsic class mx.core.UIComponent extends mx.core.UIObject&#xD;&#xA;{&#xD;&#xA;   public function UIComponent();&#xD;&#xA;   public var clipParameters:Object;&#xD;&#xA;   public function dispatchValueChangedEvent(value):Void;&#xD;&#xA;   public var drawFocus:Function;&#xD;&#xA;   [Inspectable(defaultValue=true, verbose=1, category="Other")] public var enabled:Boolean;&#xD;&#xA;   public function enabledChanged(id:String, oldValue:Boolean, newValue:Boolean):Boolean;&#xD;&#xA;   public function findFocusFromObject(o:Object):Object;&#xD;&#xA;   public function findFocusInChildren(o:Object):Object;&#xD;&#xA;   public var focusEnabled:Boolean;&#xD;&#xA;   public var focusManager:MovieClip;&#xD;&#xA;   public var focusTextField:Object;&#xD;&#xA;   public function getFocus():Object;&#xD;&#xA;   public function getFocusManager():Object;&#xD;&#xA;   public var groupName:String;&#xD;&#xA;   function get height():Number;&#xD;&#xA;   public function init():Void;&#xD;&#xA;   public function isParent(o:Object):Boolean;&#xD;&#xA;   static var kStretch:Number;&#xD;&#xA;   static var mergedClipParameters:Boolean;&#xD;&#xA;   public function onKillFocus(newFocus:Object):Void;&#xD;&#xA;   public function onSetFocus(oldFocus:Object):Void;&#xD;&#xA;   public var origBorderStyles:Object;&#xD;&#xA;   public var origBorderValues:Object;&#xD;&#xA;   public var popUp:Boolean;&#xD;&#xA;   public function pressFocus():Void;&#xD;&#xA;   public function releaseFocus():Void;&#xD;&#xA;   public function setEnabled(enabled:Boolean):Void;&#xD;&#xA;   public function setFocus():Void;&#xD;&#xA;   public function setVisible(x:Boolean, noEvent:Boolean):Void;&#xD;&#xA;   public function size():Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   public var tabEnabled:Boolean;&#xD;&#xA;   public var tabIndex:Number;&#xD;&#xA;   static var version:String;&#xD;&#xA;   function get width():Number;&#xD;&#xA;};&#xD;&#xA;'>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.core.UIObject">
+                              <SwcItem name="__Packages.mx.core.UIObject" implementation="Button.swf" version="1164217985" isTopLevel="true" intrinsicClass="mx.core.UIObject" intrinsicScript='import mx.styles.StyleManager;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;import mx.skins.SkinElement;&#xD;&#xA;&#xD;&#xA;[Event("resize")] &#xD;&#xA;[Event("move")] &#xD;&#xA;[Event("draw")] &#xD;&#xA;[Event("load")] &#xD;&#xA;[Event("unload")] &#xD;&#xA;intrinsic class mx.core.UIObject extends MovieClip&#xD;&#xA;{&#xD;&#xA;   public function UIObject();&#xD;&#xA;   public function __getTextFormat(tf:TextFormat, bAll:Boolean):Boolean;&#xD;&#xA;   public var __height:Number;&#xD;&#xA;   private var __onUnload:Function;&#xD;&#xA;   public var __width:Number;&#xD;&#xA;   public var _color;&#xD;&#xA;   public function _createChildren(Void):Void;&#xD;&#xA;   private var _endInit:Function;&#xD;&#xA;   public function _getTextFormat(Void):TextFormat;&#xD;&#xA;   private var _id:String;&#xD;&#xA;   private var _maxHeight:Number;&#xD;&#xA;   private var _maxWidth:Number;&#xD;&#xA;   private var _minHeight:Number;&#xD;&#xA;   private var _minWidth:Number;&#xD;&#xA;   private var _preferredHeight:Number;&#xD;&#xA;   private var _preferredWidth:Number;&#xD;&#xA;   private var _tf:TextFormat;&#xD;&#xA;   public var _topmost:Boolean;&#xD;&#xA;   public var addEventListener:Function;&#xD;&#xA;   function get bottom():Number;&#xD;&#xA;   public var buildDepthTable:Function;&#xD;&#xA;   public function cancelAllDoLaters(Void):Void;&#xD;&#xA;   public var changeColorStyleInChildren:Function;&#xD;&#xA;   public var changeTextStyleInChildren:Function;&#xD;&#xA;   public var childrenCreated:Boolean;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public var clipParameters:Object;&#xD;&#xA;   public var color:Number;&#xD;&#xA;   public function constructObject(Void):Void;&#xD;&#xA;   public var createAccessibilityImplementation:Function;&#xD;&#xA;   public var createChildAtDepth:Function;&#xD;&#xA;   public function createChildren(Void):Void;&#xD;&#xA;   public var createClassChildAtDepth:Function;&#xD;&#xA;   public function createClassObject(className:Function, id:String, depth:Number, initobj:Object):mx.core.UIObject;&#xD;&#xA;   public function createEmptyObject(id:String, depth:Number):mx.core.UIObject;&#xD;&#xA;   public var createEvent:Function;&#xD;&#xA;   public function createLabel(name:String, depth:Number, text):TextField;&#xD;&#xA;   public function createObject(linkageName:String, id:String, depth:Number, initobj:Object):MovieClip;&#xD;&#xA;   public function createSkin(tag:Number):mx.core.UIObject;&#xD;&#xA;   public function destroyObject(id:String):Void;&#xD;&#xA;   public var dispatchEvent:Function;&#xD;&#xA;   public function doLater(obj:Object, fn:String):Void;&#xD;&#xA;   public function doLaterDispatcher(Void):Void;&#xD;&#xA;   public function draw(Void):Void;&#xD;&#xA;   public function drawRect(x1:Number, y1:Number, x2:Number, y2:Number):Void;&#xD;&#xA;   public var embedFonts:Boolean;&#xD;&#xA;   public var findNextAvailableDepth:Function;&#xD;&#xA;   public var fontFamily:String;&#xD;&#xA;   public var fontSize:Number;&#xD;&#xA;   public var fontStyle:String;&#xD;&#xA;   public var fontWeight:String;&#xD;&#xA;   public function getClassStyleDeclaration(Void):mx.styles.CSSStyleDeclaration;&#xD;&#xA;   public function getMinHeight(Void):Number;&#xD;&#xA;   public function getMinWidth(Void):Number;&#xD;&#xA;   public function getSkinIDName(tag:Number):String;&#xD;&#xA;   public function getStyle(styleProp:String);&#xD;&#xA;   public function getStyleName(Void):String;&#xD;&#xA;   public var handleEvent:Function;&#xD;&#xA;   function get height():Number;&#xD;&#xA;   public var idNames:Array;&#xD;&#xA;   public var ignoreClassStyleDeclaration:Object;&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public function initFromClipParameters(Void):Void;&#xD;&#xA;   public var initProperties:Function;&#xD;&#xA;   public function invalidate(Void):Void;&#xD;&#xA;   private var invalidateFlag:Boolean;&#xD;&#xA;   public function invalidateStyle(Void):Void;&#xD;&#xA;   function get left():Number;&#xD;&#xA;   private var lineColor:Number;&#xD;&#xA;   private var lineWidth:Number;&#xD;&#xA;   public var marginLeft:Number;&#xD;&#xA;   public var marginRight:Number;&#xD;&#xA;   static function mergeClipParameters(o, p):Boolean;&#xD;&#xA;   public var methodTable:Array;&#xD;&#xA;   [Inspectable(defaultValue=0, verbose=1, category="Size")] function get minHeight():Number;&#xD;&#xA;   function set minHeight(h:Number):Void;&#xD;&#xA;   [Inspectable(defaultValue=0, verbose=1, category="Size")] function get minWidth():Number;&#xD;&#xA;   function set minWidth(w:Number):Void;&#xD;&#xA;   public function move(x:Number, y:Number, noEvent:Boolean):Void;&#xD;&#xA;   public var notifyStyleChangeInChildren:Function;&#xD;&#xA;   public function redraw(bAlways:Boolean):Void;&#xD;&#xA;   public var removeEventListener:Function;&#xD;&#xA;   function get right():Number;&#xD;&#xA;   function get scaleX():Number;&#xD;&#xA;   function set scaleX(x:Number):Void;&#xD;&#xA;   function get scaleY():Number;&#xD;&#xA;   function set scaleY(y:Number):Void;&#xD;&#xA;   public function setColor(color:Number):Void;&#xD;&#xA;   public function setMinHeight(h:Number):Void;&#xD;&#xA;   public function setMinWidth(w:Number):Void;&#xD;&#xA;   public function setSize(w:Number, h:Number, noEvent:Boolean):Void;&#xD;&#xA;   public function setSkin(tag:Number, linkageName:String, initObj:Object):MovieClip;&#xD;&#xA;   public var setStyle:Function;&#xD;&#xA;   public function setVisible(x:Boolean, noEvent:Boolean):Void;&#xD;&#xA;   public function size(Void):Void;&#xD;&#xA;   public var styleName:String;&#xD;&#xA;   public var stylecache:Object;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   public var tabEnabled:Boolean;&#xD;&#xA;   public var textAlign:String;&#xD;&#xA;   static var textColorList;&#xD;&#xA;   public var textDecoration:String;&#xD;&#xA;   public var textIndent:Number;&#xD;&#xA;   private var tfList:Object;&#xD;&#xA;   function get top():Number;&#xD;&#xA;   public var validateNow:Boolean;&#xD;&#xA;   static var version:String;&#xD;&#xA;   [Inspectable(defaultValue=true, verbose=1, category="Other")] function get visible():Boolean;&#xD;&#xA;   function set visible(x:Boolean):Void;&#xD;&#xA;   function get width():Number;&#xD;&#xA;   function get x():Number;&#xD;&#xA;   function get y():Number;&#xD;&#xA;};&#xD;&#xA;'>
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.skins.SkinElement" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.styles.StyleManager" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.core.ext.UIComponentExtensions">
+                              <SwcItem name="__Packages.mx.core.ext.UIComponentExtensions" implementation="Button.swf" version="1164217985" isTopLevel="true" intrinsicClass="mx.core.ext.UIComponentExtensions" intrinsicScript="import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.core.ext.UIComponentExtensions&#xD;&#xA;{&#xD;&#xA;   static function Extensions():Boolean;&#xD;&#xA;   static var FocusManagerDependency;&#xD;&#xA;   static var OverlappedWindowsDependency;&#xD;&#xA;   static var UIComponentDependency;&#xD;&#xA;   static var UIComponentExtended;&#xD;&#xA;   static var bExtended;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.styles.CSSSetStyle" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.managers.FocusManager" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.managers.OverlappedWindows" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.core.ext.UIObjectExtensions">
+                              <SwcItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf" version="1164217985" isTopLevel="true" intrinsicClass="mx.core.ext.UIObjectExtensions" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;import mx.skins.SkinElement;&#xD;&#xA;import mx.events.UIEventDispatcher;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.core.ext.UIObjectExtensions&#xD;&#xA;{&#xD;&#xA;   static var CSSTextStylesDependency;&#xD;&#xA;   static function Extensions():Boolean;&#xD;&#xA;   static var SkinElementDependency;&#xD;&#xA;   static var UIEventDispatcherDependency;&#xD;&#xA;   static var UIObjectDependency;&#xD;&#xA;   static var UIObjectExtended;&#xD;&#xA;   static function addGeometry(tf:Object, ui:Object):Void;&#xD;&#xA;   static var bExtended;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.skins.ColoredSkinElement" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.skins.SkinElement" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.styles.CSSTextStyles" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.events.UIEventDispatcher" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.events.EventDispatcher">
+                              <SwcItem name="__Packages.mx.events.EventDispatcher" implementation="Button.swf" version="1164217985" isTopLevel="true" intrinsicClass="mx.events.EventDispatcher" intrinsicScript="&#xD;&#xA;intrinsic class mx.events.EventDispatcher&#xD;&#xA;{&#xD;&#xA;   static var _fEventDispatcher:mx.events.EventDispatcher;&#xD;&#xA;   static function _removeEventListener(queue:Object, event:String, handler):Void;&#xD;&#xA;   public function addEventListener(event:String, handler):Void;&#xD;&#xA;   public function dispatchEvent(eventObj:Object):Void;&#xD;&#xA;   public function dispatchQueue(queueObj:Object, eventObj:Object):Void;&#xD;&#xA;   static var exceptions:Object;&#xD;&#xA;   static function initialize(object:Object):Void;&#xD;&#xA;   public function removeEventListener(event:String, handler):Void;&#xD;&#xA;};&#xD;&#xA;"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.events.UIEventDispatcher">
+                              <SwcItem name="__Packages.mx.events.UIEventDispatcher" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.events.UIEventDispatcher" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;import mx.events.EventDispatcher;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.events.UIEventDispatcher extends mx.events.EventDispatcher&#xD;&#xA;{&#xD;&#xA;   public function __addEventListener(event:String, handler):Void;&#xD;&#xA;   public var __origAddEventListener:Function;&#xD;&#xA;   public var __sentLoadEvent;&#xD;&#xA;   static var _fEventDispatcher:mx.events.UIEventDispatcher;&#xD;&#xA;   static function addKeyEvents(obj:Object):Void;&#xD;&#xA;   static function addLoadEvents(obj:Object):Void;&#xD;&#xA;   public function dispatchEvent(eventObj:Object):Void;&#xD;&#xA;   static function initialize(obj:Object):Void;&#xD;&#xA;   static var keyEvents:Object;&#xD;&#xA;   static var loadEvents:Object;&#xD;&#xA;   static var lowLevelEvents:Object;&#xD;&#xA;   public function onKeyDown(Void):Void;&#xD;&#xA;   public function onKeyUp(Void):Void;&#xD;&#xA;   public function onLoad(Void):Void;&#xD;&#xA;   public function onUnload(Void):Void;&#xD;&#xA;   public var owner:Object;&#xD;&#xA;   public function removeEventListener(event:String, handler):Void;&#xD;&#xA;   static function removeKeyEvents(obj:Object):Void;&#xD;&#xA;   static function removeLoadEvents(obj:Object):Void;&#xD;&#xA;};&#xD;&#xA;">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.events.EventDispatcher" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.managers.DepthManager">
+                              <SwcItem name="__Packages.mx.managers.DepthManager" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.managers.DepthManager" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.managers.DepthManager&#xD;&#xA;{&#xD;&#xA;   public function DepthManager();&#xD;&#xA;   static var __depthManager:mx.managers.DepthManager;&#xD;&#xA;   public var _childCounter:Number;&#xD;&#xA;   public var _parent:MovieClip;&#xD;&#xA;   public var _topmost:Boolean;&#xD;&#xA;   public function buildDepthTable(Void):Array;&#xD;&#xA;   public function createChildAtDepth(linkageName:String, depthFlag:Number, initObj:Object):MovieClip;&#xD;&#xA;   public function createClassChildAtDepth(className:Function, depthFlag:Number, initObj:Object):mx.core.UIObject;&#xD;&#xA;   public var createClassObject:Function;&#xD;&#xA;   static function createClassObjectAtDepth(className:Object, depthSpace:Number, initObj:Object):mx.core.UIObject;&#xD;&#xA;   public var createObject:Function;&#xD;&#xA;   static function createObjectAtDepth(linkageName:String, depthSpace:Number, initObj:Object):MovieClip;&#xD;&#xA;   public function findNextAvailableDepth(targetDepth:Number, depthTable:Array, direction:String):Number;&#xD;&#xA;   public var getDepth:Function;&#xD;&#xA;   public function getDepthByFlag(depthFlag:Number, depthTable:Array):Number;&#xD;&#xA;   static var highestDepth:Number;&#xD;&#xA;   static private var holder:MovieClip;&#xD;&#xA;   static var kBottom:Number;&#xD;&#xA;   static var kCursor:Number;&#xD;&#xA;   static var kNotopmost:Number;&#xD;&#xA;   static var kTooltip:Number;&#xD;&#xA;   static var kTop:Number;&#xD;&#xA;   static var kTopmost:Number;&#xD;&#xA;   static var lowestDepth:Number;&#xD;&#xA;   static var numberOfAuthortimeLayers:Number;&#xD;&#xA;   static var reservedDepth:Number;&#xD;&#xA;   public function setDepthAbove(targetInstance:MovieClip):Void;&#xD;&#xA;   public function setDepthBelow(targetInstance:MovieClip):Void;&#xD;&#xA;   public function setDepthTo(depthFlag:Number):Void;&#xD;&#xA;   public function shuffleDepths(subject:MovieClip, targetDepth:Number, depthTable:Array, direction:String):Void;&#xD;&#xA;   static function sortFunction(a:MovieClip, b:MovieClip):Number;&#xD;&#xA;   public var swapDepths:Function;&#xD;&#xA;   static function test(depth:Number):Boolean;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.managers.FocusManager">
+                              <SwcItem name="__Packages.mx.managers.FocusManager" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.managers.FocusManager" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;import mx.managers.SystemManager;&#xD;&#xA;import mx.controls.SimpleButton;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.managers.FocusManager extends mx.core.UIComponent&#xD;&#xA;{&#xD;&#xA;   public function FocusManager();&#xD;&#xA;   static var UIObjectExtensionsDependency;&#xD;&#xA;   public var __defaultPushButton:mx.controls.SimpleButton;&#xD;&#xA;   private var _firstNode:Object;&#xD;&#xA;   private var _firstObj:Object;&#xD;&#xA;   private var _foundList:Object;&#xD;&#xA;   private var _lastNode:Object;&#xD;&#xA;   private var _lastObj:Object;&#xD;&#xA;   private var _lastTarget:Object;&#xD;&#xA;   private var _lastx:Object;&#xD;&#xA;   private var _needPrev:Boolean;&#xD;&#xA;   private var _nextIsNext:Boolean;&#xD;&#xA;   private var _nextNode:Object;&#xD;&#xA;   private var _nextObj:Object;&#xD;&#xA;   public function _onMouseDown(Void):Void;&#xD;&#xA;   private var _prevNode:Object;&#xD;&#xA;   private var _prevObj:Object;&#xD;&#xA;   private var _searchKey:Number;&#xD;&#xA;   public function activate(Void):Void;&#xD;&#xA;   private var activated:Boolean;&#xD;&#xA;   public var bDrawFocus:Boolean;&#xD;&#xA;   public var bNeedFocus:Boolean;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public function deactivate(Void):Void;&#xD;&#xA;   public var defPushButton:mx.controls.SimpleButton;&#xD;&#xA;   function get defaultPushButton():mx.controls.SimpleButton;&#xD;&#xA;   function set defaultPushButton(x:mx.controls.SimpleButton);&#xD;&#xA;   public var defaultPushButtonEnabled:Boolean;&#xD;&#xA;   static function enableFocusManagement():Void;&#xD;&#xA;   public function enabledChanged(id:String, oldValue:Boolean, newValue:Boolean):Boolean;&#xD;&#xA;   public var form;&#xD;&#xA;   public function getActualFocus(o:Object):Object;&#xD;&#xA;   public function getFocus(Void):Object;&#xD;&#xA;   public function getFocusManagerFromObject(o:Object):Object;&#xD;&#xA;   public function getMaxTabIndex(o:mx.core.UIComponent):Number;&#xD;&#xA;   public function getMousedComponentFromChildren(x:Number, y:Number, o:Object):Object;&#xD;&#xA;   public function getNextTabIndex(Void):Number;&#xD;&#xA;   public function getSelectionFocus():Object;&#xD;&#xA;   public function getTabCandidate(o:MovieClip, index:Number, groupName:String, dir:Boolean, firstChild:Boolean):Void;&#xD;&#xA;   public function getTabCandidateFromChildren(o:MovieClip, index:Number, groupName:String, dir:Boolean, firstChild:Boolean):Void;&#xD;&#xA;   public function handleEvent(e:Object);&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   static var initialized:Boolean;&#xD;&#xA;   public function isOurFocus(o:Object):Boolean;&#xD;&#xA;   public var lastFocus:Object;&#xD;&#xA;   public var lastMouse:Object;&#xD;&#xA;   public var lastSelFocus:Object;&#xD;&#xA;   public var lastTabFocus:Object;&#xD;&#xA;   public function mouseActivate(Void):Void;&#xD;&#xA;   function get nextTabIndex():Number;&#xD;&#xA;   public function onKeyDown(Void):Void;&#xD;&#xA;   public function onMouseUp(Void):Void;&#xD;&#xA;   public function onSetFocus(o:Object, n:Object):Void;&#xD;&#xA;   public function onUnload(Void):Void;&#xD;&#xA;   public function relocate(Void):Void;&#xD;&#xA;   public function restoreFocus(Void):Void;&#xD;&#xA;   public function sendDefaultPushButtonEvent(Void):Void;&#xD;&#xA;   public function setFocus(o:Object):Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   private var tabCapture:MovieClip;&#xD;&#xA;   public function tabHandler(Void):Void;&#xD;&#xA;   static var version:String;&#xD;&#xA;   public function walkTree(p:MovieClip, index:Number, groupName:String, dir:Boolean, lookup:Boolean, firstChild:Boolean):Void;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.controls.SimpleButton" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.managers.DepthManager" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.managers.SystemManager" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.managers.OverlappedWindows">
+                              <SwcItem name="__Packages.mx.managers.OverlappedWindows" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.managers.OverlappedWindows" intrinsicScript="import mx.managers.SystemManager;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.managers.OverlappedWindows&#xD;&#xA;{&#xD;&#xA;   static var SystemManagerDependency;&#xD;&#xA;   static function __addEventListener(e:String, o:Object, l:Function):Void;&#xD;&#xA;   static function __removeEventListener(e:String, o:Object, l:Function):Void;&#xD;&#xA;   static function activate(f:MovieClip):Void;&#xD;&#xA;   static function addFocusManager(f:mx.core.UIComponent):Void;&#xD;&#xA;   static function checkIdle(Void):Void;&#xD;&#xA;   static function deactivate(f:MovieClip):Void;&#xD;&#xA;   static function enableOverlappedWindows():Void;&#xD;&#xA;   static var initialized:Boolean;&#xD;&#xA;   static function onMouseDown(Void):Void;&#xD;&#xA;   static function onMouseMove(Void):Void;&#xD;&#xA;   static function onMouseUp(Void):Void;&#xD;&#xA;   static function removeFocusManager(f:mx.core.UIComponent):Void;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.managers.SystemManager" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.managers.SystemManager">
+                              <SwcItem name="__Packages.mx.managers.SystemManager" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.managers.SystemManager" intrinsicScript='import mx.events.EventDispatcher;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;[Event("idle")] &#xD;&#xA;[Event("resize")] &#xD;&#xA;intrinsic class mx.managers.SystemManager&#xD;&#xA;{&#xD;&#xA;   static var __addEventListener:Function;&#xD;&#xA;   static var __removeEventListener:Function;&#xD;&#xA;   static var __screen:Object;&#xD;&#xA;   static private var _initialized:Boolean;&#xD;&#xA;   static var _xAddEventListener:Function;&#xD;&#xA;   static var _xRemoveEventListener:Function;&#xD;&#xA;   static var activate:Function;&#xD;&#xA;   static var addEventListener:Function;&#xD;&#xA;   static function addFocusManager(f:mx.core.UIComponent):Void;&#xD;&#xA;   static var checkIdle:Function;&#xD;&#xA;   static var deactivate:Function;&#xD;&#xA;   static var dispatchEvent:Function;&#xD;&#xA;   static var form:MovieClip;&#xD;&#xA;   static var forms:Array;&#xD;&#xA;   static var idleFrames:Number;&#xD;&#xA;   static function init(Void):Void;&#xD;&#xA;   static var interval:Number;&#xD;&#xA;   static var isMouseDown;&#xD;&#xA;   static function onMouseDown(Void):Void;&#xD;&#xA;   static var onMouseMove:Function;&#xD;&#xA;   static var onMouseUp:Function;&#xD;&#xA;   static function onResize(Void):Void;&#xD;&#xA;   static var removeEventListener:Function;&#xD;&#xA;   static function removeFocusManager(f:mx.core.UIComponent):Void;&#xD;&#xA;   static function get screen():Object;&#xD;&#xA;};&#xD;&#xA;'>
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                        <IncludesItem name="__Packages.mx.events.EventDispatcher" implementation="Button.swf"/>
+                                   </includesList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.Border">
+                              <SwcItem name="__Packages.mx.skins.Border" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.Border" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.Border extends mx.core.UIObject&#xD;&#xA;{&#xD;&#xA;   public function Border();&#xD;&#xA;   public var borderStyle:String;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public var idNames:Array;&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   public var tagBorder:Number;&#xD;&#xA;};&#xD;&#xA;">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.ColoredSkinElement">
+                              <SwcItem name="__Packages.mx.skins.ColoredSkinElement" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.ColoredSkinElement" intrinsicScript="&#xD;&#xA;intrinsic class mx.skins.ColoredSkinElement&#xD;&#xA;{&#xD;&#xA;   public var _color;&#xD;&#xA;   public function draw(Void):Void;&#xD;&#xA;   public var getStyle:Function;&#xD;&#xA;   public function invalidateStyle(Void):Void;&#xD;&#xA;   static var mixins:mx.skins.ColoredSkinElement;&#xD;&#xA;   public var onEnterFrame:Function;&#xD;&#xA;   public function setColor(c:Number):Void;&#xD;&#xA;   static function setColorStyle(p:Object, colorStyle:String):Void;&#xD;&#xA;};&#xD;&#xA;"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.RectBorder">
+                              <SwcItem name="__Packages.mx.skins.RectBorder" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.RectBorder" intrinsicScript="import mx.skins.Border;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.RectBorder extends mx.skins.Border&#xD;&#xA;{&#xD;&#xA;   public function RectBorder();&#xD;&#xA;   public var __borderMetrics:Object;&#xD;&#xA;   public var backgroundColorName:String;&#xD;&#xA;   public var borderColorName:String;&#xD;&#xA;   function get borderMetrics():Object;&#xD;&#xA;   public var borderStyleName:String;&#xD;&#xA;   public var buttonColorName:String;&#xD;&#xA;   public var className:String;&#xD;&#xA;   public function draw(Void):Void;&#xD;&#xA;   public function drawBorder(Void):Void;&#xD;&#xA;   public function getBorderMetrics(Void):Object;&#xD;&#xA;   function get height():Number;&#xD;&#xA;   public var highlightColorName:String;&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public var offset:Number;&#xD;&#xA;   public function setColor(Void):Void;&#xD;&#xA;   public var shadowColorName:String;&#xD;&#xA;   public function size(Void):Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   static var version:String;&#xD;&#xA;   function get width():Number;&#xD;&#xA;};&#xD;&#xA;">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.skins.Border" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.SkinElement">
+                              <SwcItem name="__Packages.mx.skins.SkinElement" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.SkinElement" intrinsicScript="&#xD;&#xA;intrinsic class mx.skins.SkinElement extends MovieClip&#xD;&#xA;{&#xD;&#xA;   public function __set__visible(visible:Boolean):Void;&#xD;&#xA;   public var height:Number;&#xD;&#xA;   public function move(x:Number, y:Number):Void;&#xD;&#xA;   static function registerElement(name:String, className:Function):Void;&#xD;&#xA;   public function setSize(w:Number, h:Number):Void;&#xD;&#xA;   public var top:Number;&#xD;&#xA;   public var visible:Boolean;&#xD;&#xA;   public var width:Number;&#xD;&#xA;};&#xD;&#xA;"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.halo.ButtonSkin">
+                              <SwcItem name="__Packages.mx.skins.halo.ButtonSkin" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.halo.ButtonSkin" intrinsicScript="import mx.skins.RectBorder;&#xD;&#xA;import mx.core.ext.UIObjectExtensions;&#xD;&#xA;import mx.skins.SkinElement;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.halo.ButtonSkin extends mx.skins.RectBorder&#xD;&#xA;{&#xD;&#xA;   public function ButtonSkin();&#xD;&#xA;   static var UIObjectExtensionsDependency;&#xD;&#xA;   public var backgroundColorName;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed:Boolean;&#xD;&#xA;   public var className;&#xD;&#xA;   public function drawHaloRect(w:Number, h:Number):Void;&#xD;&#xA;   public var drawRoundRect:Function;&#xD;&#xA;   public function init():Void;&#xD;&#xA;   public function size():Void;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;};&#xD;&#xA;">
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.skins.RectBorder" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.halo.Defaults">
+                              <SwcItem name="__Packages.mx.skins.halo.Defaults" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.halo.Defaults" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;import mx.core.ext.UIObjectExtensions;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.halo.Defaults&#xD;&#xA;{&#xD;&#xA;   static var CSSStyleDeclarationDependency;&#xD;&#xA;   static var UIObjectDependency;&#xD;&#xA;   static var UIObjectExtensionsDependency;&#xD;&#xA;   public var beginFill:Function;&#xD;&#xA;   public var beginGradientFill:Function;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed;&#xD;&#xA;   public var curveTo:Function;&#xD;&#xA;   public function drawRoundRect(x, y, w, h, r, c, alpha, rot, gradient, ratios);&#xD;&#xA;   public var endFill:Function;&#xD;&#xA;   public var lineTo:Function;&#xD;&#xA;   public var moveTo:Function;&#xD;&#xA;   static function setThemeDefaults():Void;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIObject" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.halo.FocusRect">
+                              <SwcItem name="__Packages.mx.skins.halo.FocusRect" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.halo.FocusRect" intrinsicScript="import mx.core.UIObject;&#xD;&#xA;import mx.skins.halo.Defaults;&#xD;&#xA;import mx.managers.DepthManager;&#xD;&#xA;import mx.skins.SkinElement;&#xD;&#xA;import mx.core.UIComponent;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.halo.FocusRect extends mx.skins.SkinElement&#xD;&#xA;{&#xD;&#xA;   static var DefaultsDependency:mx.skins.halo.Defaults;&#xD;&#xA;   public function FocusRect();&#xD;&#xA;   static var UIComponentDependency:mx.core.UIComponent;&#xD;&#xA;   public var boundingBox_mc:MovieClip;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed:Boolean;&#xD;&#xA;   public function draw(o:Object):Void;&#xD;&#xA;   public var drawRoundRect:Function;&#xD;&#xA;   public function handleEvent(e:Object):Void;&#xD;&#xA;   public function setSize(w:Number, h:Number, r, a:Number, rectCol:Number):Void;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.managers.DepthManager" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.UIComponent" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.skins.SkinElement" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.skins.halo.Defaults" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.skins.halo.RectBorder">
+                              <SwcItem name="__Packages.mx.skins.halo.RectBorder" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.skins.halo.RectBorder" intrinsicScript="import mx.core.ext.UIObjectExtensions;&#xD;&#xA;import mx.skins.Border;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.skins.halo.RectBorder extends mx.skins.RectBorder&#xD;&#xA;{&#xD;&#xA;   public function RectBorder();&#xD;&#xA;   static var UIObjectExtensionsDependency;&#xD;&#xA;   public var borderCapColorName:String;&#xD;&#xA;   private var borderWidths:Object;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed:Boolean;&#xD;&#xA;   private var colorList:Object;&#xD;&#xA;   public function draw3dBorder(c1:Number, c2:Number, c3:Number, c4:Number, c5:Number, c6:Number):Void;&#xD;&#xA;   public function drawBorder(Void):Void;&#xD;&#xA;   public var drawRoundRect:Function;&#xD;&#xA;   public function getBorderMetrics(Void):Object;&#xD;&#xA;   public function init(Void):Void;&#xD;&#xA;   public var shadowCapColorName:String;&#xD;&#xA;   static var symbolName:String;&#xD;&#xA;   static var symbolOwner:Object;&#xD;&#xA;   static var version:String;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.core.ext.UIObjectExtensions" implementation="Button.swf"/>
+                                        <ExportAfterItem name="__Packages.mx.skins.RectBorder" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.styles.CSSSetStyle">
+                              <SwcItem name="__Packages.mx.styles.CSSSetStyle" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.styles.CSSSetStyle" intrinsicScript="import mx.styles.StyleManager;&#xD;&#xA;import mx.styles.CSSStyleDeclaration;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.styles.CSSSetStyle&#xD;&#xA;{&#xD;&#xA;   static var CSSStyleDeclarationDependency;&#xD;&#xA;   public var _color:Number;&#xD;&#xA;   public function _setStyle(styleProp:String, newValue):Void;&#xD;&#xA;   public function changeColorStyleInChildren(sheetName:String, colorStyle:String, newValue):Void;&#xD;&#xA;   public function changeTextStyleInChildren(styleProp:String):Void;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed:Boolean;&#xD;&#xA;   static function enableRunTimeCSS():Void;&#xD;&#xA;   public var invalidateStyle:Function;&#xD;&#xA;   public function notifyStyleChangeInChildren(sheetName:String, styleProp:String, newValue):Void;&#xD;&#xA;   public var setColor:Function;&#xD;&#xA;   public function setStyle(styleProp:String, newValue):Void;&#xD;&#xA;   public var styleName:String;&#xD;&#xA;   public var stylecache:Object;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.styles.StyleManager" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.styles.CSSStyleDeclaration">
+                              <SwcItem name="__Packages.mx.styles.CSSStyleDeclaration" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.styles.CSSStyleDeclaration" intrinsicScript="import mx.styles.StyleManager;&#xD;&#xA;import mx.styles.CSSTextStyles;&#xD;&#xA;&#xD;&#xA;intrinsic class mx.styles.CSSStyleDeclaration&#xD;&#xA;{&#xD;&#xA;   static var CSSTextStylesDependency;&#xD;&#xA;   public function __getTextFormat(tf:TextFormat, bAll:Boolean):Boolean;&#xD;&#xA;   public var _tf:TextFormat;&#xD;&#xA;   static function classConstruct():Boolean;&#xD;&#xA;   static var classConstructed:Boolean;&#xD;&#xA;   public var color:Number;&#xD;&#xA;   public var embedFonts:Boolean;&#xD;&#xA;   public var fontFamily:String;&#xD;&#xA;   public var fontSize:Number;&#xD;&#xA;   public var fontStyle:String;&#xD;&#xA;   public var fontWeight:String;&#xD;&#xA;   public function getStyle(styleProp:String);&#xD;&#xA;   public var marginLeft:Number;&#xD;&#xA;   public var marginRight:Number;&#xD;&#xA;   public var styleName:String;&#xD;&#xA;   public var textAlign:String;&#xD;&#xA;   public var textDecoration:String;&#xD;&#xA;   public var textIndent:Number;&#xD;&#xA;};&#xD;&#xA;">
+                                   <includesList>
+                                        <IncludesItem name="__Packages.mx.styles.StyleManager" implementation="Button.swf"/>
+                                   </includesList>
+                                   <exportAfterList>
+                                        <ExportAfterItem name="__Packages.mx.styles.CSSTextStyles" implementation="Button.swf"/>
+                                   </exportAfterList>
+                              </SwcItem>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.styles.CSSTextStyles">
+                              <SwcItem name="__Packages.mx.styles.CSSTextStyles" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.styles.CSSTextStyles" intrinsicScript="&#xD;&#xA;intrinsic class mx.styles.CSSTextStyles&#xD;&#xA;{&#xD;&#xA;   static function addTextStyles(o:Object, bColor:Boolean):Void;&#xD;&#xA;};&#xD;&#xA;"/>
+                         </AssetMapItem>
+                         <AssetMapItem key="__Packages.mx.styles.StyleManager">
+                              <SwcItem name="__Packages.mx.styles.StyleManager" implementation="Button.swf" version="1164217986" isTopLevel="true" intrinsicClass="mx.styles.StyleManager" intrinsicScript="&#xD;&#xA;intrinsic class mx.styles.StyleManager&#xD;&#xA;{&#xD;&#xA;   static var TextFormatStyleProps:Object;&#xD;&#xA;   static var TextStyleMap:Object;&#xD;&#xA;   static var colorNames:Object;&#xD;&#xA;   static var colorStyles:Object;&#xD;&#xA;   static function getColorName(colorName:String):Number;&#xD;&#xA;   static var inheritingStyles:Object;&#xD;&#xA;   static function isColorName(colorName:String):Boolean;&#xD;&#xA;   static function isColorStyle(styleName:String):Boolean;&#xD;&#xA;   static function isInheritingStyle(styleName:String):Boolean;&#xD;&#xA;   static function registerColorName(colorName:String, colorValue:Number):Void;&#xD;&#xA;   static function registerColorStyle(styleName:String):Void;&#xD;&#xA;   static function registerInheritingStyle(styleName:String):Void;&#xD;&#xA;};&#xD;&#xA;"/>
+                         </AssetMapItem>
+                    </assetMap>
+                    <includesList>
+                         <IncludesItem name="BoundingBox" implementation="Button.swf"/>
+                         <IncludesItem name="SimpleButton" implementation="Button.swf"/>
+                         <IncludesItem name="Border" implementation="Button.swf"/>
+                         <IncludesItem name="RectBorder" implementation="Button.swf"/>
+                         <IncludesItem name="ButtonSkin" implementation="Button.swf"/>
+                    </includesList>
+                    <exportAfterList>
+                         <ExportAfterItem name="__Packages.mx.controls.Button" implementation="Button.swf"/>
+                    </exportAfterList>
+               </SwcItem>
+          </DOMCompiledClipItem>
+     </media>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Hooks" color="#4FFF4F" locked="true" autoNamed="false" visible="false" layerType="folder"/>
+                    <DOMLayer name="GameHook" color="#9933CC" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function GameHook(parent, team, level) {
+	this.data["map1338"] = mapDataString.split("",10000);
+
+	var hook4:Object = _level0.addPostHook(this.handle,
+		function() {
+			if (this.level.level == 1338 && this.parent.state == "movie") {
+				this.parent.doEndMovie("skip");
+			}
+		}
+	);
+	this.handle = hook4.override;
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="LevelStats" color="#FF800A" parentLayerIndex="0" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[function LevelStatsHook(parent) {
+	var hook3:Object = _level0.addPostHook(this.setup,
+		function () {
+			if (this.level == 1338)
+			{
+				this.isBonusLevel = true;
+				
+				//this.buildings.push(a = new game.Building(this, "BA_evil", 2, 2, "good"));
+				//function Building(parent, type, x, y, team, damage)
+				for (var i = 0; i < buildings.length; i++) {
+					var b;
+					this.buildings.push(
+						b = new game.Building(
+							this,
+							buildings[i][1],
+							buildings[i][2],
+							buildings[i][3],
+							buildings[i][4],
+							buildings[i][5]
+						)
+					);
+				}
+	
+				//this.units.push(new game.Unit(this, "UA_good", 11, 12, .5, null, null, "seek", null, true));
+				//function Unit(parent,type,x,y,angle,team,damage,target,obj,respawn)
+				for (var i = 0; i < units.length; i++) {
+					var u;
+					this.units.push(
+						u = new game.Unit(
+							this,
+							units[i][1],
+							units[i][2],
+							units[i][3],
+							units[i][4],
+							units[i][5],
+							units[i][6],
+							units[i][7],
+							units[i][8],
+							units[i][9]
+						)
+					);
+					rejigabsolute(u, units[i][10], units[i][11]);
+				}
+	
+				this.indicators.push(new game.Indicator(this, null, null, game.dialogue("int_level1338_ind1"), "message", 120));
+				//this.indicators.push(new game.Indicator(this, temp, null, null, "focus"));
+	
+				//this.camera.focus = a;
+				this.cash = 2000;
+				this.cashOppo = 30000;
+				this.jukebox = 1;
+			}
+		}
+	);
+	this.setup = hook3.override;
+	
+
+	var hook5:Object = _level0.addPreHook(this.outcome,
+		function() {
+			if (!this.active) {
+				return;
+			}
+			if (this.level == 1338) {
+				/*if (this.findBuilding("BA_evil").friend) {
+					this.win();
+				}*/
+			}
+		}
+	);
+	this.outcome = hook5.override;
+
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Mod" color="#4FFF4F" locked="true" autoNamed="false" layerType="folder"/>
+                    <DOMLayer name="Functions" color="#4FFF4F" parentLayerIndex="3" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[import flash.external.*;
+import flash.net.FileReference;
+//import utils.JSON;
+
+var downloadUrl:String = "";
+
+var fileRef:FileReference = new FileReference();
+var types:Array = new Array({description:"CAMM Map Files", extension:"*.camm", macType:"CAMM"});
+
+function ttrace(message:String):Void {
+	wrapper.Log(message);
+}
+
+function getMapData():String {
+	if (ExternalInterface.available) {
+		try {
+			return String(ExternalInterface.call("getMapData"));
+		} catch (e:Error) {
+			ttrace("getMapData() function unavailable.");
+		}
+	} else {
+		ttrace("Fail, ExternalInterface unavailable!");
+	}
+	return null;
+}
+
+function onSelect(file:FileReference):Void {
+	btnUpload.enabled = false;
+	btnUpload._visible = false;
+	ttrace("onSelect: " + file.name);
+	var result:Boolean = false;
+	result = file.upload("map_uploader.php");
+	ttrace(result.toString());
+	if (!result) {
+		// try again using a full URL, as you are probably testing or something
+		result = file.upload("https://crystalien-redux.com/dev/mods/maploader_alpha/map_uploader.php");
+		ttrace(result.toString());
+	}
+}
+
+function onCancel(file:FileReference):Void {
+	ttrace("onCancel");
+}
+
+function onOpen(file:FileReference):Void {
+	ttrace("onOpen: " + file.name);
+}
+
+function onProgress(file:FileReference, bytesLoaded:Number, bytesTotal:Number):Void {
+	ttrace("onProgress with bytesLoaded: " + bytesLoaded + " bytesTotal: " + bytesTotal);
+}
+
+function onComplete(file:FileReference):Void {
+	ttrace("onComplete: " + file.name);
+}
+
+function onHTTPError(file:FileReference, httpError:Number):Void {
+	ttrace("onHTTPError: " + file.name + " httpError: " + httpError);
+}
+
+function onIOError(file:FileReference):Void {
+	ttrace("onIOError: " + file.name);
+}
+
+function onSecurityError(file:FileReference, errorString:String):Void {
+	ttrace("onSecurityError: " + file.name + " errorString: " + errorString);
+}
+
+function num2ascii(num:Number):String {
+	if (num < 0) {
+		num = 0;
+	}
+	var chars = new Array(" ","!","#","$","%","&","'","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~","€","ƒ","„","…","†","‡","ˆ","‰","Š","‹","Œ","Ž","‘","’","“","”","•","–","—","˜","™","š","›","œ","","ž","Ÿ","¡","¢","£","¤","¥","¦","§","¨","©","ª","«","¬","­","®","¯","°","±","²","³","´","µ","¶","·","¸","¹","º","»","¼","½","¾","¿","À","Á","Â","Ã","Ä","Å","Æ","Ç","È","É","Ê","Ë","Ì","Í","Î","Ï","Ð","Ñ","Ò","Ó","Ô","Õ","Ö","×","Ø","Ù","Ú","Û","Ü","Ý","Þ","ß","à","á","â","ã","ä","å","æ","ç","è","é","ê","ë","ì","í","î","ï","ð","ñ","ò","ó","ô","õ","ö","÷","ø","ù","ú","û","ü","ý","þ","ÿ");
+	return chars[num];
+}
+
+function normalizeValue(value:String):Object {
+	if (value == "null") {
+		return null;
+	} else if (value == "False" || value == "false") {
+		return false;
+	} else if (value == "True" || value == "true") {
+		return true;
+	} else if (value === undefined) {
+		return null;
+	} else {
+		return value;
+	}
+}
+// Map data tile Ids in 2d array of numbers mapData[y][x]
+var mapData:Array = new Array();
+// Map data converted to ascii string
+var mapDataString:String = "";
+function injectTerrain(terrainData:String) {
+	var data:Array = terrainData.split("|");
+	for (var i:Number = 0; i < data.length; i++) {
+		data[i] = normalizeValue(data[i]);
+	}
+	mapData[data[2]][data[1]] = Number(data[0]);
+	//ttrace("    Terrain: " + data[0] + "," + data[1] + "," + data[2] + " => \"" + num2ascii(data[0]) + "\"");
+}
+
+function rejigabsolute(what, absx, absy) {
+	var x = absx / what.nav.arena.tileSize;
+	var y = absy / what.nav.arena.tileSize2;
+	var rx = Math.round(x);
+	var ry = Math.round(y);
+	if (rx > x) {
+		x = 1 - (rx - x);
+	} else {
+		x = x - rx;
+	}
+	if (ry > y) {
+		y = 1 - (ry - y);
+	} else {
+		y = y - ry;
+	}
+	what.nav.offsetX = x;
+	what.nav.offsetY = y;
+	what.posX = (what.nav.currentX -(1-x)) * what.nav.arena.tileSize;
+	what.posY = (what.nav.currentY -(1-y)) * what.nav.arena.tileSize;
+}
+function CAMMtoCACBuildingPos(type:String, oldx:Number, oldy:Number) {
+	var b = new game.BuildingStats(type);
+	var w:Number = b.width;
+	var h:Number = b.height;
+	var x:Number = oldx;
+	var y:Number = oldy;
+	if (w == 1) x++;
+	if (w == 2) x++;
+	if (w == 4) x+=2;
+	if (h == 2) y++;
+	if (h == 3) y+=2;
+	if (h == 4) y+=3;
+	return {x : x, y : y};
+}
+
+var units = new Array();
+function injectUnit(unitData:String) {
+	//ttrace("You are at injectUnit(\""+unitData+"\")");
+	var data:Array = unitData.split("|");
+	for (var i:Number = 0; i < data.length; i++) {
+		data[i] = normalizeValue(data[i]);
+	}
+	//ttrace("    Unit: this," + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + data[4] + "," + data[5] + "," + data[6] + "," + data[7] + "," + data[8]);
+	
+	// temporary test code
+	//var u;
+	//game.panel.game.level.units.push(
+		//u = new game.Unit(
+//			game.panel.game.level,
+//			data[0],
+//			Math.round(Number(data[1]) / 96),
+//			Math.round(Number(data[2]) / 48),
+//			Number(data[4]),
+//			(data[3] == '0') ? 'good' : 'evil',
+//			Number(data[5]),
+//			data[6],
+//			data[7],
+//			Boolean(data[8])
+		//)
+	//);
+	//rejigabsolute(u, Number(data[1]), Number(data[2]));
+	units.push([
+		game.panel.game.level,
+		data[0],
+		Math.round(Number(data[1]) / 96),
+		Math.round(Number(data[2]) / 48),
+		Number(data[4]),
+		((data[3] == '0') ? 'good' : 'evil'),
+		Number(data[5]),
+		data[6],
+		data[7],
+		Boolean(data[8]),
+		Number(data[1]),
+		Number(data[2])
+	]);
+}
+
+var buildings = new Array();
+function injectBuilding(buildingData:String) {
+	//ttrace("You are at injectBuilding(\""+buildingData+"\")");
+	var data:Array = buildingData.split("|");
+	for (var i:Number = 0; i < data.length; i++) {
+		data[i] = normalizeValue(data[i]);
+	}
+	//Building Format: {str_Id|i_PosX|i_PosY|i_Team|f_Angle|f_Damage}
+	//function Building(parent, type, x, y, team, damage)
+	//ttrace("Building: this," + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + "," + data[4] + "," + data[5]);
+	var newPos = CAMMtoCACBuildingPos(data[0], Number(data[1]), Number(data[2]));
+	buildings.push([
+		game.panel.game.level,
+		data[0],
+		newPos.x,
+		newPos.y,
+		((data[3] == '0') ? 'good' : 'evil'),
+		Number(data[5])
+	]);
+}
+
+function getDirtyIniValue(line:String):String {
+	var start:Number = line.indexOf("{");
+	if (start == -1) {
+		var equals:Number = line.indexOf("=") + 1;
+		var value:String = line.slice(equals + 1, line.length);
+		return value;
+	} else {
+		var end:Number = line.lastIndexOf("}", start);
+		var value:String = line.slice(start + 1, end);
+		return value;
+	}
+}
+
+//function injectObjects(input:String) {
+//	try {
+//		var o:Object = JSON.parse(input);
+//		ttrace("Title = " + o["Title"]);
+//	} catch(ex) {
+//		trace(ex.name + ":" + ex.message + ":" + ex.at + ":" + ex.text);
+//	}
+//}
+
+function injectObjects(input:String) {
+	var lines:Array = input.split("\n");
+	ttrace(lines.length.toString());
+	var inLevel:Boolean = false;
+	var inTerrain:Boolean = false;
+	var inBuildings:Boolean = false;
+	var inUnits:Boolean = false;
+	var mapW:Number = 0;
+	var mapH:Number = 0;
+	var mapTeam:Number = 0;
+	for (var i:Number = 0; i < lines.length; i++) {
+		var line:String = lines[i].split("\r", 1)[0];
+		if (line == "") {
+			continue;
+		}
+		//ttrace("line == " + line);
+		if (line == "[Level]") {
+			inLevel = true;
+			inTerrain = false;
+			inBuildings = false;
+			inUnits = false;
+		} else if (line == "[Terrain]") {
+			inLevel = false;
+			inTerrain = true;
+			inBuildings = false;
+			inUnits = false;
+		} else if (line == "[Buildings]") {
+			inLevel = false;
+			inTerrain = false;
+			inBuildings = true;
+			inUnits = false;
+			continue;
+		} else if (line == "[Units]") {
+			inLevel = false;
+			inTerrain = false;
+			inBuildings = false;
+			inUnits = true;
+			continue;
+		}
+		
+		if (inLevel) {
+			if (line.indexOf("W") == 0) {
+				mapW = Number(getDirtyIniValue(line));
+				var ascii:String = num2ascii(mapW);
+				mapDataString += ascii;
+				ttrace("    Map Size W: " + mapW + " => \"" + ascii + "\"");
+			}
+			if (line.indexOf("H") == 0) {
+				mapH = Number(getDirtyIniValue(line));
+				var ascii:String = num2ascii(mapH);
+				mapDataString += ascii;
+				ttrace("    Map Size H: " + mapH + " => \"" + ascii + "\"");
+				
+				mapData = new Array();
+				for (var y = 0; y < mapH; y++) {
+					mapData[y] = new Array();
+					for (var x = 0; x < mapW; x++) {
+						mapData[y][x] = -1;
+					}
+				}
+			}
+			if (line.indexOf("Team") == 0) {
+				mapTeam = Number(getDirtyIniValue(line));
+			}
+		} else if (inTerrain) {
+			if (line.indexOf("Terrain") == 0) {
+				injectTerrain(getDirtyIniValue(line));
+			}
+		} else if (inBuildings) {
+			if (line.indexOf("Building") == 0) {
+				injectBuilding(getDirtyIniValue(line));
+			}
+		} else if (inUnits) {
+			if (line.indexOf("Unit") == 0) {
+				injectUnit(getDirtyIniValue(line));
+			}
+		}
+	}
+	for (var y = 0; y < mapH; y++) {
+		for (var x = 0; x < mapW; x++) {
+			mapDataString += num2ascii(mapData[y][x]);
+		}
+	}
+	ttrace("Full Map/Terrain/Tile Data:\n\"" + mapDataString + "\"");
+	
+	game.panel.teams1337[1338] = ((mapTeam == 0) ? "good" : "evil");
+};
+
+function onUploadCompleteData(file:FileReference, dataString:String):Void {
+	var parts:Array = dataString.split("\n", 1);
+
+	ttrace("onUploadCompleteData: " + file.name + " data: \n" + parts[0]);
+	var data:Array = parts[0].split("|", 4);
+	if (data[0] == "success" && Number(data[1]) == 1) {
+		downloadUrl = data[3];
+	}
+
+	var content:String = substring(dataString, parts[0].length + 2, dataString.length + 1 - parts[0].length + 2);
+	//ttrace("Content = " + content);
+
+	injectObjects(content);
+}
+
+fileRef.addListener(_root);
+
+stop();]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="CACMod" color="#4FFF4F" parentLayerIndex="3" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[//import mx.controls.*;
+
+var wrapper:MovieClip;
+var game:MovieClip;
+var hookedIn:Boolean = false;
+
+function CACMod_Error(errmsg:String):Void {
+	wrapper.Log("oh noes! An error '" + errmsg + "' just happened!");
+}
+
+function CACMod_Init(parent:MovieClip):Number {
+	wrapper = parent;
+	
+	return 1;
+}
+
+function CACMod_OnGameMenu():Void {
+	if (!hookedIn) {
+		// Make a nicer reference to the game's root.
+		game = _level1;
+
+		game.panel.codes[1338] = "custom";
+		
+		var hook1:Object = wrapper.addPostHook(game.Game, GameHook);
+		game.Game = hook1.override;
+		
+		var hook2:Object = wrapper.addPostHook(game.LevelStats, LevelStatsHook);
+		game.LevelStats = hook2.override;
+		
+		//var mapData:String = getMapData();
+		//if (mapData != null) {
+			//stopAllSounds();
+			//injectObjects(mapData);
+			//game.panel.enterCode("custom");
+		//} else {
+			ttrace("No map data found, displaying upload button");
+			btnUpload.enabled = true;
+			btnUpload._visible = true;
+		//}
+		
+		hookedIn = true;
+		wrapper.Log("Map Loader Alpha: All hooked in...");
+	}
+}]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="My Code" color="#FF800A" parentLayerIndex="3" locked="true" autoNamed="false" visible="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[stop();]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Controls" color="#9933CC" parentLayerIndex="3" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMCompiledClipInstance libraryItemName="Button" name="btnUpload" uniqueID="1">
+                                             <matrix>
+                                                  <Matrix a="0.699996948242188" tx="606.5" ty="376"/>
+                                             </matrix>
+                                             <Actionscript>
+                                                  <script><![CDATA[on (click) {
+	import flash.net.FileReference;
+
+	_root.fileRef.browse();
+}]]></script>
+                                             </Actionscript>
+                                             <dataBindingXML><![CDATA[<component metaDataFetched='true' schemaUrl='' schemaOperation='' sceneRootLabel='Scene 1' oldCopiedComponentPath='1'>
+	<eventMap>
+		<property name="selected" value="click" />
+	</eventMap>
+	<property name="selected">
+<schema name="Boolean" base="Boolean" class="mx.data.types.Bool" required="true" readonly="false" writeonly="false" category="simple" original="true">
+			<properties>
+				<property name="defaultLabel" value="" />
+				<property name="defaultUIControl" value="" />
+			</properties>
+		</schema>
+	</property>
+</component>
+]]></dataBindingXML>
+                                             <parametersAsXML><![CDATA[   <property id="icon">
+      <Inspectable name="icon" variable="icon" category="" verbose="0" defaultValue="" type="Default"/>
+   </property>
+   <property id="label">
+      <Inspectable name="label" variable="label" category="" verbose="0" defaultValue="Upload..." type="Default"/>
+   </property>
+   <property id="labelPlacement">
+      <Inspectable name="labelPlacement" variable="labelPlacement" category="" verbose="0" defaultValue="right" enumeration="left,right,top,bottom" type="List"/>
+   </property>
+   <property id="selected">
+      <Inspectable name="selected" variable="selected" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="toggle">
+      <Inspectable name="toggle" variable="toggle" category="" verbose="0" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="enabled">
+      <Inspectable name="enabled" variable="enabled" category="Other" verbose="1" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="visible">
+      <Inspectable name="visible" variable="visible" category="Other" verbose="1" defaultValue="false" type="Boolean"/>
+   </property>
+   <property id="minHeight">
+      <Inspectable name="minHeight" variable="minHeight" category="Size" verbose="1" defaultValue="0" type="Number"/>
+   </property>
+   <property id="minWidth">
+      <Inspectable name="minWidth" variable="minWidth" category="Size" verbose="1" defaultValue="0" type="Number"/>
+   </property>
+]]></parametersAsXML>
+                                        </DOMCompiledClipInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="DebugMovieChecked" v="FlashPro"/>
+          <PD n="TestMovieChecked" v="FlashPro"/>
+     </persistentData>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="33022" publishTime="1535988029"/>
+          <PublishItem publishSize="33055" publishTime="1488144504"/>
+          <PublishItem publishSize="33064" publishTime="1488141789"/>
+          <PublishItem publishSize="33058" publishTime="1488141707"/>
+          <PublishItem publishSize="33066" publishTime="1488141487"/>
+          <PublishItem publishSize="33064" publishTime="1488141319"/>
+          <PublishItem publishSize="33056" publishTime="1488141184"/>
+          <PublishItem publishSize="33057" publishTime="1488140968"/>
+          <PublishItem publishSize="33057" publishTime="1488140866"/>
+          <PublishItem publishSize="33071" publishTime="1488140828"/>
+          <PublishItem publishSize="33034" publishTime="1488140155"/>
+          <PublishItem publishSize="33055" publishTime="1488139955"/>
+          <PublishItem publishSize="33078" publishTime="1488139512"/>
+          <PublishItem publishSize="33056" publishTime="1488139455"/>
+          <PublishItem publishSize="33122" publishTime="1488139003"/>
+          <PublishItem publishSize="31605" publishTime="1488138995"/>
+          <PublishItem publishSize="33122" publishTime="1488138274"/>
+          <PublishItem publishSize="33045" publishTime="1488137985"/>
+          <PublishItem publishSize="33031" publishTime="1488137933"/>
+          <PublishItem publishSize="33006" publishTime="1488137788"/>
+     </publishHistory>
+</DOMDocument>

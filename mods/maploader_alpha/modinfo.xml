@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mod>
+	<name>Map Loader Alpha</name>
+	<version>0.1.0.0</version>
+	<description><![CDATA[A prototype CAMM map loader.]]></description>
+	<author>Josh (leveleditor6680)</author>
+	<homepage>http://crystalien-redux.com/</homepage>
+	<documentation></documentation>
+	<icon></icon>
+	<updateurl>http://crystalien-redux.com/dev/wrapper_latest.php</updateurl>
+	<swf>maploader_alpha.swf</swf>
+</mod>
