@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <application xmlns="http://ns.adobe.com/air/application/2.6">
 
-  <id>cac-wrapper-AIR</id>
+  <id>com.crystalien-redux.cacplayer</id>
 
-  <versionNumber>1.0</versionNumber>
+  <versionNumber>1.2</versionNumber>
 
-  <filename>cac_wrapper_AIR</filename>
+  <filename>CAC_Player</filename>
 
-  <description/>
-
-  
-
-<!-- To localize the description, use the following format for the description element.<description><text xml:lang="en">English App description goes here</text><text xml:lang="fr">French App description goes here</text><text xml:lang="ja">Japanese App description goes here</text></description>-->
-
-  <name>cac_wrapper_AIR</name>
+  <description>Standalone Adbobe AIR player for the Redux version of the CrystAlien Conflict Flash game.</description>
 
   
 
-<!-- To localize the name, use the following format for the name element.<name><text xml:lang="en">English App name goes here</text><text xml:lang="fr">French App name goes here</text><text xml:lang="ja">Japanese App name goes here</text></name>-->
+  <!-- To localize the description, use the following format for the description element.<description><text xml:lang="en">English App description goes here</text><text xml:lang="fr">French App description goes here</text><text xml:lang="ja">Japanese App description goes here</text></description>-->
 
-  <copyright/>
+  <name>CrystAlien Conflict Player</name>
+
+  
+
+  <!-- To localize the name, use the following format for the name element.<name><text xml:lang="en">English App name goes here</text><text xml:lang="fr">French App name goes here</text><text xml:lang="ja">Japanese App name goes here</text></name>-->
+
+  <copyright>CrystAlien Redux Project, GPL v2</copyright>
 
   <initialWindow>
     <content>cac_wrapper_AIR.swf</content>
@@ -34,7 +34,12 @@
     <resizable>false</resizable>
   </initialWindow>
 
-  <icon/>
+  <icon>
+    <image16x16>assets/icon16.png</image16x16>
+    <image32x32>assets/icon32.png</image32x32>
+    <image48x48>assets/icon48.png</image48x48>
+    <image128x128>assets/icon128.png</image128x128>
+  </icon>
 
   <customUpdateUI>false</customUpdateUI>
 

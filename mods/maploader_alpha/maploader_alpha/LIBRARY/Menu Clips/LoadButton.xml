@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/LoadButton" itemID="52f86656-00000012" sourceFlashFilepath="Program Files (x86)\Adobe\Adobe Flash CS4\en\Configuration\Libraries\Buttons.fla" sourceLibraryItemHRef="buttons tube flat/tube flat green" sourceLastModified="1122843972" symbolType="button" lastModified="1392010838" sourceItemID="4279448c-00004a0d">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/LoadButton" itemID="52f86656-00000012" symbolType="button" lastModified="1537044622">
   <timeline>
     <DOMTimeline name="LoadButton">
       <layers>
@@ -6,13 +6,13 @@
           <frames>
             <DOMFrame index="0" duration="2" keyMode="9728">
               <elements>
-                <DOMStaticText fontRenderingMode="bitmap" left="-20.1" width="67.2" height="12.05" autoExpand="true" isSelectable="false">
+                <DOMStaticText fontRenderingMode="bitmap" left="-17.6" width="62.2" height="12.05" autoExpand="true" isSelectable="false">
                   <matrix>
                     <Matrix tx="-13.5" ty="-6"/>
                   </matrix>
                   <textRuns>
                     <DOMTextRun>
-                      <characters>Click to load!</characters>
+                      <characters>Load map...</characters>
                       <textAttrs>
                         <DOMTextAttrs alignment="center" size="10" bitmapSize="200" face="Verdana" fillColor="#333333"/>
                       </textAttrs>
@@ -23,13 +23,13 @@
             </DOMFrame>
             <DOMFrame index="2" keyMode="9728">
               <elements>
-                <DOMStaticText fontRenderingMode="bitmap" left="-20.1" width="67.2" height="12.05" autoExpand="true" isSelectable="false">
+                <DOMStaticText fontRenderingMode="bitmap" left="-17.6" width="62.2" height="12.05" autoExpand="true" isSelectable="false">
                   <matrix>
                     <Matrix tx="-13.5" ty="-6"/>
                   </matrix>
                   <textRuns>
                     <DOMTextRun>
-                      <characters>Click to load!</characters>
+                      <characters>Load map...</characters>
                       <textAttrs>
                         <DOMTextAttrs alignment="center" size="10" bitmapSize="200" face="Verdana" fillColor="#FFFFFF"/>
                       </textAttrs>
@@ -162,8 +162,8 @@
                   <edges>
                     <Edge strokeStyle="1" edges="
 !518 -232[#26A.9B #FFFF1D.FB 691 -153.5!691 -153.5[#301.EE #FFFFB5.4B 770 37.5!770 37.5[#301.EE #95.B5 691 228.5!691 228.5[#26A.9C #12D.05 518 307!518 307|518 308!518 308|-502 308!-502 308|-502 307.5!-502 307.5[#FFFD99.CA #133.6E -693
- 228.5!-693 228.5[#FFFCFC.11 #95.B5 -772 37.5!-772 37.5[#FFFCFC.11 #FFFFB5.4B -693 -153.5!-693 -153.5[#FFFD99.CA #FFFF17.92 -502 -232.5!-502 -232.5[#FFFE12.E5 #FFFF17.81 -484.5 -232!-484.5 -232|482.5 -232!482.5 -232|518 -232!482.5 -232
-[#1EB.1B #FFFF17.81 500 -232.5!500 -232.5[#1FD.1D #FFFF17.81 518 -232"/>
+ 228.5!-693 228.5[#FFFCFC.11 #95.B5 -772 37.5!-772 37.5[#FFFCFC.11 #FFFFB5.4B -693 -153.5!-693 -153.5[#FFFD99.CA #FFFF17.92 -502 -232.5!-502 -232.5[#FFFE12.E5 #FFFF17.81 -484.5 -232!-484.5 -232|482.5 -232!482.5 -232[#1EB.1B #FFFF17.81
+ 500 -232.5!500 -232.5[#1FD.1D #FFFF17.81 518 -232!482.5 -232|518 -232"/>
                   </edges>
                 </DOMShape>
               </elements>
@@ -188,8 +188,8 @@
                       <edges>
                         <Edge strokeStyle="1" edges="
 !518 -272[#26A.9B #FFFEF5.FB 691 -193.5!691 -193.5[#301.EE #FFFF8D.4B 770 -2.5!770 -2.5[#301.EE #6D.B5 691 188.5!691 188.5[#26A.9C #105.05 518 267!518 267|518 268!518 268|-502 268!-502 268|-502 267.5!-502 267.5[#FFFD99.CA #10B.6E -693
- 188.5!-693 188.5[#FFFCFC.11 #6D.B5 -772 -2.5!-772 -2.5[#FFFCFC.11 #FFFF8D.4B -693 -193.5!-693 -193.5[#FFFD99.CA #FFFEEF.92 -502 -272.5!-502 -272.5[#FFFE12.E5 #FFFEEF.81 -484.5 -272!-484.5 -272|482.5 -272!482.5 -272|518 -272!482.5 -272
-[#1EB.1B #FFFEEF.81 500 -272.5!500 -272.5[#1FD.1D #FFFEEF.81 518 -272"/>
+ 188.5!-693 188.5[#FFFCFC.11 #6D.B5 -772 -2.5!-772 -2.5[#FFFCFC.11 #FFFF8D.4B -693 -193.5!-693 -193.5[#FFFD99.CA #FFFEEF.92 -502 -272.5!-502 -272.5[#FFFE12.E5 #FFFEEF.81 -484.5 -272!-484.5 -272|482.5 -272!482.5 -272[#1EB.1B #FFFEEF.81
+ 500 -272.5!500 -272.5[#1FD.1D #FFFEEF.81 518 -272!482.5 -272|518 -272"/>
                       </edges>
                     </DOMShape>
                   </members>

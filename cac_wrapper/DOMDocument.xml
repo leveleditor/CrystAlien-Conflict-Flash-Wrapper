@@ -2752,7 +2752,7 @@ var gameMenuLoaded:Boolean = false;
 var MAX_INIT_ATTEMPTS:Number = 100;
 
 // Wrapper variables
-var version:Version = new Version(0, 2, 13, 0);
+var version:Version = new Version(0, 2, 14, 0);
 var gameswf:String = "v6_4_game.swf";
 var progressText:String = "Loading %3%% (<SWF>) [%1/%2]";
 ]]></script>
@@ -2821,6 +2821,24 @@ function exitFullscreen() {
 	} else {
 		Log("exitFullscreen() : ExternalInterface not available.");
 	}
+}
+
+function shouldAutoPlay():Boolean {
+	var autoPlay = false;
+	if (ExternalInterface.available) {
+		try {
+			autoPlay = ExternalInterface.call("shouldAutoPlay");
+			if (autoPlay == null) {
+				Log("shouldAutoPlay() function returned null!");
+				autoPlay = false;
+			}
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("shouldAutoPlay() : ExternalInterface not available.");
+	}
+	return autoPlay;
 }
 
 function deleteFromArray(arr:Array, key:Object, value:Object):Void {
@@ -2940,7 +2958,8 @@ function addHook(hookType:String, oldFunc:Function, callback:Function):Object {
 			//Log("A hooked function was called with arguments (" + arguments + ").");
 			if (newFunc.preCallbacks.length > 0) {
 				for (var __i__:Number = 0; __i__ < newFunc.preCallbacks.length; __i__++) {
-					newFunc.preCallbacks[__i__].callback.apply(this, arguments);
+					if (newFunc.preCallbacks[__i__].callback.apply(this, arguments) == "HOOK_HANDLED")
+						return;
 				}
 			}
 			newFunc.original.apply(this, arguments);
@@ -3043,6 +3062,9 @@ ver.onData = function(src:String) {
 };
 ver.load("http://crystalien-redux.com/dev/wrapper_latest.php");
 
+var numberOfMods:Number = 0;
+var numberOfModInfosLoaded:Number = 0;
+
 // Load mod list
 loadXmlAsArray("mods/modlist.xml", onModListLoaded);
 function onModListLoaded(xmlFile:String, modList:Array) {
@@ -3057,6 +3079,7 @@ function onModListLoaded(xmlFile:String, modList:Array) {
 		loadXmlAsArray(m[i]["__modxml"], onModInfoLoaded);
 		j++;
 	}
+	numberOfMods = j;
 }
 function onModInfoLoaded(xmlFile:String, modInfo:Array) {
 	var m:String = modAssoc[xmlFile][0];
@@ -3086,6 +3109,12 @@ function onModInfoLoaded(xmlFile:String, modInfo:Array) {
 	}
 */
 	Log("Loaded mod info for: " + mods[m]["name"] + " v" + mods[m]["version"]);
+	
+	numberOfModInfosLoaded++;
+	
+	if (numberOfModInfosLoaded == numberOfMods && shouldAutoPlay()) {
+		gotoAndPlay(2);
+	}
 }
 
 stop();]]></script>
@@ -3705,26 +3734,5 @@ on (release) {
           <PD n="TestMovieChecked" v="FlashPro"/>
      </persistentData>
      <PrinterSettings/>
-     <publishHistory>
-          <PublishItem publishSize="73933" publishTime="1496789438"/>
-          <PublishItem publishSize="73934" publishTime="1496789171"/>
-          <PublishItem publishSize="73903" publishTime="1496365333"/>
-          <PublishItem publishSize="73901" publishTime="1496365251"/>
-          <PublishItem publishSize="73918" publishTime="1496358323"/>
-          <PublishItem publishSize="73917" publishTime="1496358014"/>
-          <PublishItem publishSize="73918" publishTime="1496357929"/>
-          <PublishItem publishSize="73759" publishTime="1478222520"/>
-          <PublishItem publishSize="73771" publishTime="1466550086"/>
-          <PublishItem publishSize="73766" publishTime="1466549855"/>
-          <PublishItem publishSize="73768" publishTime="1466549627"/>
-          <PublishItem publishSize="73770" publishTime="1466549582"/>
-          <PublishItem publishSize="20874" publishTime="1466549529"/>
-          <PublishItem publishSize="73763" publishTime="1466549471"/>
-          <PublishItem publishSize="73763" publishTime="1466549368"/>
-          <PublishItem publishSize="73759" publishTime="1466549298"/>
-          <PublishItem publishSize="73763" publishTime="1466549230"/>
-          <PublishItem publishSize="73764" publishTime="1466549167"/>
-          <PublishItem publishSize="73764" publishTime="1466548837"/>
-          <PublishItem publishSize="73703" publishTime="1460520917"/>
-     </publishHistory>
+     <publishHistory/>
 </DOMDocument>

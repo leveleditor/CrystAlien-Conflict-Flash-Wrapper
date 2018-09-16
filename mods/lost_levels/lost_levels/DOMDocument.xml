@@ -152,26 +152,5 @@ function CACMod_OnGameMenu():Void {
           <PD n="TestMovieChecked" v="FlashPro"/>
      </persistentData>
      <PrinterSettings/>
-     <publishHistory>
-          <PublishItem publishSize="1353" publishTime="1435637187"/>
-          <PublishItem publishSize="1353" publishTime="1435637117"/>
-          <PublishItem publishSize="1352" publishTime="1418533900"/>
-          <PublishItem publishSize="1309" publishTime="1417912517"/>
-          <PublishItem publishSize="1254" publishTime="1417905657"/>
-          <PublishItem publishSize="1254" publishTime="1417905520"/>
-          <PublishItem publishSize="1254" publishTime="1417905515"/>
-          <PublishItem publishSize="1243" publishTime="1417855396"/>
-          <PublishItem publishSize="1270" publishTime="1417855373"/>
-          <PublishItem publishSize="1268" publishTime="1417855343"/>
-          <PublishItem publishSize="1243" publishTime="1417855319"/>
-          <PublishItem publishSize="1243" publishTime="1417855313"/>
-          <PublishItem publishSize="1344" publishTime="1417855255"/>
-          <PublishItem publishSize="1338" publishTime="1417855215"/>
-          <PublishItem publishSize="1326" publishTime="1417855113"/>
-          <PublishItem publishSize="1329" publishTime="1417855019"/>
-          <PublishItem publishSize="1311" publishTime="1417854772"/>
-          <PublishItem publishSize="1245" publishTime="1417854565"/>
-          <PublishItem publishSize="1256" publishTime="1417854525"/>
-          <PublishItem publishSize="1225" publishTime="1417854286"/>
-     </publishHistory>
+     <publishHistory/>
 </DOMDocument>

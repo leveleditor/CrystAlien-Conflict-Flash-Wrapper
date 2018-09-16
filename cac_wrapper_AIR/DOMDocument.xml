@@ -1,4 +1,4 @@
-<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="600" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" viewAngle3D="59.1837342884091" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="3">
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="750" frameRate="23" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" breakPointCount="4294967295" viewAngle3D="70.7391536835426" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="1">
      <timelines>
           <DOMTimeline name="Scene 1">
                <layers>
@@ -6,19 +6,93 @@
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
-                                        <script><![CDATA[import flash.html.HTMLLoader;
+                                        <script><![CDATA[import flash.desktop.NativeApplication;
+import flash.display.NativeWindow;
+import flash.display.StageScaleMode;
+import flash.display.StageAlign;
+import flash.geom.Point;
+import flash.events.InvokeEvent;
+import flash.filesystem.File;
+import flash.html.HTMLLoader;
+import flash.utils.ByteArray;
+import mx.utils.Base64Decoder;
 
+stage.scaleMode = StageScaleMode.NO_SCALE;
+stage.align = StageAlign.TOP_LEFT;
+
+var levelDataJson:String = null;
+var shouldAutoPlay:Boolean = true;
+var windowSize:Point = new Point(600, 400);
+setWindowSize(windowSize);
+
+function setWindowSize(size:Point):void {
+	if (stage && stage.nativeWindow) {
+		stage.nativeWindow.width = size.x;
+		stage.nativeWindow.height = size.y;
+		
+		// Correct values to account for OS window border sizes
+		var actualWidth = stage.stageWidth;
+		var actualHeight = stage.stageHeight;
+		stage.nativeWindow.width += size.x - actualWidth;
+		stage.nativeWindow.height += size.y - actualHeight;
+	}
+}
+
+function processCommandLineArg(args:Array, index:Number):void {
+	trace("Processing command line arg: " + args[index]);
+	switch (args[index]) {
+		case "-loadlevel":
+			var decoder:Base64Decoder = new Base64Decoder();
+			decoder.decode(args[index + 1]);
+			var bytes:ByteArray = decoder.toByteArray();
+			levelDataJson = bytes.toString();
+			break;
+		case "-autoplay=no":
+			shouldAutoPlay = false;
+			break;
+		case "-autoplay=yes":
+			shouldAutoPlay = true;
+			break;
+		case "-size":
+			var windowSizeString = args[index + 1];
+			var windowSizes:Array = windowSizeString.split("x", 2);
+			windowSize = new Point(Number(windowSizes[0]), Number(windowSizes[1]));
+			break;
+		default:
+			break;
+	}
+}
+
+function onInvokeEvent(event:InvokeEvent):void {
+	for (var i:String in event.arguments) {
+		processCommandLineArg(event.arguments, Number(i));
+	}
+	setWindowSize(windowSize);
+}
+
+NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);
+
+var loader:HTMLLoader = new HTMLLoader();
 function onLoaded(e:Event):void {
+	loader.width = windowSize.x;
+	loader.height = windowSize.y;
+	
 	loader.window.console = {};
 	loader.window.console.log = function(msg){
 		trace(msg);
 	};
+	loader.window.getMapData = function() {
+		return levelDataJson;
+	};
+	loader.window.shouldAutoPlay = function() {
+		return shouldAutoPlay;
+	};
 }
-
-var loader:HTMLLoader = new HTMLLoader();
-var request = new URLRequest("cac_wrapper_light.html");
-loader.width = stage.stageWidth;
-loader.height = stage.stageHeight;
+var request = new URLRequest("cac_wrapper.html");
+loader.width = windowSize.x;
+loader.height = windowSize.y;
+loader.x = 0;
+loader.y = 0;
 loader.load(request);
 loader.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
 addChild(loader);
@@ -33,47 +107,28 @@ stop();]]></script>
           </DOMTimeline>
      </timelines>
      <persistentData>
-          <PD n="com.air.artemis.airdest" v="cac_wrapper_AIR.air"/>
-          <PD n="com.air.artemis.included.count" v="10"/>
+          <PD n="com.air.artemis.airdest" v="CAC_Player.air"/>
+          <PD n="com.air.artemis.included.count" v="12"/>
           <PD n="TestMovieChecked" v="ADLDesktop"/>
           <PD n="com.air.artemis.pubair" v="true"/>
-          <PD n="com.air.artemis.included.item0" v="cac_wrapper_light.html"/>
+          <PD n="com.air.artemis.included.item0" v="cac_wrapper.html"/>
           <PD n="com.air.artemis.pubipa" v="false"/>
-          <PD n="com.air.artemis.included.item1" v="cac_wrapper_light.swf"/>
+          <PD n="com.air.artemis.included.item1" v="cac_wrapper.swf"/>
           <PD n="com.air.artemis.included.item2" v="loader_v0_5_1_unofficial.swf"/>
-          <PD n="com.air.artemis.included.item3" v="mods/modlist_light.xml"/>
+          <PD n="com.air.artemis.included.item3" v="v6_4_game.swf"/>
           <PD n="flash.swf.basename" v="cac_wrapper_AIR"/>
-          <PD n="com.air.artemis.included.item4" v="mods/redux/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item5" v="mods/redux/redux.swf"/>
-          <PD n="com.air.artemis.included.item6" v="mods/lost_levels/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item7" v="mods/lost_levels/lost_levels.swf"/>
+          <PD n="com.air.artemis.included.item4" v="dialogue_wrapper.xml"/>
+          <PD n="com.air.artemis.included.item5" v="mods/modlist.xml"/>
+          <PD n="com.air.artemis.included.item10" v="mods/maploader_alpha/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item6" v="mods/redux/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item11" v="mods/maploader_alpha/maploader_alpha.swf"/>
+          <PD n="com.air.artemis.included.item7" v="mods/redux/redux.swf"/>
           <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
           <PD n="swf.folder.path" v=""/>
-          <PD n="com.air.artemis.included.item8" v="dialogue_wrapper_light.xml"/>
-          <PD n="com.air.artemis.included.item9" v="v6_4_game.swf"/>
+          <PD n="com.air.artemis.included.item8" v="mods/lost_levels/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item9" v="mods/lost_levels/lost_levels.swf"/>
           <PD n="com.air.artemis.pubexe" v="false"/>
      </persistentData>
      <PrinterSettings/>
-     <publishHistory>
-          <PublishItem publishSize="978" publishTime="1516464127"/>
-          <PublishItem publishSize="978" publishTime="1516464003"/>
-          <PublishItem publishSize="978" publishTime="1516463635"/>
-          <PublishItem publishSize="978" publishTime="1516463522"/>
-          <PublishItem publishSize="978" publishTime="1516463492"/>
-          <PublishItem publishSize="1173" publishTime="1516463435"/>
-          <PublishItem publishSize="978" publishTime="1516463346"/>
-          <PublishItem publishSize="978" publishTime="1516463035"/>
-          <PublishItem publishSize="978" publishTime="1516462947"/>
-          <PublishItem publishSize="978" publishTime="1516462828"/>
-          <PublishItem publishSize="978" publishTime="1516462600"/>
-          <PublishItem publishSize="1172" publishTime="1516330392"/>
-          <PublishItem publishSize="1171" publishTime="1516330344"/>
-          <PublishItem publishSize="1161" publishTime="1516330198"/>
-          <PublishItem publishSize="1165" publishTime="1516330167"/>
-          <PublishItem publishSize="1128" publishTime="1516330071"/>
-          <PublishItem publishSize="86" publishTime="1516330051"/>
-          <PublishItem publishSize="667" publishTime="1516329858"/>
-          <PublishItem publishSize="669" publishTime="1516329756"/>
-          <PublishItem publishSize="667" publishTime="1505603618"/>
-     </publishHistory>
+     <publishHistory/>
 </DOMDocument>
