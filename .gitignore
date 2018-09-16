@@ -48,6 +48,8 @@ RECOVER_*/
 *.swd
 
 # Project specific
+*.app
+*.exe
 v6_4_game.swf
 v6_5_game.swf
 loader_v0_5_1_unofficial.swf
