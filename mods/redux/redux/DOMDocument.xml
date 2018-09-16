@@ -249,6 +249,26 @@ function registerCheat(id:String, code:String, linked:Array) {
 		this.doSnow();
 	}
 	delete tempTodaysDate;
+	
+	this.getZ = function(x, y) {
+		if (y == undefined) {
+			var obj = x;
+			var x = obj.posX;
+			var y = obj.posY;
+			if (obj.stats.altitude) // intentional error
+				y += obj.stats.altitude;
+		}
+		// FIX: To allow for maps bigger than the size of one background image (2880, approx. 30x30),
+		// changed this calculation to use the maximum dynamic depth (1048575) instead.
+		// Reference: https://www.kirupa.com/developer/actionscript/depths2.htm
+		// Old calculation:
+		// var depth = Math.ceil((x + (y * 2880)) / 10);
+		var depth = Math.ceil((x + (y * 1048575)) / 1048575 - 10);
+		var mc;
+		while ((mc = this.MC.getInstanceAtDepth(depth)) && (mc != obj.MC)) // poop, removeMovieClip restricts number of available levels etc
+			depth++;
+		return depth;
+	}
 }]]></script>
                                    </Actionscript>
                                    <elements/>
@@ -3159,26 +3179,5 @@ function CACMod_OnGameMenu():Void {
           <PD n="TestMovieChecked" v="FlashPro"/>
      </persistentData>
      <PrinterSettings/>
-     <publishHistory>
-          <PublishItem publishSize="18294" publishTime="1523760392"/>
-          <PublishItem publishSize="18257" publishTime="1504232348"/>
-          <PublishItem publishSize="17919" publishTime="1504232322"/>
-          <PublishItem publishSize="18286" publishTime="1503849859"/>
-          <PublishItem publishSize="18166" publishTime="1503849522"/>
-          <PublishItem publishSize="18162" publishTime="1503849392"/>
-          <PublishItem publishSize="18123" publishTime="1503849298"/>
-          <PublishItem publishSize="18112" publishTime="1503848762"/>
-          <PublishItem publishSize="18120" publishTime="1503848720"/>
-          <PublishItem publishSize="18120" publishTime="1503848616"/>
-          <PublishItem publishSize="18101" publishTime="1503848162"/>
-          <PublishItem publishSize="18108" publishTime="1503847963"/>
-          <PublishItem publishSize="17811" publishTime="1503847598"/>
-          <PublishItem publishSize="17813" publishTime="1503847366"/>
-          <PublishItem publishSize="17802" publishTime="1496891494"/>
-          <PublishItem publishSize="17785" publishTime="1496799312"/>
-          <PublishItem publishSize="17785" publishTime="1496799283"/>
-          <PublishItem publishSize="17785" publishTime="1496637228"/>
-          <PublishItem publishSize="17080" publishTime="1496211687"/>
-          <PublishItem publishSize="17080" publishTime="1496211660"/>
-     </publishHistory>
+     <publishHistory/>
 </DOMDocument>
