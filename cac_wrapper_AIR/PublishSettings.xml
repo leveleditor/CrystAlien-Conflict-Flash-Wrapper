@@ -42,7 +42,7 @@
     <AlternateFilename>cac_wrapper_AIR.xfl_alternate.html</AlternateFilename>
     <UsingOwnAlternateFile>0</UsingOwnAlternateFile>
     <OwnAlternateFilename></OwnAlternateFilename>
-    <Width>750</Width>
+    <Width>600</Width>
     <Height>400</Height>
     <Align>0</Align>
     <Units>0</Units>
@@ -126,7 +126,7 @@
     </LibraryVersions>
   </PublishFlashProperties>
   <PublishJpegProperties enabled="true">
-    <Width>750</Width>
+    <Width>600</Width>
     <Height>400</Height>
     <Progressive>0</Progressive>
     <DPI>4718592</DPI>
@@ -152,7 +152,7 @@
     <exportSMIL>1</exportSMIL>
   </PublishRNWKProperties>
   <PublishGifProperties enabled="true">
-    <Width>750</Width>
+    <Width>600</Width>
     <Height>400</Height>
     <Animated>0</Animated>
     <MatchMovieDim>1</MatchMovieDim>
@@ -171,7 +171,7 @@
     <PaletteName></PaletteName>
   </PublishGifProperties>
   <PublishPNGProperties enabled="true">
-    <Width>750</Width>
+    <Width>600</Width>
     <Height>400</Height>
     <OptimizeColors>1</OptimizeColors>
     <Interlace>0</Interlace>
@@ -188,7 +188,7 @@
     <PaletteName></PaletteName>
   </PublishPNGProperties>
   <PublishQTProperties enabled="true">
-    <Width>750</Width>
+    <Width>600</Width>
     <Height>400</Height>
     <MatchMovieDim>1</MatchMovieDim>
     <UseQTSoundCompression>0</UseQTSoundCompression>

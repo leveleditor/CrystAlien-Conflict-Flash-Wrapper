@@ -4,10 +4,11 @@
 		<meta charset="utf-8">
 		<title>CAC Flash Wrapper | CrystAlien Redux</title>
 		<style type="text/css">
+			html, body { margin: 0; padding: 0; }
 			body {
 				background-color: #000000;
 				color: #fff;
-				margin: 0;
+				font: 12px "Lucida Console", Consolas, "Courier New", Courier, Monaco, Fixedsys, monospace, sans-serif;
 			}
 			#game {
 				padding: 0;
@@ -15,10 +16,38 @@
 				height: 400px;
 				margin: auto;
 			}
+			#consolewrapper {
+				margin: 0;
+				padding: 0;
+				height: 400px;
+				overflow: scroll;
+			}
+			#console {
+				margin: 0;
+				padding: 5px;
+				background-color: #000;
+				color: #0f0;
+			}
 		</style>
 		<script type="text/javascript">
 			function Log(msg) {
+				document.getElementById('console').innerHTML += "<br/>" + unescape(msg);
+				document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
 				console.log(unescape(msg));
+			}
+			function output(msg, id) {
+				alert("Unsupported");
+			}
+			function displayModInfo(name, desc, icon, vers, docs) {
+				var dochtml = "No docs";
+				if (docs && docs.length > 4) {
+					dochtml = "<a href=\"" + docs + "\" target=\"_blank\" rel=\"noopener\">Docs</a>";
+				}
+				var iconhtml = "No icon";
+				if (icon && icon.length > 4) {
+					iconhtml = "<a href=\"" + icon + "\" target=\"_blank\" rel=\"noopener\">Icon</a>";
+				}
+				Log('Recieved call to displayModInfo() : ' + name + ', ' + desc + ', ' + iconhtml + ', v' + vers + ', ' + dochtml);
 			}
 		</script>
 	</head>
@@ -35,6 +64,9 @@
 				<param name="browserzoom" value="noscale" />
 				<param name="FlashVars" value="console=true" />
 			</object>
+		</div>
+		<div id="consolewrapper">
+			<pre id="console">[ Console started ]</pre>
 		</div>
 	</body>
 </html>

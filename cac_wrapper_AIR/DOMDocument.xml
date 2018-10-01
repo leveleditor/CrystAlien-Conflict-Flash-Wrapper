@@ -1,4 +1,4 @@
-<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="750" frameRate="23" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" breakPointCount="4294967295" viewAngle3D="70.7391536835426" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="1">
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="600" frameRate="23" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" breakPointCount="4294967295" viewAngle3D="59.1837342884091" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="1">
      <timelines>
           <DOMTimeline name="Scene 1">
                <layers>
@@ -22,21 +22,31 @@ stage.align = StageAlign.TOP_LEFT;
 
 var levelDataJson:String = null;
 var shouldAutoPlay:Boolean = true;
-var windowSize:Point = new Point(600, 400);
-setWindowSize(windowSize);
+var showConsole:Boolean = false;
+var windowSize:Point = new Point(stage.stageWidth, stage.stageHeight);
+var htmlSize:Point = windowSize;
+
+// Get OS window border sizes for sizing correction
+var borderSize:Point = new Point(stage.nativeWindow.width - stage.stageWidth, stage.nativeWindow.height - stage.stageHeight);
 
 function setWindowSize(size:Point):void {
 	if (stage && stage.nativeWindow) {
-		stage.nativeWindow.width = size.x;
-		stage.nativeWindow.height = size.y;
+		var newSize:Point = new Point(size.x + borderSize.x, size.y + borderSize.y);
 		
-		// Correct values to account for OS window border sizes
-		var actualWidth = stage.stageWidth;
-		var actualHeight = stage.stageHeight;
-		stage.nativeWindow.width += size.x - actualWidth;
-		stage.nativeWindow.height += size.y - actualHeight;
+		stage.nativeWindow.minSize = newSize;
+		
+		if (showConsole) {
+			stage.nativeWindow.maxSize = new Point(newSize.x, newSize.y + 400);
+		} else {
+			stage.nativeWindow.maxSize = newSize;
+		}
+		
+		stage.nativeWindow.width = newSize.x;
+		stage.nativeWindow.height = newSize.y;
 	}
 }
+
+setWindowSize(windowSize);
 
 function processCommandLineArg(args:Array, index:Number):void {
 	trace("Processing command line arg: " + args[index]);
@@ -58,6 +68,9 @@ function processCommandLineArg(args:Array, index:Number):void {
 			var windowSizes:Array = windowSizeString.split("x", 2);
 			windowSize = new Point(Number(windowSizes[0]), Number(windowSizes[1]));
 			break;
+		case "-console":
+			showConsole = true;
+			break;
 		default:
 			break;
 	}
@@ -67,6 +80,16 @@ function onInvokeEvent(event:InvokeEvent):void {
 	for (var i:String in event.arguments) {
 		processCommandLineArg(event.arguments, Number(i));
 	}
+	
+	if (showConsole) {
+		htmlSize = new Point(windowSize.x, windowSize.y + 400);
+	} else {
+		htmlSize = windowSize;
+	}
+	
+	stage.stageWidth = htmlSize.x;
+	stage.stageHeight = htmlSize.y;
+	
 	setWindowSize(windowSize);
 }
 
@@ -74,8 +97,8 @@ NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvok
 
 var loader:HTMLLoader = new HTMLLoader();
 function onLoaded(e:Event):void {
-	loader.width = windowSize.x;
-	loader.height = windowSize.y;
+	loader.width = htmlSize.x;
+	loader.height = htmlSize.y;
 	
 	loader.window.console = {};
 	loader.window.console.log = function(msg){
@@ -89,8 +112,8 @@ function onLoaded(e:Event):void {
 	};
 }
 var request = new URLRequest("cac_wrapper.html");
-loader.width = windowSize.x;
-loader.height = windowSize.y;
+loader.width = htmlSize.x;
+loader.height = htmlSize.y;
 loader.x = 0;
 loader.y = 0;
 loader.load(request);
@@ -124,7 +147,7 @@ stop();]]></script>
           <PD n="com.air.artemis.included.item11" v="mods/maploader_alpha/maploader_alpha.swf"/>
           <PD n="com.air.artemis.included.item7" v="mods/redux/redux.swf"/>
           <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
-          <PD n="swf.folder.path" v=""/>
+          <PD n="swf.folder.path"/>
           <PD n="com.air.artemis.included.item8" v="mods/lost_levels/modinfo.xml"/>
           <PD n="com.air.artemis.included.item9" v="mods/lost_levels/lost_levels.swf"/>
           <PD n="com.air.artemis.pubexe" v="false"/>
