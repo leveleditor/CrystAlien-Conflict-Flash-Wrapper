@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/Window/rectBorderContentBg" itemID="54953d15-000020b5" lastModified="1419067677">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/Window/rectBorderContentBg" itemID="54953d15-000020b5" lastModified="1551144575">
   <timeline>
     <DOMTimeline name="rectBorderContentBg">
       <layers>
@@ -9,11 +9,11 @@
                 <DOMShape>
                   <fills>
                     <FillStyle index="1">
-                      <SolidColor color="#858585"/>
+                      <SolidColor color="#A2A2A2"/>
                     </FillStyle>
                   </fills>
                   <edges>
-                    <Edge fillStyle1="1" edges="!0 480S2|0 0!0 0|480 0!480 0|480 480!480 480|0 480"/>
+                    <Edge fillStyle1="1" edges="!0 0|480 0!480 0|480 480!480 480|0 480!0 480|0 0"/>
                   </edges>
                 </DOMShape>
               </elements>

@@ -2,7 +2,6 @@
      <folders>
           <DOMFolderItem name="Menu Clips" itemID="5b9d703d-00000284" isExpanded="true"/>
      </folders>
-     <media/>
      <symbols>
           <Include href="Menu Clips/ButtonHitArea.xml" itemIcon="1" loadImmediate="false" itemID="540cb5e0-0000022c" lastModified="1410119136"/>
           <Include href="Menu Clips/LoadButton.xml" itemIcon="0" loadImmediate="false" itemID="52f86656-00000012" lastModified="1537044622"/>
@@ -294,6 +293,9 @@ function injectObjects(input:String) {
 		var o:Object = mapDataJsonObject;
 		Log("Title = " + o["Title"]);
 		
+		// Replace the default access code with the one from this map.
+		game.panel.codes[1338] = o["AccessCode"];
+		
 		var mapW:Number = 0;
 		var mapH:Number = 0;
 		var mapTeam:Number = 0;
@@ -441,6 +443,7 @@ function CACMod_OnGameMenu():Void {
 		// Make a nicer reference to the game's root.
 		game = _level1;
 
+		// Default access code for custom maps. It is loaded from the map file later.
 		game.panel.codes[1338] = "custom";
 		
 		var hook1:Object = wrapper.addPostHook(game.Game, GameHook);
@@ -462,10 +465,13 @@ function CACMod_OnGameMenu():Void {
 		wrapper.Log("Map Loader Alpha: All hooked in...");
 	}
 	
-	// Automatically reload custom level when back on the main menu
-	if (hookedIn && mapDataJsonString != null) {
+	// Automatically reload custom level when back on the main menu.
+	if (hookedIn && mapDataJsonString != null && wrapper.shouldSkipMenu()) {
+		// Prevent main menu intro sound from playing.
 		stopAllSounds();
-		game.panel.enterCode("custom");
+		
+		// Auto enter the access code to go directly into the level.
+		game.panel.enterCode(game.panel.codes[1338]);
 	}
 }
 ]]></script>

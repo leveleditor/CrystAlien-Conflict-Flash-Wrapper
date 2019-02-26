@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/Window/rectBorderContents" itemID="54952704-00000671" linkageExportForAS="true" linkageIdentifier="rectBorderContents" lastModified="1419108869" lastUniqueIdentifier="11">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Styles/Window/rectBorderContents" itemID="54952704-00000671" linkageExportForAS="true" linkageIdentifier="rectBorderContents" lastModified="1551144500" lastUniqueIdentifier="11">
   <timeline>
     <DOMTimeline name="rectBorderContents">
       <layers>
@@ -113,7 +113,7 @@
                     <Point x="4" y="19"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="Styles/Window/top_right" name="tr" selected="true" centerPoint3DX="20" centerPoint3DY="19">
+                <DOMSymbolInstance libraryItemName="Styles/Window/top_right" name="tr" centerPoint3DX="20" centerPoint3DY="19">
                   <matrix>
                     <Matrix tx="16"/>
                   </matrix>

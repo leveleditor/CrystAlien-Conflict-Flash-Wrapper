@@ -2700,7 +2700,7 @@
           <Include href="Menu Clips/Hexagon 1.xml" loadImmediate="false" itemID="536979db-0000005f" lastModified="1438397717"/>
           <Include href="Menu Clips/HexagonFlare.xml" loadImmediate="false" itemID="55bc2fb5-0000022a" lastModified="1438398114"/>
           <Include href="Menu Clips/LoadButton.xml" itemIcon="0" loadImmediate="false" itemID="52f86656-00000012" lastModified="1392010838"/>
-          <Include href="Menu Clips/ModManager.xml" itemID="540cb691-00000231" lastModified="1460520911"/>
+          <Include href="Menu Clips/ModManager.xml" itemID="540cb691-00000231" lastModified="1551144592"/>
           <Include href="Menu Clips/ModManagerButton.xml" itemIcon="0" loadImmediate="false" itemID="540cb574-0000021a" lastModified="1410119097"/>
           <Include href="Styles/CheckBox/States/CheckFalseDisabled.xml" itemID="54965c6e-000004ac" lastModified="1419140206"/>
           <Include href="Styles/CheckBox/States/CheckFalseDown.xml" itemID="54966851-000006f0" lastModified="1419143249"/>
@@ -2719,8 +2719,8 @@
           <Include href="Styles/Window/middle_left.xml" itemID="549528d3-000006a7" lastModified="1419061669"/>
           <Include href="Styles/Window/middle_right.xml" itemID="549528e2-000006a8" lastModified="1419061675"/>
           <Include href="Styles/Window/rectBorder.xml" itemID="549506ea-0000040a" lastModified="1419065261"/>
-          <Include href="Styles/Window/rectBorderContentBg.xml" loadImmediate="false" itemID="54953d15-000020b5" lastModified="1419067677"/>
-          <Include href="Styles/Window/rectBorderContents.xml" itemID="54952704-00000671" lastModified="1419108869"/>
+          <Include href="Styles/Window/rectBorderContentBg.xml" loadImmediate="false" itemID="54953d15-000020b5" lastModified="1551144575"/>
+          <Include href="Styles/Window/rectBorderContents.xml" itemID="54952704-00000671" lastModified="1551144500"/>
           <Include href="Styles/Window/skinCloseDown.xml" itemID="5494e96d-00000229" lastModified="1419108108"/>
           <Include href="Styles/Window/skinCloseOver.xml" itemID="5494ed4e-00000282" lastModified="1419107446"/>
           <Include href="Styles/Window/skinCloseUp.xml" itemID="5494e8b6-00000212" lastModified="1419108210"/>
@@ -2839,6 +2839,24 @@ function shouldAutoPlay():Boolean {
 		Log("shouldAutoPlay() : ExternalInterface not available.");
 	}
 	return autoPlay;
+}
+
+function shouldSkipMenu():Boolean {
+	var skipMenu = false;
+	if (ExternalInterface.available) {
+		try {
+			skipMenu = ExternalInterface.call("shouldSkipMenu");
+			if (skipMenu == null) {
+				Log("shouldSkipMenu() function returned null!");
+				skipMenu = false;
+			}
+		} catch (e:Error) {
+			Log("ExternalInterface error: " + e.toString());
+		}
+	} else {
+		Log("shouldSkipMenu() : ExternalInterface not available.");
+	}
+	return skipMenu;
 }
 
 function deleteFromArray(arr:Array, key:Object, value:Object):Void {
@@ -3075,7 +3093,8 @@ function onModListLoaded(xmlFile:String, modList:Array) {
 		//m[i]["__moddir"] = "mods/" + i + "/";
 		m[i]["__modxml"] = "mods/" + i + "/modinfo.xml";
 		var k:Boolean = Boolean(m[i].attributes["disabled"]);
-		modAssoc[m[i]["__modxml"]] = new Array(i, j, k);
+		var l:Boolean = Boolean(m[i].attributes["locked"]);
+		modAssoc[m[i]["__modxml"]] = new Array(i, j, k, l);
 		loadXmlAsArray(m[i]["__modxml"], onModInfoLoaded);
 		j++;
 	}
@@ -3085,6 +3104,7 @@ function onModInfoLoaded(xmlFile:String, modInfo:Array) {
 	var m:String = modAssoc[xmlFile][0];
 	var i:Number = modAssoc[xmlFile][1];
 	var d:Boolean = modAssoc[xmlFile][2];
+	var l:Boolean = modAssoc[xmlFile][3];
 	modsIndex.push(m);
 	//var i:Number = modsIndex.push(m);
 	mods[m] = modInfo["mod"];
@@ -3098,6 +3118,7 @@ function onModInfoLoaded(xmlFile:String, modInfo:Array) {
 	mods[m]["__enabled"] = !d;
 	mods[m]["__priority"] = i;
 	mods[m]["__modname"] = m;
+	mods[m]["__locked"] = l;
 /*
 	var modPrioritySorted:Array = new Array();
 	for (var mod in mods) {

@@ -22,6 +22,7 @@ stage.align = StageAlign.TOP_LEFT;
 
 var levelDataJson:String = null;
 var shouldAutoPlay:Boolean = true;
+var shouldSkipMenu:Boolean = true;
 var showConsole:Boolean = false;
 var windowSize:Point = new Point(stage.stageWidth, stage.stageHeight);
 var htmlSize:Point = windowSize;
@@ -62,6 +63,12 @@ function processCommandLineArg(args:Array, index:Number):void {
 			break;
 		case "-autoplay=yes":
 			shouldAutoPlay = true;
+			break;
+		case "-skipmenu=no":
+			shouldSkipMenu = false;
+			break;
+		case "-skipmenu=yes":
+			shouldSkipMenu = true;
 			break;
 		case "-size":
 			var windowSizeString = args[index + 1];
@@ -110,6 +117,9 @@ function onLoaded(e:Event):void {
 	loader.window.shouldAutoPlay = function() {
 		return shouldAutoPlay;
 	};
+	loader.window.shouldSkipMenu = function() {
+		return shouldSkipMenu;
+	};
 }
 var request = new URLRequest("cac_wrapper.html");
 loader.width = htmlSize.x;
@@ -130,27 +140,27 @@ stop();]]></script>
           </DOMTimeline>
      </timelines>
      <persistentData>
-          <PD n="com.air.artemis.airdest" v="CAC_Player.air"/>
-          <PD n="com.air.artemis.included.count" v="12"/>
+          <PD n="flash.swf.basename" v="cac_wrapper_AIR"/>
+          <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
+          <PD n="swf.folder.path"/>
           <PD n="TestMovieChecked" v="ADLDesktop"/>
+          <PD n="com.air.artemis.airdest" v="CAC_Player.air"/>
           <PD n="com.air.artemis.pubair" v="true"/>
-          <PD n="com.air.artemis.included.item0" v="cac_wrapper.html"/>
+          <PD n="com.air.artemis.pubexe" v="false"/>
           <PD n="com.air.artemis.pubipa" v="false"/>
+          <PD n="com.air.artemis.included.count" v="12"/>
+          <PD n="com.air.artemis.included.item0" v="cac_wrapper.html"/>
           <PD n="com.air.artemis.included.item1" v="cac_wrapper.swf"/>
           <PD n="com.air.artemis.included.item2" v="loader_v0_5_1_unofficial.swf"/>
           <PD n="com.air.artemis.included.item3" v="v6_4_game.swf"/>
-          <PD n="flash.swf.basename" v="cac_wrapper_AIR"/>
           <PD n="com.air.artemis.included.item4" v="dialogue_wrapper.xml"/>
           <PD n="com.air.artemis.included.item5" v="mods/modlist.xml"/>
-          <PD n="com.air.artemis.included.item10" v="mods/maploader_alpha/modinfo.xml"/>
           <PD n="com.air.artemis.included.item6" v="mods/redux/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item11" v="mods/maploader_alpha/maploader_alpha.swf"/>
           <PD n="com.air.artemis.included.item7" v="mods/redux/redux.swf"/>
-          <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
-          <PD n="swf.folder.path"/>
           <PD n="com.air.artemis.included.item8" v="mods/lost_levels/modinfo.xml"/>
           <PD n="com.air.artemis.included.item9" v="mods/lost_levels/lost_levels.swf"/>
-          <PD n="com.air.artemis.pubexe" v="false"/>
+          <PD n="com.air.artemis.included.item10" v="mods/maploader_alpha/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item11" v="mods/maploader_alpha/maploader_alpha.swf"/>
      </persistentData>
      <PrinterSettings/>
      <publishHistory/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <mods>
-	<redux />
-	<maploader_alpha />
+	<redux locked="true" />
+	<maploader_alpha locked="true" />
 	<lost_levels />
 </mods>

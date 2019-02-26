@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/ModManager" itemID="540cb691-00000231" linkageExportForAS="true" linkageIdentifier="ModManager" lastModified="1460520911" lastUniqueIdentifier="5">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Menu Clips/ModManager" itemID="540cb691-00000231" linkageExportForAS="true" linkageIdentifier="ModManager" lastModified="1551144592" lastUniqueIdentifier="5">
   <timeline>
     <DOMTimeline name="ModManager">
       <layers>
@@ -34,7 +34,7 @@ function show() {
 			chk.setLabel(_root.mods[i]["name"] + " v" + _root.mods[i]["version"]);
 			chk.setSize(500, 20, true);
 			chk.move(15, 25 + j * 25, true);
-			chk.enabled = true;
+			chk.enabled = !Boolean(_root.mods[i]["__locked"]);
 			chk.selected = Boolean(_root.mods[i]["__enabled"]);
 			chk.visible = true;
 			chk.addEventListener("click", onModCheckboxClick);
@@ -146,7 +146,7 @@ stop();]]></script>
                 <DOMShape>
                   <fills>
                     <FillStyle index="1">
-                      <SolidColor color="#999999"/>
+                      <SolidColor color="#A2A2A2"/>
                     </FillStyle>
                   </fills>
                   <strokes>
