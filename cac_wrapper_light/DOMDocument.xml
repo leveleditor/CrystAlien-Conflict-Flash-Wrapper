@@ -592,6 +592,8 @@
                                    <Actionscript>
                                         <script><![CDATA[import utils.*;
 
+this._lockroot = true;
+
 // CAC Settings
 var asseturl:String = "v6_4_";
 var xmlurl:String = "dialogue_wrapper_light.xml";

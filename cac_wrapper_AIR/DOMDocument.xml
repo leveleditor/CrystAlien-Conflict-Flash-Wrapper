@@ -1,4 +1,4 @@
-<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="600" frameRate="23" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" breakPointCount="4294967295" viewAngle3D="59.1837342884091" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="1">
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#000000" width="600" frameRate="23" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 349" majorVersion="11" minorVersion="5" buildNumber="349" breakPointCount="4294967295" viewAngle3D="59.1837342884091" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveEnabled="true" autoSaveIntervalMinutes="1">
      <timelines>
           <DOMTimeline name="Scene 1">
                <layers>
@@ -16,6 +16,9 @@ import flash.filesystem.File;
 import flash.html.HTMLLoader;
 import flash.utils.ByteArray;
 import mx.utils.Base64Decoder;
+import flash.display.Loader;
+import flash.system.LoaderContext;
+import flash.net.URLRequest;
 
 stage.scaleMode = StageScaleMode.NO_SCALE;
 stage.align = StageAlign.TOP_LEFT;
@@ -87,20 +90,19 @@ function onInvokeEvent(event:InvokeEvent):void {
 		htmlSize = windowSize;
 	}
 	
-	stage.stageWidth = htmlSize.x;
-	stage.stageHeight = htmlSize.y;
+	//stage.stageWidth = htmlSize.x;
+	//stage.stageHeight = htmlSize.y;
 	
 	setWindowSize(windowSize);
 }
 
 NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);
 
-var loader:HTMLLoader = new HTMLLoader();
+var loader:Loader = new Loader();
 function onLoaded(e:Event):void {
-	loader.width = htmlSize.x;
-	loader.height = htmlSize.y;
+	loader2.width = htmlSize.x;
 	
-	loader.window.console = {};
+	/*loader.window.console = {};
 	loader.window.console.log = function(msg){
 		trace(msg);
 	};
@@ -109,16 +111,33 @@ function onLoaded(e:Event):void {
 	};
 	loader.window.shouldAutoPlay = function() {
 		return shouldAutoPlay;
-	};
+	};*/
 }
-var request = new URLRequest("cac_wrapper.html");
-loader.width = htmlSize.x;
-loader.height = htmlSize.y;
+
+var param2:String = "";
+if (levelDataJson != null) {
+	param2 = "&levelDataJson=" + levelDataJson;
+}
+var request:URLRequest = new URLRequest("cac_wrapper.swf?$version=AIR " + NativeApplication.nativeApplication.runtimeVersion + "&shouldAutoPlay=" + shouldAutoPlay + param2);
+//loader.width = htmlSize.x;
+//loader.height = htmlSize.y;
 loader.x = 0;
 loader.y = 0;
-loader.load(request);
-loader.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
+var lctx:LoaderContext = new LoaderContext(false, null, null);
+lctx.allowCodeImport = true;
+loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaded);
+loader.load(request, lctx);
 addChild(loader);
+
+var loader2:HTMLLoader = new HTMLLoader();
+var req2:URLRequest = new URLRequest("cac_wrapper.html");
+loader2.width = htmlSize.x;
+loader2.height = 400;
+loader2.x = 0;
+loader2.y = 400;
+loader2.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
+loader2.load(req2);
+addChild(loader2);
 
 stop();]]></script>
                                    </Actionscript>
@@ -134,23 +153,23 @@ stop();]]></script>
           <PD n="com.air.artemis.included.count" v="12"/>
           <PD n="TestMovieChecked" v="ADLDesktop"/>
           <PD n="com.air.artemis.pubair" v="true"/>
-          <PD n="com.air.artemis.included.item0" v="cac_wrapper.html"/>
           <PD n="com.air.artemis.pubipa" v="false"/>
+          <PD n="com.air.artemis.included.item0" v="cac_wrapper.html"/>
           <PD n="com.air.artemis.included.item1" v="cac_wrapper.swf"/>
           <PD n="com.air.artemis.included.item2" v="loader_v0_5_1_unofficial.swf"/>
-          <PD n="com.air.artemis.included.item3" v="v6_4_game.swf"/>
           <PD n="flash.swf.basename" v="cac_wrapper_AIR"/>
-          <PD n="com.air.artemis.included.item4" v="dialogue_wrapper.xml"/>
-          <PD n="com.air.artemis.included.item5" v="mods/modlist.xml"/>
-          <PD n="com.air.artemis.included.item10" v="mods/maploader_alpha/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item6" v="mods/redux/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item11" v="mods/maploader_alpha/maploader_alpha.swf"/>
-          <PD n="com.air.artemis.included.item7" v="mods/redux/redux.swf"/>
-          <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
+          <PD n="com.air.artemis.included.item3" v="dialogue_wrapper.xml"/>
+          <PD n="com.air.artemis.included.item4" v="mods/modlist.xml"/>
+          <PD n="com.air.artemis.included.item5" v="mods/redux/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item6" v="mods/redux/redux.swf"/>
+          <PD n="com.air.artemis.included.item10" v="mods/maploader_alpha/maploader_alpha.swf"/>
           <PD n="swf.folder.path"/>
-          <PD n="com.air.artemis.included.item8" v="mods/lost_levels/modinfo.xml"/>
-          <PD n="com.air.artemis.included.item9" v="mods/lost_levels/lost_levels.swf"/>
+          <PD n="flash.fla.filepath" v="cac_wrapper_AIR/cac_wrapper_AIR.xfl"/>
+          <PD n="com.air.artemis.included.item7" v="mods/lost_levels/modinfo.xml"/>
+          <PD n="com.air.artemis.included.item11" v="v6_6_game.swf"/>
+          <PD n="com.air.artemis.included.item8" v="mods/lost_levels/lost_levels.swf"/>
           <PD n="com.air.artemis.pubexe" v="false"/>
+          <PD n="com.air.artemis.included.item9" v="mods/maploader_alpha/modinfo.xml"/>
      </persistentData>
      <PrinterSettings/>
      <publishHistory/>

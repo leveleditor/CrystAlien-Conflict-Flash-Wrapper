@@ -23,7 +23,7 @@ function CACMod_Init(parent:MovieClip):Number {
 function CACMod_OnGameMenu():Void {
 	if (!hookedIn) {
 		// Make a nicer reference to the game's root.
-		game = _level1;
+		game = _root["_level1"];
 
 		game.panel.codes[30] = "whitney";
 		
@@ -31,7 +31,7 @@ function CACMod_OnGameMenu():Void {
 			function (parent, team, level) {
 				this.data["map30"] = "55*******#  %**********-$.***#  %*******+**# (.*-'  (.*-$.*****#  6<7    %*# %*****#         %*# ($.***#      )!&%*#   (.**#      %*#%*#    %**#   8!!/*,/*#    %**#   =***+***#    6<*#   9$.*****,4     *#     %******;    E<7     %******;   EM   )!!!/*****-5   DC   ($.*******#    PP     %*****-$'    PP     ($$$.*#                 6<7   EB                 EMC     E>>B        A?P     AFGH>B     EMCP  O".split("",10000);
 
-				var hook4:Object = _level0.addPostHook(this.handle,
+				var hook4:Object = wrapper.addPostHook(this.handle,
 					function() {
 						if (this.level.level == 30 && this.parent.state == "movie") {
 							this.parent.doEndMovie("skip");
@@ -45,7 +45,7 @@ function CACMod_OnGameMenu():Void {
 		
 		var hook2:Object = wrapper.addPostHook(game.LevelStats,
 			function (parent) {
-				var hook3:Object = _level0.addPostHook(this.setup,
+				var hook3:Object = wrapper.addPostHook(this.setup,
 					function () {
 						if (this.level == 30) // bodyguard
 						{
@@ -108,7 +108,7 @@ function CACMod_OnGameMenu():Void {
 				);
 				this.setup = hook3.override;
 				
-				var hook5:Object = _level0.addPreHook(this.outcome,
+				var hook5:Object = wrapper.addPreHook(this.outcome,
 					function() {
 						if (!this.active) {
 							return;

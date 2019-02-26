@@ -8,61 +8,61 @@
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
                                         <script><![CDATA[function dialogue() {
-	return _level1.dialogue.apply(_root._level1, arguments);
+	return _global.game.dialogue.apply(_global.game, arguments);
 }
 function limit() {
-	return _level1.limit.apply(_root._level1, arguments);
+	return _global.game.limit.apply(_global.game, arguments);
 }
 function distance() {
-	return _level1.distance.apply(_root._level1, arguments);
+	return _global.game.distance.apply(_global.game, arguments);
 }
 function min() {
-	return _level1.min.apply(_root._level1, arguments);
+	return _global.game.min.apply(_global.game, arguments);
 }
 function max() {
-	return _level1.max.apply(_root._level1, arguments);
+	return _global.game.max.apply(_global.game, arguments);
 }
 function sgn() {
-	return _level1.sgn.apply(_root._level1, arguments);
+	return _global.game.sgn.apply(_global.game, arguments);
 }
 function isArray() {
-	return _level1.isArray.apply(_root.level1, arguments);
+	return _global.game.isArray.apply(_global.game, arguments);
 }
 
 function kvEvent() {
-	return _level1.kvEvent.apply(_root._level1, arguments);
+	return _global.game.kvEvent.apply(_global.game, arguments);
 }
 
 function Building() {
-	_level1.Building.apply(this,arguments);
+	_global.game.Building.apply(this,arguments);
 }
 function Unit() {
-	_level1.Unit.apply(this,arguments);
+	_global.game.Unit.apply(this,arguments);
 }
 function UnitHAL() {
-	_level1.UnitHAL.apply(this,arguments);
+	_global.game.UnitHAL.apply(this,arguments);
 }
 function UnitNav() {
-	_level1.UnitNav.apply(this,arguments);
+	_global.game.UnitNav.apply(this,arguments);
 }
 function UnitStats() {
-	_level1.UnitStats.apply(this,arguments);
+	_global.game.UnitStats.apply(this,arguments);
 }
 function Indicator() {
-	_level1.Indicator.apply(this,arguments);
+	_global.game.Indicator.apply(this,arguments);
 }
 function LevelStats() {
-	_level1.LevelStats.apply(this,arguments);
+	_global.game.LevelStats.apply(this,arguments);
 }
 function Level() {
-	_level1.Level.apply(this,arguments);
+	_global.game.Level.apply(this,arguments);
 }
 
 function Log(msg:String):Void {
-	_level0.Log.apply(this, arguments);
+	_root.Log.apply(this, arguments);
 }
 function log(msg:String):Void {
-	_level0.Log.apply(this, arguments);
+	_root.Log.apply(this, arguments);
 }
 ]]></script>
                                    </Actionscript>
@@ -124,23 +124,23 @@ function registerCheat(id:String, code:String, linked:Array) {
 		}
 	}
 
-	for (i in _level1.panel.codes) {
-		if (_level1.panel.codes[i] == code) {
+	for (i in _global.game.panel.codes) {
+		if (_global.game.panel.codes[i] == code) {
 			aborted = true;
 			break;
 		}
 	}
 
 	//this check may get removed
-	/*for (i in _level1.panel.customCheats) {
-		if (_level1.panel.customCheats[i].id == id) {
+	/*for (i in _global.game.panel.customCheats) {
+		if (_global.game.panel.customCheats[i].id == id) {
 			aborted = true;
 			break;
 		}
 	}*/
 
-	for (i in _level1.panel.customCheats) {
-		if (_level1.panel.customCheats[i].code == code) {
+	for (i in _global.game.panel.customCheats) {
+		if (_global.game.panel.customCheats[i].code == code) {
 			aborted = true;
 			break;
 		}
@@ -148,7 +148,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 
 	//this cheat can now be registered
 	if (!aborted) {
-		_level1.panel.customCheats.push(new cheatObj(id, code, linked));
+		_global.game.panel.customCheats.push(new cheatObj(id, code, linked));
 	}
 }]]></script>
                                    </Actionscript>
@@ -199,7 +199,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
                                         <script><![CDATA[function doSnowHook() {
-	_level0.Log("Snow!");
+	_root.Log("Snow!");
 	this.terrainMCx2.filters = this.terrainMC.filters;
 	this.terrainMCy2.filters = this.terrainMC.filters;
 	this.terrainMCx2y2.filters = this.terrainMC.filters;
@@ -238,13 +238,13 @@ function registerCheat(id:String, code:String, linked:Array) {
 	this.terrainMCx2y2._height = 2880;
 
 	//if (this.doSnow.isHooked()) {
-	//	_level0.Log("doSnow() already hooked, skipping...");
+	//	_root.Log("doSnow() already hooked, skipping...");
 	//} else {
-	var hookSnow:Object = _level0.addPostHook(this.doSnow, doSnowHook);
+	var hookSnow:Object = _root.addPostHook(this.doSnow, doSnowHook);
 	this.doSnow = hookSnow.override;
 	//}
 	var tempTodaysDate:Date = new Date();
-	if (_level1.panel.checkCheat("cheatSnow") || (tempTodaysDate.getMonth() == 11 && (tempTodaysDate.getDate() == 24 || tempTodaysDate.getDate() == 25))) {
+	if (_global.game.panel.checkCheat("cheatSnow") || (tempTodaysDate.getMonth() == 11 && (tempTodaysDate.getDate() == 24 || tempTodaysDate.getDate() == 25))) {
 		// Ho ho ho!
 		this.doSnow();
 	}
@@ -282,18 +282,18 @@ function registerCheat(id:String, code:String, linked:Array) {
                                    <Actionscript offsets="36,476">
                                         <script><![CDATA[function ConstructionHook(parent) {
 /*
-	var hook5:Object = _level0.addPreHook(this.construct,
+	var hook5:Object = _root.addPreHook(this.construct,
 		function(item) {
 			if (!item)
 				return;
-			_level0.Log("construct called for type: " + item.type + " inProgress: " + item.inProgress + " progress: " + item.progress + " disabled: " + item.disabled);
+			_root.Log("construct called for type: " + item.type + " inProgress: " + item.inProgress + " progress: " + item.progress + " disabled: " + item.disabled);
 		}
 	);
 	this.construct = hook5.override;
 	
-	var hook6:Object = _level0.addPostHook(this.doMouse,
+	var hook6:Object = _root.addPostHook(this.doMouse,
 		function(x, y) {
-			_level0.Log("doMouse called x: " + x + " y: " + y);
+			_root.Log("doMouse called x: " + x + " y: " + y);
 		}
 	);
 	this.doMouse = hook6.override;
@@ -372,7 +372,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 
 /*
 	//TODO: Investigate why exactly this causes further bugs whereas replacing the function completely works fine.
-	var breakGroundHook:Object = _level0.addPreHook(this.breakGround,
+	var breakGroundHook:Object = _root.addPreHook(this.breakGround,
 		function() {
 			// HACK: Force recalculate if this is on a valid tile.
 			this.handle();
@@ -463,7 +463,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		parent.x = parent.tilePos.x;
 		parent.y = parent.tilePos.y;
 		warn += "\nAssigned next available tile position {x: " + parent.tilePos.x + ", y: " + parent.tilePos.y + "} to avoid crash!";
-		_level0.Log(warn);
+		_root.Log(warn);
 	}
 }]]></script>
                                    </Actionscript>
@@ -2320,13 +2320,13 @@ function registerCheat(id:String, code:String, linked:Array) {
                               </DOMFrame>
                          </frames>
                     </DOMLayer>
-                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="22" locked="true" autoNamed="false" visible="false">
+                    <DOMLayer name="LevelHook" color="#4FFF4F" parentLayerIndex="22" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
                                         <script><![CDATA[function LevelHook(parent, level) {
 
-	var hookShoot:Object = _level0.addPreHook(this.shoot, shootHook);
+	var hookShoot:Object = _root.addPreHook(this.shoot, shootHook);
 	this.shoot = hookShoot.override;
 
 	//level.outro v2
@@ -2524,7 +2524,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		}
 	};
 
-	var indHackHook:Object = _level0.addPostHook(this.init, this.hack_init);
+	var indHackHook:Object = _root.addPostHook(this.init, this.hack_init);
 	this.init = indHackHook.override;
 }]]></script>
                                    </Actionscript>
@@ -2545,7 +2545,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			return;
 		}
 
-		if (Key.isDown(27) || (_level1.MOUSEDOWN && this.parent.parent.hud.MC.exit.hitTest(_xmouse, _ymouse, true))) {
+		if (Key.isDown(27) || (_global.game.MOUSEDOWN && this.parent.parent.hud.MC.exit.hitTest(_xmouse, _ymouse, true))) {
 			this.parent.parent.hud.popup();
 			this.parent.parent.active = false;
 			this.cursorMC._visible = false;
@@ -2565,7 +2565,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			this.parent.camera.focus = this.parent.findBuilding("BA_" + this.parent.parent.team, this.parent.parent.team) || this.parent.findBuilding("BK_" + this.parent.parent.team, this.parent.parent.team);
 		}
 
-		this.posX = Math.round(limit(_xmouse, _level1.SCREENX - this.parent.arena.viewWidth + 1, _level1.SCREENX) - this.parent.arena.posX - (_level1.SCREENX - this.parent.arena.viewWidth));
+		this.posX = Math.round(limit(_xmouse, _global.game.SCREENX - this.parent.arena.viewWidth + 1, _global.game.SCREENX) - this.parent.arena.posX - (_global.game.SCREENX - this.parent.arena.viewWidth));
 		this.posY = Math.round(limit(_ymouse, 1, this.parent.arena.viewHeight) - this.parent.arena.posY) * 2;
 		if ((this.prevMouseX == _xmouse) && (this.prevMouseY == _ymouse) && (this.parent.count > 20)) {
 			this.still++;
@@ -2576,12 +2576,12 @@ function registerCheat(id:String, code:String, linked:Array) {
 		this.prevMouseY = _ymouse;
 		this.tilePos = this.parent.arena.translatePos(this.posX, this.posY);
 		if (this.still > 1) {
-			if ((_xmouse > _level1.SCREENX - this.scrollMargin) && (_xmouse < _level1.SCREENX)) {
+			if ((_xmouse > _global.game.SCREENX - this.scrollMargin) && (_xmouse < _global.game.SCREENX)) {
 				this.RIGHT = true;
-			} else if ((_xmouse < (_level1.SCREENX - this.parent.arena.viewWidth) + this.scrollMargin) && (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth))) {
+			} else if ((_xmouse < (_global.game.SCREENX - this.parent.arena.viewWidth) + this.scrollMargin) && (_xmouse > (_global.game.SCREENX - this.parent.arena.viewWidth))) {
 				this.LEFT = true;
 			}
-			if (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth)) {
+			if (_xmouse > (_global.game.SCREENX - this.parent.arena.viewWidth)) {
 				if ((_ymouse < this.scrollMargin) && (_ymouse > 0)) {
 					this.UP = true;
 				} else if ((_ymouse > this.parent.arena.viewHeight - this.scrollMargin) && (_ymouse < this.parent.arena.viewHeight)) {
@@ -2590,10 +2590,10 @@ function registerCheat(id:String, code:String, linked:Array) {
 			}
 
 		}
-		if (_level1.MOUSESCROLL > 0) {
+		if (_global.game.MOUSESCROLL > 0) {
 			this.UP = true;
 		}
-		if (_level1.MOUSESCROLL < 0) {
+		if (_global.game.MOUSESCROLL < 0) {
 			this.DOWN = true;
 		}
 
@@ -2606,37 +2606,37 @@ function registerCheat(id:String, code:String, linked:Array) {
 
 		if ((this.cursorState == "superweapon") && (this.advancedCursorState == "superweapon")) {
 			this.mouseDownCount = 0;
-			if (!this.MOUSEDOWN && _level1.MOUSEDOWN) {
+			if (!this.MOUSEDOWN && _global.game.MOUSEDOWN) {
 				this.advancedCursorState = false;
 				this.cursorState = "standard";
-				this.MOUSEDOWN = _level1.MOUSEDOWN = false;
+				this.MOUSEDOWN = _global.game.MOUSEDOWN = false;
 				this.pressX = this.posX;
 				this.pressY = this.posY;
 				this.parent.launchSuperweapon(this.posX,this.posY);
 			}
-			this.MOUSEDOWN = _level1.MOUSEDOWN;
+			this.MOUSEDOWN = _global.game.MOUSEDOWN;
 		} else if (this.parent.construction.buildingSite) {
-			this.MOUSEDOWN = _level1.MOUSEDOWN;
+			this.MOUSEDOWN = _global.game.MOUSEDOWN;
 			if (this.MOUSEDOWN) {
 				this.mouseDownCount++;
 			} else {
 				this.mouseDownCount = 0;
 			}
 			this.cursorState = "standard";
-			if ((this.mouseDownCount < 2) && this.MOUSEDOWN && (_xmouse > (_level1.SCREENX - this.parent.arena.viewWidth)) && this.parent.construction.buildingSite.breakGround()) {
+			if ((this.mouseDownCount < 2) && this.MOUSEDOWN && (_xmouse > (_global.game.SCREENX - this.parent.arena.viewWidth)) && this.parent.construction.buildingSite.breakGround()) {
 				delete this.parent.construction.buildingSite;
 				this.mouseDownCount = 0;
 				this.MOUSEDOWN = false;
 			}
 		} else {
 			this.doCursor();
-			if (!this.MOUSEDOWN && _level1.MOUSEDOWN) {
+			if (!this.MOUSEDOWN && _global.game.MOUSEDOWN) {
 				this.doPress();
 			}
-			if (this.MOUSEDOWN && !_level1.MOUSEDOWN) {
+			if (this.MOUSEDOWN && !_global.game.MOUSEDOWN) {
 				this.doRelease();
 			}
-			this.MOUSEDOWN = _level1.MOUSEDOWN;
+			this.MOUSEDOWN = _global.game.MOUSEDOWN;
 			if (this.MOUSEDOWN) {
 				this.mouseDownCount++;
 			}
@@ -2662,7 +2662,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		}
 		this.updateSelected();
 
-		if (_xmouse < (_level1.SCREENX - this.parent.arena.viewWidth)) {
+		if (_xmouse < (_global.game.SCREENX - this.parent.arena.viewWidth)) {
 			this.cursorState = "standard";
 		}
 
@@ -2722,7 +2722,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			}
 		}
 		// Only using beeblebrox (aka test mode).
-		if (_level1.TESTMODE) {
+		if (_global.game.TESTMODE) {
 			// Requested by ETX - Ctrl+Z self-destructs selected buildings/units.
 			if (Key.isDown(Key.CONTROL) && Key.isDown(90)) {
 				for (var i in this.parent.units) {
@@ -2807,7 +2807,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		this.currentLevel++;
 		// Make sure the next level is valid otherwise loop back to 1
 		if (this.data["map" + this.currentLevel] === undefined || this.data["map" + this.currentLevel] == null) {
-			_level0.Log("Level " + this.currentLevel + " is invalid! Looping back to level 1.");
+			_root.Log("Level " + this.currentLevel + " is invalid! Looping back to level 1.");
 			this.currentLevel = 1;
 		}
 		/*
@@ -2897,7 +2897,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 			// Previously this cheat just used Flash's native fullscreen feature:
 			// Stage["displayState"] = "fullScreen";
 			// but now we instead call on the wrapper to handle going fullscreen.
-			_level0.enterFullscreen();
+			_root.enterFullscreen();
 			level = "cheatFullscreen";
 		}
 		if (code == "fatwallet") {
@@ -2982,7 +2982,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		}
 		if (code == "beeblebrox") {
 			this.MC.splash.bottom.code.result = "TESTMODE";
-			_level1.TESTMODE = true;
+			_global.game.TESTMODE = true;
 		}
 		if (code == "redux" || code == "cacredux" || code == "crystalien-redux") {
 			this.MC.splash.bottom.code.result = "CrystAlien Redux";
@@ -3015,7 +3015,7 @@ function registerCheat(id:String, code:String, linked:Array) {
 		for (var i in this.customCheats) {
 			this.customCheats[i].isEnabled = false;
 		}
-		_level0.exitFullscreen();
+		_root.exitFullscreen();
 	};
 	this.cheatsEnabled = function() {
 		var yesCheating = false;
@@ -3052,7 +3052,7 @@ function registerCheat(id:String, code:String, linked:Array) {
                          </frames>
                     </DOMLayer>
                     <DOMLayer name="Mod" color="#FF800A" locked="true" autoNamed="false" visible="false" layerType="folder"/>
-                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="31" locked="true" current="true" isSelected="true" autoNamed="false" visible="false">
+                    <DOMLayer name="CACMod" color="#00FF00" parentLayerIndex="31" locked="true" autoNamed="false" visible="false">
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <Actionscript>
@@ -3076,7 +3076,8 @@ function CACMod_Init(parent:MovieClip):Number {
 function CACMod_OnGameMenu():Void {
 	if (!hookedIn) {
 		// Make a nicer reference to the game's root.
-		game = _level1;
+		game = _root._level1;
+
 		// Set a global reference to the game, so we can access the SO (Shared Object) for saving progress where needed.
 		_global.game = game;
 		

@@ -2691,16 +2691,16 @@
           </DOMCompiledClipItem>
      </media>
      <symbols>
-          <Include href="Control Clips/ModInitManager.xml" loadImmediate="false" itemID="54050f7b-000001f6" lastModified="1418528584"/>
+          <Include href="Control Clips/ModInitManager.xml" loadImmediate="false" itemID="54050f7b-000001f6" lastModified="1550532461"/>
           <Include href="Control Clips/MouseBlocker.xml" loadImmediate="false" itemID="540cc528-00000382" lastModified="1410123226"/>
-          <Include href="Control Clips/WaitForGameMenu.xml" loadImmediate="false" itemID="54000070-0000003d" lastModified="1412999688"/>
+          <Include href="Control Clips/WaitForGameMenu.xml" loadImmediate="false" itemID="54000070-0000003d" lastModified="1550536286"/>
           <Include href="Menu Clips/Background.xml" loadImmediate="false" itemID="53fd0ed0-00000037" lastModified="1435778547"/>
           <Include href="Menu Clips/ButtonHitArea.xml" itemIcon="1" loadImmediate="false" itemID="540cb5e0-0000022c" lastModified="1410119136"/>
           <Include href="Menu Clips/CloseButton.xml" itemIcon="0" loadImmediate="false" itemID="540d111d-000002c0" lastModified="1418877703"/>
           <Include href="Menu Clips/Hexagon 1.xml" loadImmediate="false" itemID="536979db-0000005f" lastModified="1438397717"/>
           <Include href="Menu Clips/HexagonFlare.xml" loadImmediate="false" itemID="55bc2fb5-0000022a" lastModified="1438398114"/>
           <Include href="Menu Clips/LoadButton.xml" itemIcon="0" loadImmediate="false" itemID="52f86656-00000012" lastModified="1392010838"/>
-          <Include href="Menu Clips/ModManager.xml" itemID="540cb691-00000231" lastModified="1460520911"/>
+          <Include href="Menu Clips/ModManager.xml" itemID="540cb691-00000231" lastModified="1550532310"/>
           <Include href="Menu Clips/ModManagerButton.xml" itemIcon="0" loadImmediate="false" itemID="540cb574-0000021a" lastModified="1410119097"/>
           <Include href="Styles/CheckBox/States/CheckFalseDisabled.xml" itemID="54965c6e-000004ac" lastModified="1419140206"/>
           <Include href="Styles/CheckBox/States/CheckFalseDown.xml" itemID="54966851-000006f0" lastModified="1419143249"/>
@@ -2739,10 +2739,43 @@
                                    <Actionscript>
                                         <script><![CDATA[import utils.*;
 
+this._lockroot = true;
+function _loadMovieNum(url, level, lockroot) {
+	var a:MovieClip;
+	if (_root["_level" + level]) {
+		a = _root["_level" + level];
+		
+		if (lockroot) {
+			a._lockroot = true;
+		} else {
+			a._lockroot = false;
+		}
+		
+		a.loadMovie(url);
+		
+		trace("Reusing simulated _level" + level + " at " + a);
+	} else {
+		var depth = 1337000 + level;
+		a = _root.createEmptyMovieClip("_level" + level, depth);
+		_root["_level" + level] = a;
+		
+		if (lockroot) {
+			a._lockroot = true;
+		}
+		
+		a.loadMovie(url);
+		
+		trace("Created simulated _level" + level + " at " + a + " with depth " + depth);
+	}
+	return a;
+}
+
 // CAC Settings
-var asseturl:String = "v6_4_";
+var asseturl:String = "v6_6_";
 var xmlurl:String = "dialogue_wrapper.xml";
+_global.xmlurl = xmlurl; // HACK!
 var gamename:String = "CrystalAlienConflict";
+_global.gamename = gamename; // HACK!
 
 // Mod related
 var mods:Array = new Array();
@@ -2753,7 +2786,7 @@ var MAX_INIT_ATTEMPTS:Number = 100;
 
 // Wrapper variables
 var version:Version = new Version(0, 2, 14, 0);
-var gameswf:String = "v6_4_game.swf";
+var gameswf:String = "v6_6_game.swf";
 var progressText:String = "Loading %3%% (<SWF>) [%1/%2]";
 ]]></script>
                                    </Actionscript>
@@ -2782,7 +2815,7 @@ function displayModInfo(name:String, desc:String, icon:String, vers:String, docs
 			ExternalInterface.call("displayModInfo", name, desc, icon, vers, docs);
 			Log("Wrapper called displayModInfo(\"" + name + "\", \"" + desc + "\", \"" + icon + "\", \"" + vers + "\", \"" + docs + "\");");
 		} catch (e:Error) {
-			Log("ExternalInterface error: " + e.toString());
+			Log("displayModInfo() : ExternalInterface error: " + e.toString());
 		}
 	} else {
 		Log("displayModInfo() : ExternalInterface not available.");
@@ -2791,7 +2824,7 @@ function displayModInfo(name:String, desc:String, icon:String, vers:String, docs
 
 // Hack: Enables unofficial loader swf to get flash version
 function _getVersion() {
-	return getVersion();
+	return getVersion() || $version || NativeApplication.nativeApplication.runtimeVersion;
 }
 
 function enterFullscreen() {
@@ -2802,7 +2835,7 @@ function enterFullscreen() {
 			Stage.scaleMode = "showAll";
 			Log("Wrapper called enterFullscreen();");
 		} catch (e:Error) {
-			Log("ExternalInterface error: " + e.toString());
+			Log("enterFullscreen() : ExternalInterface error: " + e.toString());
 		}
 	} else {
 		Log("enterFullscreen() : ExternalInterface not available.");
@@ -2816,7 +2849,7 @@ function exitFullscreen() {
 			Stage.scaleMode = "noScale";
 			Log("Wrapper called exitFullscreen();");
 		} catch (e:Error) {
-			Log("ExternalInterface error: " + e.toString());
+			Log("exitFullscreen() : ExternalInterface error: " + e.toString());
 		}
 	} else {
 		Log("exitFullscreen() : ExternalInterface not available.");
@@ -2833,10 +2866,15 @@ function shouldAutoPlay():Boolean {
 				autoPlay = false;
 			}
 		} catch (e:Error) {
-			Log("ExternalInterface error: " + e.toString());
+			Log("shouldAutoPlay() : ExternalInterface error: " + e.toString());
 		}
 	} else {
-		Log("shouldAutoPlay() : ExternalInterface not available.");
+		if (_root.shouldAutoPlay) {
+			autoPlay = Boolean(_root.shouldAutoPlay);
+			Log("shouldAutoPlay() : Retrieved from passed parameters.");
+		} else {
+			Log("shouldAutoPlay() : ExternalInterface not available.");
+		}
 	}
 	return autoPlay;
 }
@@ -3019,6 +3057,9 @@ import utils.*;
 // TODO: Use XML instead?
 //this.loadVariables("vars.txt", this, "POST");
 
+txtVersion.text = version;
+txtFlashVersion.text = _root.$version; //_getVersion();
+
 var newmenu:ContextMenu = new ContextMenu();
 newmenu.hideBuiltInItems();
 this.menu = newmenu;
@@ -3026,21 +3067,24 @@ this.menu = newmenu;
 _global.version = version;
 var latestVer:Version = new Version(0, 0, 0, 0);
 var updateAvailable:Boolean = false;
-var updatemsg:String = "Checking for new version...";
+txtUpdate.text = "Checking for new version..."
 
-Stage["scaleMode"] = "showAll";
+//Stage["scaleMode"] = "showAll";
+Stage.scaleMode = "noScale";
+Stage.align = "TL";
+
 fscommand("allowscale", false);
 fscommand("showmenu", false);
 _quality = "high";
 
 Log("Logging Flash wrapper version: " + txtVersion.text + " [" + $version + "]");
-Log(updatemsg);
+Log(txtUpdate.text);
 
 var ver:LoadVars = new LoadVars();
 ver.onData = function(src:String) {
 	if (src == undefined) {
 		Log("Error checking latest version, ignoring...");
-		updatemsg = "Error checking latest version.";
+		txtUpdate.text = "Error checking latest version.";
 		txtUpdate.filters = [new GlowFilter(0xFF0000, 255, 25, 25, 1, 3, false, false)];
 		return;
 	}
@@ -3049,14 +3093,14 @@ ver.onData = function(src:String) {
 	if (latestVer.newerThan(version)) {
 		updateAvailable = true;
 		txtUpdate.filters = [new GlowFilter(0x00FF00, 255, 25, 25, 1, 3, false, false)];
-		updatemsg = "An update (" + latestVer + ") is available, clear yer cache!";
+		txtUpdate.text = "An update (" + latestVer + ") is available, clear yer cache!";
 	} else {
 		updateAvailable = false;
-		updatemsg = "No updates are available.";
+		txtUpdate.text = "No updates are available.";
 	}
 	//txtUpdate._visible = updateAvailable;
 	
-	Log(updatemsg);
+	Log(txtUpdate.text);
 	
 	//Log(src);
 };
@@ -3264,7 +3308,7 @@ text += "Loading in mods...\n";
 
 for (var j in mods) {
 	if (mods[j]["__enabled"]) {
-		loadMovieNum(mods[j]["__url"], mods[j]["__level"]);
+		_loadMovieNum(mods[j]["__url"], mods[j]["__level"]);
 		displayModInfo(mods[j]["name"], mods[j]["description"], mods[j]["icon"], mods[j]["version"], mods[j]["documentation"]);
 	}
 }
@@ -3274,8 +3318,8 @@ text += "Waiting for mods to initialize...\n";
 function AllModsInitializedCallback() {
 	text += "Mod initialization done, starting the game!\n";
 	Log("AllModsInitializedCallback(); called.");
-	loadMovieNum(gameswf, 1);
-	_root._visible = false;
+	_loadMovieNum(gameswf, 1, true);
+	//_root._visible = false;
 	gotoAndStop(4);
 }
 
@@ -3436,7 +3480,7 @@ modMan.setStyle("fontWeight", "bold");]]></script>
                                                   </DOMTextRun>
                                              </textRuns>
                                         </DOMStaticText>
-                                        <DOMDynamicText name="txtVersion" left="104.45" width="297.05" height="16.9" variableName="version">
+                                        <DOMDynamicText name="txtVersion" left="104.45" width="297.05" height="16.9">
                                              <matrix>
                                                   <Matrix tx="346.5" ty="372"/>
                                              </matrix>
@@ -3452,7 +3496,7 @@ modMan.setStyle("fontWeight", "bold");]]></script>
                                                   <GlowFilter color="#00FF00" quality="3"/>
                                              </filters>
                                         </DOMDynamicText>
-                                        <DOMDynamicText width="296.95" height="9.85" variableName="$version">
+                                        <DOMDynamicText name="txtFlashVersion" width="296.95" height="9.85">
                                              <matrix>
                                                   <Matrix tx="451.05" ty="388.15"/>
                                              </matrix>
@@ -3468,7 +3512,7 @@ modMan.setStyle("fontWeight", "bold");]]></script>
                                                   <GlowFilter color="#0000FF" quality="3"/>
                                              </filters>
                                         </DOMDynamicText>
-                                        <DOMDynamicText name="txtUpdate" selected="true" left="104.45" width="453.95" height="16.9" isSelectable="false" variableName="updatemsg" renderAsHTML="true">
+                                        <DOMDynamicText name="txtUpdate" left="104.45" width="453.95" height="16.9" isSelectable="false" renderAsHTML="true">
                                              <matrix>
                                                   <Matrix tx="-102.45" ty="379.7"/>
                                              </matrix>
@@ -3522,6 +3566,8 @@ modMan.setStyle("fontWeight", "bold");]]></script>
                                              <Actionscript>
                                                   <script><![CDATA[
 on (release) {
+	modMan.visible = false;
+	modMan.content.hide();
 	gotoAndPlay(2);
 }]]></script>
                                              </Actionscript>
@@ -3704,7 +3750,7 @@ on (release) {
                                         </DOMSymbolInstance>
                                    </elements>
                               </DOMFrame>
-                              <DOMFrame index="1" duration="3" keyMode="9728">
+                              <DOMFrame index="1" duration="2" keyMode="9728">
                                    <elements>
                                         <DOMShape>
                                              <fills>
@@ -3723,6 +3769,9 @@ on (release) {
                                              </edges>
                                         </DOMShape>
                                    </elements>
+                              </DOMFrame>
+                              <DOMFrame index="3" keyMode="9728">
+                                   <elements/>
                               </DOMFrame>
                          </frames>
                     </DOMLayer>

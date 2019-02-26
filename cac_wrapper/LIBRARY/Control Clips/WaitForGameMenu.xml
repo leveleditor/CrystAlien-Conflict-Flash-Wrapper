@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Control Clips/WaitForGameMenu" itemID="54000070-0000003d" lastModified="1412999688">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Control Clips/WaitForGameMenu" itemID="54000070-0000003d" lastModified="1550536286">
   <timeline>
     <DOMTimeline name="WaitForGameMenu">
       <layers>
@@ -7,14 +7,14 @@
             <DOMFrame index="0" keyMode="9728">
               <Actionscript>
                 <script><![CDATA[
-if (_root._level1.panel === undefined === false && _root._level1.panel.state == "splash") {
+if (_root["_level1"].panel === undefined === false && _root["_level1"].panel.state == "splash") {
 	if (!_root.gameMenuLoaded) {
 		//trace("game menu loaded");
 		_root.gameMenuLoaded = true;
 		for (var m in _root.mods) {
 			if (_root.mods[m]["__initialized"] && _root.mods[m]["__enabled"]) {
-				var i:String = "_level" + _root.mods[m]["__level"];
-				var lvl = eval(i);
+				//var i:String = "_level" + _root.mods[m]["__level"];
+				var lvl = _root["_level" + _root.mods[m]["__level"]]; //eval(i);
 				if (lvl["CACMod_Init"] && lvl["CACMod_Error"] && lvl["CACMod_OnGameMenu"]) {
 					_root.Log("CACMod_OnGameMenu: " + lvl + " (" + m + ":" + _root.mods[m]["name"] + ") ... OK!");
 					lvl.CACMod_OnGameMenu();

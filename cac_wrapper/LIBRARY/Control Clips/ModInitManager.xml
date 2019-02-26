@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Control Clips/ModInitManager" itemID="54050f7b-000001f6" lastModified="1418528584">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="Control Clips/ModInitManager" itemID="54050f7b-000001f6" lastModified="1550532461">
   <timeline>
     <DOMTimeline name="ModInitManager">
       <layers>
@@ -18,8 +18,8 @@ for (var m in _root.mods) {
 			_root.text += "Failed to initialize mod: " + name + " v" + ver + " (Max tries of " + _root.MAX_INIT_ATTEMPTS + " reached)";
 			Log("Failed to initialize mod: " + name + " v" + ver + " (Max tries of " + _root.MAX_INIT_ATTEMPTS + " reached)");
 		} else {
-			var i:String = "_level" + _root.mods[m]["__level"];
-			var lvl = eval(i);
+			//var i:String = "_level" + _root.mods[m]["__level"];
+			var lvl = _root["_level" + _root.mods[m]["__level"]]; //eval(i);
 			if (lvl["CACMod_Init"] && lvl["CACMod_Error"]) {
 				//trace("found!");
 				lvl.__url = _root.mods[m]["__url"];
