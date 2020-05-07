@@ -174,7 +174,7 @@ function normalizeValue(value:Object):Object {
 		return false;
 	} else if (value === "True" || value === "true") {
 		return true;
-	} else if (Number(value) > 0) {
+	} else if (typeof(Number(value)) === "number" && String(Number(value)) !== "NaN") {
 		return Number(value);
 	} else {
 		return value;
