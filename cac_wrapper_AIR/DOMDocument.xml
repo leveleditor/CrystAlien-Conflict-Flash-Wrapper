@@ -16,16 +16,21 @@ import flash.filesystem.File;
 import flash.html.HTMLLoader;
 import flash.utils.ByteArray;
 import mx.utils.Base64Decoder;
+import flash.events.Event;
 
 stage.scaleMode = StageScaleMode.NO_SCALE;
 stage.align = StageAlign.TOP_LEFT;
 
+var levelFile:File = null;
+var isLoadingLevel:Boolean = false;
 var levelDataJson:String = null;
 var shouldAutoPlay:Boolean = true;
 var shouldSkipMenu:Boolean = true;
 var showConsole:Boolean = false;
 var windowSize:Point = new Point(stage.stageWidth, stage.stageHeight);
 var htmlSize:Point = windowSize;
+var wrapperLoader:HTMLLoader = new HTMLLoader();
+addChild(wrapperLoader);
 
 // Get OS window border sizes for sizing correction
 var borderSize:Point = new Point(stage.nativeWindow.width - stage.stageWidth, stage.nativeWindow.height - stage.stageHeight);
@@ -49,14 +54,32 @@ function setWindowSize(size:Point):void {
 
 setWindowSize(windowSize);
 
+function onLoadLevel(e:Event):void {
+	var bytes:ByteArray = levelFile.data;
+	levelDataJson = bytes.readUTFBytes(bytes.length);
+	proceed();
+}
+
 function processCommandLineArg(args:Array, index:Number):void {
 	trace("Processing command line arg: " + args[index]);
 	switch (args[index]) {
 		case "-loadlevel":
+			// Deprecated: This option should no longer be used.
+			// Loading levels via Base64 strings on command line was a bad idea,
+			// as it easily exceeded the maximum command length for larger levels.
+			// This option remains here for now to provide backwards compatibility
+			// with older versions of CAMM that used it.
 			var decoder:Base64Decoder = new Base64Decoder();
 			decoder.decode(args[index + 1]);
 			var bytes:ByteArray = decoder.toByteArray();
 			levelDataJson = bytes.toString();
+			break;
+		case "-cammfile":
+			isLoadingLevel = true;
+			var fileName = args[index + 1];
+			levelFile = new File(fileName);
+			levelFile.addEventListener(Event.COMPLETE, onLoadLevel);
+			levelFile.load();
 			break;
 		case "-autoplay=no":
 			shouldAutoPlay = false;
@@ -102,33 +125,40 @@ function onInvokeEvent(event:InvokeEvent):void {
 
 NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);
 
-var loader:HTMLLoader = new HTMLLoader();
 function onLoaded(e:Event):void {
-	loader.width = htmlSize.x;
-	loader.height = htmlSize.y;
+	wrapperLoader.width = htmlSize.x;
+	wrapperLoader.height = htmlSize.y;
 	
-	loader.window.console = {};
-	loader.window.console.log = function(msg){
+	wrapperLoader.window.console = {};
+	wrapperLoader.window.console.log = function(msg){
 		trace(msg);
 	};
-	loader.window.getMapData = function() {
+	wrapperLoader.window.getMapData = function() {
 		return levelDataJson;
 	};
-	loader.window.shouldAutoPlay = function() {
+	wrapperLoader.window.shouldAutoPlay = function() {
 		return shouldAutoPlay;
 	};
-	loader.window.shouldSkipMenu = function() {
+	wrapperLoader.window.shouldSkipMenu = function() {
 		return shouldSkipMenu;
 	};
 }
-var request = new URLRequest("cac_wrapper.html");
-loader.width = htmlSize.x;
-loader.height = htmlSize.y;
-loader.x = 0;
-loader.y = 0;
-loader.load(request);
-loader.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
-addChild(loader);
+
+function proceed():void {
+	trace("Proceeding to load the wrapper");
+	
+	var request = new URLRequest("cac_wrapper.html");
+	wrapperLoader.width = htmlSize.x;
+	wrapperLoader.height = htmlSize.y;
+	wrapperLoader.x = 0;
+	wrapperLoader.y = 0;
+	wrapperLoader.load(request);
+	wrapperLoader.addEventListener(Event.HTML_DOM_INITIALIZE, onLoaded);
+}
+
+if (!isLoadingLevel) {
+	proceed();
+}
 
 stop();]]></script>
                                    </Actionscript>
