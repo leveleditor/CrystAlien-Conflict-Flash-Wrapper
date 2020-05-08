@@ -17,6 +17,8 @@ import flash.html.HTMLLoader;
 import flash.utils.ByteArray;
 import mx.utils.Base64Decoder;
 import flash.events.Event;
+import flash.display.StageDisplayState;
+import flash.events.FullScreenEvent;
 
 stage.scaleMode = StageScaleMode.NO_SCALE;
 stage.align = StageAlign.TOP_LEFT;
@@ -51,6 +53,32 @@ function setWindowSize(size:Point):void {
 		stage.nativeWindow.height = newSize.y;
 	}
 }
+
+function enterFullscreen():void {
+	stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+	wrapperLoader.width = stage.stageWidth;
+	wrapperLoader.height = stage.stageHeight;
+}
+
+function exitFullscreen():void {
+	stage.displayState = StageDisplayState.NORMAL;
+	wrapperLoader.width = htmlSize.x;
+	wrapperLoader.height = htmlSize.y;
+}
+
+function isInFullScreen():Boolean {
+	return stage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE || stage.displayState == StageDisplayState.FULL_SCREEN;
+}
+
+function onFullscreenChange(e:FullScreenEvent):void {
+	// If we are no longer in fullscreen mode, then make sure to unset fullscreen mode from the document
+	// (which also runs a callback to the wrapper to unset fullscreen mode here too).
+	if (!e.fullScreen) {
+		wrapperLoader.window.exitFullscreen();
+	}
+}
+
+stage.addEventListener(FullScreenEvent.FULL_SCREEN, onFullscreenChange);
 
 setWindowSize(windowSize);
 
@@ -141,6 +169,12 @@ function onLoaded(e:Event):void {
 	};
 	wrapperLoader.window.shouldSkipMenu = function() {
 		return shouldSkipMenu;
+	};
+	wrapperLoader.window.preEnterFullscreen = function() {
+		enterFullscreen();
+	};
+	wrapperLoader.window.preExitFullscreen = function() {
+		exitFullscreen();
 	};
 }
 

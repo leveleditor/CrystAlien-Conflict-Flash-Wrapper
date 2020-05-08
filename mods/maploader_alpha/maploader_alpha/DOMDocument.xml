@@ -456,9 +456,9 @@ function CACMod_OnGameMenu():Void {
 		if (mapDataJsonString != null) {
 			injectObjects(mapDataJsonString);
 		} else {
-			Log("No map data found, displaying upload button");
-			btnUpload._visible = true;
-			btnUpload.enabled = true;
+			//Log("No map data found, displaying upload button");
+			//btnUpload._visible = true;
+			//btnUpload.enabled = true;
 		}
 		
 		hookedIn = true;

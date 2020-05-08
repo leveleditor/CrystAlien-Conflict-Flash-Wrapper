@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <mod>
 	<name>Map Loader Alpha</name>
-	<version>0.3.0.1</version>
+	<version>0.3.0.2</version>
 	<description><![CDATA[The first major version of a map loader capable of playing custom levels built using CAMM.]]></description>
 	<author>Josh (leveleditor6680)</author>
 	<homepage>http://crystalien-redux.com/</homepage>

@@ -28,8 +28,73 @@
 				background-color: #000;
 				color: #0f0;
 			}
+			.fullscreen {
+				background-color: #000;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				top: 0;
+				right: 0;
+				text-align: center;
+				z-index: 1000;
+				width: auto !important;
+				height: auto !important;
+				padding-top: 0;
+			}
+			.fullscreen object {
+				margin-left: auto;
+				margin-right: auto;
+			}
 		</style>
 		<script type="text/javascript">
+			var $game, $gameobject;
+			var gameW = 750;
+			var gameH = 400;
+			var scaleW = gameW / gameH;
+			var scaleH = gameH / gameW;
+			var multipleW = gameW / 8;
+			var multipleH = gameH / 8;
+			var newWidth, newHeight;
+			
+			function roundDownToMultiple(value, roundTo) {
+				return Math.floor(value / roundTo) * roundTo;
+			}
+			
+			function doScreenResize() {
+				if ($game.className !== "fullscreen")
+					return;
+				
+				var width, height;
+				if ($game.offsetWidth > $game.offsetHeight * scaleW) {
+					newHeight = roundDownToMultiple($game.offsetHeight, multipleH);
+					width = newHeight * scaleW;
+					height = newHeight;
+				} else {
+					newWidth = roundDownToMultiple($game.offsetWidth, multipleW);
+					width = newWidth;
+					height = newWidth * scaleH;
+				}
+				
+				$gameobject.style.width = width + 'px';
+				$gameobject.style.height = height + 'px';
+			}
+			
+			function enterFullscreen() {
+				if (preEnterFullscreen) {
+					preEnterFullscreen();
+				}
+				$game.className = "fullscreen";
+				doScreenResize();
+			}
+			function exitFullscreen() {
+				if (preExitFullscreen) {
+					preExitFullscreen();
+				}
+				$gameobject.style.removeProperty("width");
+				$gameobject.style.removeProperty("height");
+				$game.removeAttribute("class");
+			}
+			
 			function Log(msg) {
 				document.getElementById('console').innerHTML += "<br/>" + unescape(msg);
 				document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
@@ -49,6 +114,12 @@
 				}
 				Log('Recieved call to displayModInfo() : ' + name + ', ' + desc + ', ' + iconhtml + ', v' + vers + ', ' + dochtml);
 			}
+			
+			function onLoad() {
+				$game = document.getElementById("game");
+				$gameobject = document.getElementById("flash");
+			}
+			window.onload = onLoad;
 		</script>
 	</head>
 	<body>
